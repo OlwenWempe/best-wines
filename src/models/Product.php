@@ -22,7 +22,7 @@ class Product  extends Model
     private int $id_accord_tag;
     private int $id_discount;
     private int $id_supplier;
-    protected string $table_name = "task";
+    protected string $table_name = "product";
 
 
 
@@ -33,7 +33,7 @@ class Product  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -297,7 +297,7 @@ class Product  extends Model
      * Insérer une tache dans la BDD
      * @return int|false l'id du dernier élément inséré ou false dans le cas d'échec
      */
-    public function insert() : int|false
+    public function insert(): int|false
     {
         $stmt = $this->pdo->prepare("INSERT INTO product (`name`, `to_do_at`, `is_done`,`id_user`) VALUES (:name, :to_do_at, :is_done, :id_user)");
 
@@ -310,6 +310,4 @@ class Product  extends Model
 
         return $this->pdo->lastInsertId();
     }
-
 }
-
