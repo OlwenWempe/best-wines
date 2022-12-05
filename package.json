@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/OlwenWempe/best-wines#readme",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "parcel-bundler": "^1.8.1"
   }
 }
