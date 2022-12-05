@@ -1,10 +1,9 @@
-
 <h1>Ceci est la page index task</h1>
 <h2><?= $message ?></h2>
 <ul>
-<?php foreach ($tasks as $task): ?>
+    <?php foreach ($products as $product) : ?>
 
-    <li><?= $task['name'] ?></li>
+    <li><?= $product['name'] ?></li>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </ul>

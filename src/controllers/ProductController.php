@@ -14,10 +14,9 @@ class ProductController extends Controller
     {
         $product = new Product();
 
-        $products = $product->findAllBy(['id_user' => 1]);
+        $products = $product->findAll();
         $message = 'hello';
-        dd($products);
-        $this->renderView('task/index', compact('tasks', 'message'));
+        $this->renderView('product/index', compact('products', 'message'));
     }
     // ?id=10
     // task/show/10
