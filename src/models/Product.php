@@ -22,7 +22,7 @@ class Product  extends Model
     private int $id_accord_tag;
     private int $id_discount;
     private int $id_supplier;
-    protected string $table_name = "task";
+    protected string $table_name = "product";
 
 
 
