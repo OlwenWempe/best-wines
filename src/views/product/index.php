@@ -2,7 +2,7 @@
 <ul>
     <?php foreach ($products as $product) : ?>
 
-        <li><?= $product['name'] ?></li>
+    <li><?= $product['name'] ?></li>
 
     <?php endforeach; ?>
 </ul>

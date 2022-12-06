@@ -20,7 +20,6 @@ $dotenv->load();
 use Core\Router;
 
 $request_uri = str_replace(BASE_DIR, '', $_SERVER['REQUEST_URI']);
-
 try {
     Router::resolve($request_uri);
 } catch (Exception $e) {

@@ -11,7 +11,7 @@ class UserController extends Controller
 
     public function login()
     {
-        $this->renderView('product/index');
+        $this->renderView('user/login');
         // echo "ceci est la méthode login";
     }
 
