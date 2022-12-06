@@ -6,5 +6,8 @@
 
 
 .navbar{
-    background-color: var(--bordeaux);
+    background-color: var(--gris);
+}
+.nav-link{
+    color: var(--bordeaux);
 }
