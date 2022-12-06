@@ -16,7 +16,6 @@ class Client  extends Model
     private string $city;
     private int $phone;
     private string $joined_at;
-    private int $id_role;
     private int $id_ticket_de_vente;
     protected string $table_name = "client";
 
@@ -174,23 +173,6 @@ class Client  extends Model
     public function getJoinedAt(): string
     {
         return $this->joined_at;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdRole(): int
-    {
-        return $this->id_role;
-    }
-
-    /**
-     * @param int $id_role
-     * @return void
-     */
-    public function setIdRole(int $id_role): void
-    {
-        $this->id_role = $id_role;
     }
 
     /**
