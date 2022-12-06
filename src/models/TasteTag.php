@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Core\Model;
 
-class Accord_tag  extends Model
+class TagTas  extends Model
 {
     private int $id;
     private string $name;
-    protected string $table_name = "accord_tag";
+    protected string $table_name = "tag_taste";
 
     // accesseurs (getters & setters)
 
@@ -21,3 +21,22 @@ class Accord_tag  extends Model
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return void
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+}
