@@ -1,7 +1,7 @@
 <?php
 
 
-const BASE_DIR = '/to_do_poo';
+const BASE_DIR = '/best-wines';
 
 require_once 'vendor/autoload.php';
 
@@ -23,7 +23,8 @@ $request_uri = str_replace(BASE_DIR, '', $_SERVER['REQUEST_URI']);
 
 try {
     Router::resolve($request_uri);
-}catch (Exception $e)
-{
+} catch (Exception $e) {
     echo $e->getMessage();
 }
+
+/* test */
