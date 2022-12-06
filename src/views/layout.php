@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="assets/img/logo_bestwines_black" alt="brand logo"></a>
+                <a class="navbar-brand" href="#"><img src="assets/img/nav-logo.png" alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
