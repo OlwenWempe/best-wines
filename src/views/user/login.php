@@ -1,7 +1,9 @@
-<section>
-    <div class="card" style="width: 18rem;">
+<section class="mt-5">
+    <div class="card mx-auto" style="width: 25rem;">
         <div class="card-body">
-            <h5 class="card-title">Connexion</h5>
+            <div id="connection-card" class="card-header">
+                <h5 class="card-title text-center">Connexion</h5>
+            </div>
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">

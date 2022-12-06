@@ -5,8 +5,8 @@
   "main": "assets/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.php --open",
-    "build": "parcel build index.php"
+    "start": "parcel watch assets/js/index.js",
+    "build": "parcel build assets/js/src/index.js"
   },
   "repository": {
     "type": "git",

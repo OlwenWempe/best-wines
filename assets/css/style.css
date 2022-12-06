@@ -11,3 +11,6 @@
 .nav-link{
     color: var(--bordeaux);
 }
+#connection-card{
+    background-color: var(--bordeaux) !important;
+}
