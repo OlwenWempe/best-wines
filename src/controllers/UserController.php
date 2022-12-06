@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use Core\Controller;
@@ -10,8 +11,8 @@ class UserController extends Controller
 
     public function login()
     {
-
-        echo "ceci est la méthode login";
+        $this->renderView('product/index');
+        // echo "ceci est la méthode login";
     }
 
     public function register()
@@ -22,6 +23,6 @@ class UserController extends Controller
 
     public function logout()
     {
-        echo "ceci est la méthode ".__FUNCTION__;
+        echo "ceci est la méthode " . __FUNCTION__;
     }
 }
