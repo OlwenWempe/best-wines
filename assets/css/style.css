@@ -1,0 +1,13 @@
+:root{
+    --main-color: #fff;
+    --bordeaux : #9e121b;
+    --gris : #f3f3f3;
+}
+
+
+.navbar{
+    background-color: var(--gris);
+}
+.nav-link{
+    color: var(--bordeaux);
+}
