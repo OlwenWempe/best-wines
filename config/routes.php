@@ -25,9 +25,21 @@ Router::register('/supplier/register', 'SupplierController::register');
 
 //coffrets
 
-
+Router::register('/nos-coffrets/all', 'ProductController::index');
+Router::register('/nos-coffrets/delete', 'ProductController::delete');
+Router::register('/nos-coffrets/', 'ProductController::show');
+Router::register('/nos-coffrets/add', 'ProductController::insert');
+Router::register('/nos-coffrets/edit', 'ProductController::edit');
 
 //nos vins
+
+Router::register('/nos-vins/all', 'ProductController::index');
+Router::register('/nos-vins/delete', 'ProductController::delete');
+Router::register('/nos-vins/', 'ProductController::show');
+Router::register('/nos-vins/add', 'ProductController::insert');
+Router::register('/nos-vins/edit', 'ProductController::edit');
+
+//exemple
 
 Router::register('/products/all', 'ProductController::index');
 Router::register('/product/delete', 'ProductController::delete');
