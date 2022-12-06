@@ -1,7 +1,10 @@
-
+:root{
+    --main-color: #fff;
+    --bordeaux : #9e121b;
+    --gris : #f3f3f3;
+}
 
 
 .navbar{
-    background-color: #9e121b
-    ;
+    background-color: var(--bordeaux);
 }
