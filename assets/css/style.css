@@ -10,7 +10,7 @@
 .nav-link{
     color: var(--bordeaux);
 }
-#connection-card{
+.card-header{
     background-color: var(--bordeaux) !important;
     color: var(--gris) !important;
 }
@@ -18,4 +18,7 @@
     background-color: var(--bordeaux) !important;
     color: var(--gris) !important;
     border-color: var(--bordeaux) !important;
+}
+#main-body{
+    background-image: url("../img/logo_bestwines_black.png");
 }
