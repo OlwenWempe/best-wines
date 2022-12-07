@@ -1,5 +1,5 @@
 <section class="mt-5">
-    <div class="card mx-auto" style="width: 25rem;">
+    <div class="card mx-auto" style="width: 25vw;">
         <div class="card-body">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Se connecter</h5>
@@ -10,6 +10,11 @@
                     <input type="text" readonly class="form-control-plaintext" id="staticEmail"
                         value="email@example.com">
                 </div>
+            </div>
+            <div>
+                <p>
+                    hello everyone.
+                </p>
             </div>
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Mot de passe</label>
