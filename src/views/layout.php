@@ -21,6 +21,16 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
+                <div>
+                    <ul>
+                        <li>
+                            <a class="" href="login">connexion</a>
+                        </li>
+                        <li>
+                            <a class="" href="register">inscription</a>
+                        </li>
+                    </ul>
+                </div>
                 <a class="navbar-brand" href="#"><img src="assets/img/nav-logo.png" alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -59,8 +69,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
                     </form>
                 </div>
             </div>
