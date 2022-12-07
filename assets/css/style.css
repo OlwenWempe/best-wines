@@ -10,7 +10,7 @@
 .nav-link{
     color: var(--bordeaux);
 }
-#connection-card{
+.card-header{
     background-color: var(--bordeaux) !important;
     color: var(--gris) !important;
 }
