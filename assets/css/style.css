@@ -20,5 +20,5 @@
     border-color: var(--bordeaux) !important;
 }
 #main-body{
-    background-image: url("../img/wine.jpg");
+    background-image: url("/assets/img/wine.jpg");
 }
