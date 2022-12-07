@@ -46,10 +46,15 @@ class ProductController extends Controller
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
             $wine->setLinkPictureMax(strip_tags($_POST['lien']));
-            $wine->setLinkPictureMini($_POST['lien']);
+            $wine->setLinkPictureMini($_POST['lien_mini']);
             $wine->setPrixDAchat(strip_tags($_POST['PA']));
             $wine->setPrixDeVente(strip_tags($_POST['PV']));
             $wine->setIdRegion(strip_tags($_POST['region']));
+            $wine->setIdGrapeVariety(strip_tags($_POST['variety']));
+            $wine->setIdTypeWine(strip_tags($_POST['type']));
+            $wine->setIdTasteTag(strip_tags($_POST['taste']));
+            $wine->setIdAccordTag(strip_tags($_POST['accord']));
+            $wine->setIdSupplier(strip_tags($_POST['supplier']));
 
 
             $result = $wine->insert();
