@@ -13,4 +13,10 @@
 }
 #connection-card{
     background-color: var(--bordeaux) !important;
+    color: var(--gris) !important;
+}
+.btn-primary{
+    background-color: var(--bordeaux) !important;
+    color: var(--gris) !important;
+    border-color: var(--bordeaux) !important;
 }
