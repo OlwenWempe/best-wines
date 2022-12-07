@@ -11,7 +11,7 @@ class Employee  extends Model
     private string $last_name;
     private string $email;
     private string $password;
-    private int $phone_number;
+    private string $phone_number;
     protected string $table_name = "employee";
 
     // accesseurs (getters & setters)
@@ -95,18 +95,18 @@ class Employee  extends Model
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPhoneNumber(): int
+    public function getPhoneNumber(): string
     {
         return $this->phone_number;
     }
 
     /**
-     * @param int $phone_number
+     * @param string $phone_number
      * @return void
      */
-    public function setPhoneNumber(int $phone_number): void
+    public function setPhoneNumber(string $phone_number): void
     {
         $this->phone_number = $phone_number;
     }

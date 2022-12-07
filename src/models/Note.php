@@ -9,8 +9,8 @@ class Note  extends Model
     private int $id;
     private string $created_at;
     private int $note;
-    private int $id_customer;
-    private int $id_product;
+    private int $id_client;
+    private int $id_wine;
     protected string $table_name = "note";
 
     // accesseurs (getters & setters)
@@ -53,34 +53,34 @@ class Note  extends Model
     /**
      * @return int
      */
-    public function getIdCustomer(): int
+    public function getIdClient(): int
     {
-        return $this->id_customer;
+        return $this->id_client;
     }
 
     /**
-     * @param int $id_customer
+     * @param int $id_client
      * @return void
      */
-    public function setIdCustomer(int $id_customer): void
+    public function setIdClient(int $id_client): void
     {
-        $this->id_customer = $id_customer;
+        $this->id_client = $id_client;
     }
 
     /**
      * @return int
      */
-    public function getIdProduct(): int
+    public function getIdWine(): int
     {
-        return $this->id_product;
+        return $this->id_wine;
     }
 
     /**
-     * @param int $id_product
+     * @param int $id_wine
      * @return void
      */
-    public function setFirstName(int $id_product): void
+    public function setIdWine(int $id_wine): void
     {
-        $this->id_product = $id_product;
+        $this->id_wine = $id_wine;
     }
 }

@@ -8,7 +8,7 @@ class Region  extends Model
 {
     private int $id;
     private string $name;
-    private int $id_country;
+    private int $id_pays;
     protected string $table_name = "region";
 
     // accesseurs (getters & setters)
@@ -43,18 +43,18 @@ class Region  extends Model
     /**
      * @return int
      */
-    public function getIdCountry(): int
+    public function getIdPays(): int
     {
-        return $this->id_country;
+        return $this->id_pays;
     }
 
     /**
-     * @param int $id_country
+     * @param int $id_pays
      * @return void
      */
-    public function setIdCountry(int $id_country): void
+    public function setIdPays(int $id_pays): void
     {
-        $this->id_country = $id_country;
+        $this->id_pays = $id_pays;
     }
 
 }

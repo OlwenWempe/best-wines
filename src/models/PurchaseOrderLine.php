@@ -8,7 +8,7 @@ class PurchaseOrderLine  extends Model
 {
     private int $id;
     private int $quantity;
-    private int $id_product;
+    private int $id_wine;
     protected string $table_name = "purchase_order_line";
 
     // accesseurs (getters & setters)
@@ -43,18 +43,18 @@ class PurchaseOrderLine  extends Model
     /**
      * @return int
      */
-    public function getIdProduct(): int
+    public function getIdWine(): int
     {
-        return $this->id_product;
+        return $this->id_wine;
     }
 
     /**
-     * @param int $name
+     * @param int $id_wine
      * @return void
      */
-    public function setIdProduct(int $id_product): void
+    public function setIdWine(int $id_wine): void
     {
-        $this->id_product = $id_product;
+        $this->id_wine = $id_wine;
     }
 
 }
