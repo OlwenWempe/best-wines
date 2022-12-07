@@ -22,4 +22,5 @@
 #main-body{
     background-image: url("../../assets/img/wine.png");
     background-repeat: no-repeat;
+    background-position: center;
 }
