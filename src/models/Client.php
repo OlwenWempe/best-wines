@@ -12,9 +12,9 @@ class Client  extends Model
     private string $email;
     private string $password;
     private string $adress;
-    private int $zipcode;
+    private string $zipcode;
     private string $city;
-    private int $phone;
+    private string $phone;
     private string $joined_at;
     private int $id_ticket_de_vente;
     protected string $table_name = "client";
@@ -117,15 +117,15 @@ class Client  extends Model
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getZipcode(): int
+    public function getZipcode(): string
     {
         return $this->zipcode;
     }
 
     /**
-     * @param int $zipcode
+     * @param string $zipcode
      * @return void
      */
     public function setZipcode(string $zipcode): void
@@ -151,18 +151,18 @@ class Client  extends Model
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPhone(): int
+    public function getPhone(): string
     {
         return $this->phone;
     }
 
     /**
-     * @param int $phone
+     * @param string $phone
      * @return void
      */
-    public function setPhone(int $phone): void
+    public function setPhone(string $phone): void
     {
         $this->phone = $phone;
     }

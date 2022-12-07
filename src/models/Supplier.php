@@ -7,13 +7,15 @@ use Core\Model;
 class Supplier
 {
     private int $id;
+    private string $logo;
+    private string $photo_optionnelle;
     private string $name;
     private string $created_at;
     private string $adress;
-    private int $zipcode;
+    private string $zipcode;
     private string $city;
     private int $id_pays;
-    private int $phone_number;
+    private string $phone_number;
     private string $email;
     private string $password;
     private string $siren;
@@ -29,6 +31,40 @@ class Supplier
     public function getId() : int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogo(): string
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string $logo
+     * @return void
+     */
+    public function setLogo(string $logo): void
+    {
+        $this->logo = $logo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoOptionnelle(): string
+    {
+        return $this->photo_optionnelle;
+    }
+
+    /**
+     * @param string $photo_optionnelle
+     * @return void
+     */
+    public function setPhotoOptionnelle(string $photo_optionnelle): void
+    {
+        $this->photo_optionnelle = $photo_optionnelle;
     }
 
     /**
@@ -74,18 +110,18 @@ class Supplier
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getZipcode(): int
+    public function getZipcode(): string
     {
         return $this->zipcode;
     }
 
     /**
-     * @param int $zipcode
+     * @param string $zipcode
      * @return void
      */
-    public function setZipcode(int $zipcode): void
+    public function setZipcode(string $zipcode): void
     {
         $this->zipcode = $zipcode;
     }
@@ -125,15 +161,15 @@ class Supplier
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPhoneNumber(): int
+    public function getPhoneNumber(): string
     {
         return $this->phone_number;
     }
 
     /**
-     * @param int $phone_number
+     * @param string $phone_number
      * @return void
      */
     public function setPhoneNumber(int $phone_number): void

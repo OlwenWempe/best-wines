@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Core\Model;
 
-class Product  extends Model
+class Wine  extends Model
 {
     private int $id;
+    private string $created_at;
     private string $name;
     private string $description;
     private string $link_picture_mini;
@@ -22,7 +23,7 @@ class Product  extends Model
     private int $id_accord_tag;
     private int $id_discount;
     private int $id_supplier;
-    protected string $table_name = "product";
+    protected string $table_name = "wine";
 
 
 
@@ -36,6 +37,23 @@ class Product  extends Model
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param string $created_at
+     * @return void
+     */
+    public function setCreatedAt(string $created_at): void
+    {
+        $this->created_at = $created_at;
     }
 
     /**

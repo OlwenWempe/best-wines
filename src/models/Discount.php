@@ -10,8 +10,8 @@ class Discount  extends Model
     private string $start_date;
     private string $end_date;
     private int $pourcentage;
-    private int $id_user;
-    private int $id_product;
+    private int $id_employee;
+    private int $id_wine;
     protected string $table_name = "discount";
 
     // accesseurs (getters & setters)
@@ -80,35 +80,35 @@ class Discount  extends Model
     /**
      * @return int
      */
-    public function getIdUser(): int
+    public function getIdEmployee(): int
     {
-        return $this->id_user;
+        return $this->id_employee;
     }
 
     /**
-     * @param int $id_user
+     * @param int $id_employee
      * @return void
      */
-    public function setIdUser(int $id_user): void
+    public function setIdEmployee(int $id_employee): void
     {
-        $this->id_user = $id_user;
+        $this->id_employee = $id_employee;
     }
 
     /**
      * @return int
      */
-    public function getIdProduct(): int
+    public function getIdWine(): int
     {
-        return $this->id_product;
+        return $this->id_wine;
     }
 
     /**
-     * @param int $id_product
+     * @param int $id_wine
      * @return void
      */
-    public function setIdProduct(int $id_product): void
+    public function setIdWine(int $id_wine): void
     {
-        $this->id_product = $id_product;
+        $this->id_wine = $id_wine;
     }
 
 }

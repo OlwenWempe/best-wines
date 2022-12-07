@@ -10,6 +10,7 @@ class Pays  extends Model
     private string $alpha3;
     private string $nom_en_gb;
     private string $nom_fr_fr;
+    private int $id_currencies;
     protected string $table_name = "pays";
 
     // accesseurs (getters & setters)
@@ -73,5 +74,22 @@ class Pays  extends Model
     public function setNomFr(string $nom_fr_fr): void
     {
         $this->nom_fr_fr = $nom_fr_fr;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdCurrencies(): int
+    {
+        return $this->id_currencies;
+    }
+
+    /**
+     * @param int $id_currencies
+     * @return void
+     */
+    public function setIdCurrencies(int $id_currencies): void
+    {
+        $this->id_currencies = $id_currencies;
     }
 }
