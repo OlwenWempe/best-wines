@@ -42,6 +42,16 @@ class AdminController extends Controller
         }
     }
 
+    public function addWine()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function addBox()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
     public function indexWine()
     {
         echo "ceci est la méthode " . __FUNCTION__;
