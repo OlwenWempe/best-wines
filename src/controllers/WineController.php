@@ -13,7 +13,6 @@ class WineController extends Controller
      */
     public function index(): void
     {
-        $params['title'] = "Nos-vins";
         $title = "Nos-vins";
         $wine = new Wine();
 
@@ -66,21 +65,21 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderView('product/insert', [
+            $this->renderView('wines/insert', [
                 'message' => $message
             ]);
         }
-        $this->renderView('product/insert');
+        $this->renderView('wines/insert');
     }
 
     public function delete()
     {
 
-        echo "Product controller " . __FUNCTION__;
+        echo "Wine controller " . __FUNCTION__;
     }
 
     public function edit()
     {
-        echo "Product controller " . __FUNCTION__;
+        echo "Wine controller " . __FUNCTION__;
     }
 }
