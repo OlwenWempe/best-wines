@@ -1,8 +1,8 @@
 <h1>Ceci est la page index de nos produits</h1>
 <ul>
-    <?php foreach ($products as $product) : ?>
+    <?php foreach ($wines as $wine) : ?>
 
-    <li><?= $product['name'] ?></li>
+    <li><?= $wine['name'] ?></li>
 
     <?php endforeach; ?>
 </ul>

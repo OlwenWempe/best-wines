@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Wine;
 use Core\Controller;
 
-class ProductController extends Controller
+class WineController extends Controller
 {
     /**
      * afficher la liste des tâches
@@ -13,11 +13,13 @@ class ProductController extends Controller
      */
     public function index(): void
     {
+        $params['title'] = "Nos-vins";
+        $title = "Nos-vins";
         $wine = new Wine();
 
         $wines = $wine->findAll();
         $message = "hello";
-        $this->renderView('product/index', compact('wines', 'message'));
+        $this->renderView('wines/index', compact('wines', 'message', 'title'));
     }
     // ?id=10
     // task/show/10
@@ -30,7 +32,7 @@ class ProductController extends Controller
 
         if (isset($_POST['submit'])) {
 
-            $chemin = "http://www.site.ext/img.jpg"; // le chemin en absolu
+            $chemin = $_POST['lien']; // le chemin en absolu
             // vous pouvez travailler en url relative aussi: img.jpg
             $x = 500; # largeur a redimensionner
             $y = 500; # hauteur a redimensionner
@@ -40,13 +42,13 @@ class ProductController extends Controller
             $size = getimagesize($chemin);
             $img_mini = imagecreatetruecolor($x, $y);
             imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
-            imagejpeg($img_mini);
+            $img_mini = imagejpeg($img_mini);
 
             $wine = new Wine();
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
             $wine->setLinkPictureMax(strip_tags($_POST['lien']));
-            $wine->setLinkPictureMini($_POST['lien_mini']);
+            $wine->setLinkPictureMini($img_mini);
             $wine->setPrixDAchat(strip_tags($_POST['PA']));
             $wine->setPrixDeVente(strip_tags($_POST['PV']));
             $wine->setIdRegion(strip_tags($_POST['region']));
