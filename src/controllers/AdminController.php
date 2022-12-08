@@ -42,48 +42,48 @@ class AdminController extends Controller
         }
     }
     //permets aux admin de rajouter des produits
-    public function addWine()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // public function addWine()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    public function addBox()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // public function addBox()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    //permets d'afficher la liste des vins ou box.
-    public function indexWine()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // //permets d'afficher la liste des vins ou box.
+    // public function indexWine()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    public function indexBox()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // public function indexBox()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    //permets d'éditer les produits existants.
-    public function editWine()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // //permets d'éditer les produits existants.
+    // public function editWine()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    public function editBox()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // public function editBox()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    //permets d'effacer un produits de la liste.
-    public function deleteWine()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // //permets d'effacer un produits de la liste.
+    // public function deleteWine()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
-    public function deleteBox()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
+    // public function deleteBox()
+    // {
+    //     echo "ceci est la méthode " . __FUNCTION__;
+    // }
 
     //permets d'ajouter une region dans le menu select
     public function addRegion()
