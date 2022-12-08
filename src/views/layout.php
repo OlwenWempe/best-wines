@@ -18,18 +18,18 @@
 
 <body id="main-body">
     <header>
+        <nav class="navbar justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="login">connexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register">inscription</a>
+                </li>
+            </ul>
+        </nav>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <div>
-                    <ul>
-                        <li>
-                            <a class="" href="login">connexion</a>
-                        </li>
-                        <li>
-                            <a class="" href="register">inscription</a>
-                        </li>
-                    </ul>
-                </div>
                 <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
                         alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
