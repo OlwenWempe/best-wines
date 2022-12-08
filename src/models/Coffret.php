@@ -192,19 +192,19 @@ class Coffret  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO coffret (`name`, `description`, `lien`, `lien_mini`, `PA` , `PV`, `stock`, `detail`) 
-            VALUES (:name, :description, :lien, :lien_mini, :PA, :PV, :stock, :detail)"
+            "INSERT INTO coffret (`name`, `description`, `link_picture_max`, `link_picture_mini`, `prix_d_achat` , `prix_de_vente`, `stock`, `id_coffret_detail`) 
+            VALUES (:name, :description, :link_picture_max, :link_picture_mini, :prix_d_achat, :prix_de_vente, :stock, :id_coffret_detail)"
         );
 
         $stmt->execute([
             'name' => $this->name,
             'description' => $this->description,
-            'lien' => $this->link_picture_max,
-            'lien_mini' => $this->link_picture_mini,
-            'PA' => $this->prix_d_achat,
-            'PV' => $this->prix_de_vente,
+            'link_picture_max' => $this->link_picture_max,
+            'link_picture_mini' => $this->link_picture_mini,
+            'prix_d_achat' => $this->prix_d_achat,
+            'prix_de_vente' => $this->prix_de_vente,
             'stock' => $this->stock,
-            'detail' => $this->id_coffret_detail
+            'id_coffret_detail' => $this->id_coffret_detail
         ]);
 
         return $this->pdo->lastInsertId();
