@@ -13,9 +13,18 @@ Router::register('/register', 'UserController::register');
 
 //admin
 
+Router::register('/admin/', 'AdminController::homepage');
 Router::register('/admin/login', 'AdminController::login');
 Router::register('/admin/logout', 'AdminController::logout');
 Router::register('/admin/register', 'AdminController::register');
+Router::register('/admin/addwine', 'AdminController::addWine');
+Router::register('/admin/addbox', 'AdminController::addBox');
+Router::register('/admin/indexwine', 'AdminController::indexWine');
+Router::register('/admin/indexbox', 'AdminController::indexBox');
+Router::register('/admin/editwine', 'AdminController::editWine');
+Router::register('/admin/editbox', 'AdminController::editBox');
+Router::register('/admin/deletewine', 'AdminController::deleteWine');
+Router::register('/admin/deletebox', 'AdminController::deleteBox');
 
 //supplier
 
