@@ -82,4 +82,48 @@ class WineController extends Controller
     {
         echo "Wine controller " . __FUNCTION__;
     }
+
+    //permets d'ajouter une region dans le menu select
+    public function addRegion()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    //permets d'ajouter le type de vin dans le menu select
+    public function addType()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    //permets d'ajouter les goûts des vins dans le menu select.
+    public function addTaste()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    //permets d'ajouter avec quoi accorder les vins dans le menu select.
+    public function addAccord()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteRegion()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteType()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteTaste()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteAccord()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
 }

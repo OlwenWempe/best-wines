@@ -25,6 +25,14 @@ Router::register('/admin/editwine', 'WineController::edit');
 Router::register('/admin/editbox', 'BoxController::edit');
 Router::register('/admin/deletewine', 'WineController::edit');
 Router::register('/admin/deletebox', 'BoxController::delete');
+Router::register('/admin/addregion', 'WineController::addregion');
+Router::register('/admin/addtype', 'WineController::addtype');
+Router::register('/admin/addtaste', 'WineController::addtaste');
+Router::register('/admin/addaccord', 'WineController::addaccord');
+Router::register('/admin/deleteregion', 'WineController::deleteregion');
+Router::register('/admin/deletetype', 'WineController::deletetype');
+Router::register('/admin/deletetaste', 'WineController::deletetaste');
+Router::register('/admin/deleteaccord', 'WineController::deleteaccord');
 
 //supplier
 

@@ -2,21 +2,30 @@
 
 namespace App\Controllers;
 
+use App\Models\Wine;
 use Core\Controller;
+
+session_start();
+if (!isset($_SESSION['is_auth'])) {
+    $_SESSION['is_auth'] = false;
+}
+
 
 class AdminController extends Controller
 {
     public function homepage()
     {
         $title = "Homepage";
-        $this->renderView('admin/index', compact('title'));
+        $this->renderAdminView('adminLayout', compact('title'));
     }
 
 
     public function login()
     {
         $title = "Connexion";
-        $this->renderView('user/login', compact('title'));
+        $_SESSION['is_auth'] = true;
+        $this->renderAdminView('user/login', compact('title'));
+
         //verifier si dans la bdd admin
         // header("Location admin/login.php");
         //sinon verification dans la BDD supplier
@@ -33,13 +42,14 @@ class AdminController extends Controller
     public function logout()
     {
         // Initialiser la session
-        session_start();
+
 
         // Détruire la session.
-        if (session_destroy()) {
-            // Redirection vers la page de connexion
-            $this->renderView('user/logout');
-        }
+        $_SESSION['is_auth'] = false;
+
+        $message = "Vous avez bien été déconnecté";
+        $title = "Homepage";
+        $this->renderAdminView('adminLayout', compact('title', 'message'));
     }
     //permets aux admin de rajouter des produits
     // public function addWine()
@@ -52,16 +62,25 @@ class AdminController extends Controller
     //     echo "ceci est la méthode " . __FUNCTION__;
     // }
 
-    // //permets d'afficher la liste des vins ou box.
-    // public function indexWine()
-    // {
-    //     echo "ceci est la méthode " . __FUNCTION__;
-    // }
+    //permets d'afficher la liste des vins ou box.
+    public function indexWine(): void
+    {
+        $title = "Nos-vins";
+        $wine = new Wine();
 
-    // public function indexBox()
-    // {
-    //     echo "ceci est la méthode " . __FUNCTION__;
-    // }
+        $wines = $wine->findAll();
+        if (!$wines) {
+            $message = "Désolé, nous n'avons pas pu récupérer les données.";
+        } else {
+            $this->renderAdminView('admin/index', compact('wines', 'message', 'title'));
+            echo "ceci est la méthode " . __FUNCTION__;
+        }
+    }
+
+    public function indexBox()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
 
     // //permets d'éditer les produits existants.
     // public function editWine()
@@ -84,50 +103,6 @@ class AdminController extends Controller
     // {
     //     echo "ceci est la méthode " . __FUNCTION__;
     // }
-
-    //permets d'ajouter une region dans le menu select
-    public function addRegion()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    //permets d'ajouter le type de vin dans le menu select
-    public function addType()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    //permets d'ajouter les goûts des vins dans le menu select.
-    public function addTaste()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    //permets d'ajouter avec quoi accorder les vins dans le menu select.
-    public function addAccord()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    public function deleteRegion()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    public function deleteType()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    public function deleteTaste()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
-
-    public function deleteAccord()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
-    }
 
     public function addDiscount()
     {

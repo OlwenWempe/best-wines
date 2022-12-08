@@ -23,5 +23,11 @@
                 <button class="my-2 btn btn-primary"><a href="<?= BASE_DIR ?>/admin/addbox">Ajouter un box</a></button>
             </div>
         </aside>
+        <div class="col-9">
+
+            <?= $content ?>
+
+        </div>
     </div>
+
 </section>
