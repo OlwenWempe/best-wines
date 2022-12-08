@@ -25,11 +25,11 @@ Router::register('/supplier/register', 'SupplierController::register');
 
 //coffrets
 
-Router::register('/nos-coffrets/all', 'ProductController::index');
-Router::register('/nos-coffrets/delete', 'ProductController::delete');
-Router::register('/nos-coffrets/', 'ProductController::show');
-Router::register('/nos-coffrets/add', 'ProductController::insert');
-Router::register('/nos-coffrets/edit', 'ProductController::edit');
+Router::register('/nos-coffrets/all', 'BoxController::index');
+Router::register('/nos-coffrets/delete', 'BoxController::delete');
+Router::register('/nos-coffrets/', 'BoxController::show');
+Router::register('/nos-coffrets/add', 'BoxController::insert');
+Router::register('/nos-coffrets/edit', 'BoxController::edit');
 
 //nos vins
 
