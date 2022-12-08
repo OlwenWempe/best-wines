@@ -324,9 +324,17 @@ class Wine  extends Model
 
         $stmt->execute([
             'name' => $this->name,
-            'to_do_at' => $this->to_do_at,
-            'is_done' => $this->is_done,
-            'id_user' => $this->id_user,
+            'description' => $this->description,
+            'lien' => $this->link_picture_max,
+            'lien_mini' => $this->link_picture_mini,
+            'PA'=> $this->prix_d_achat,
+            'PV' => $this->prix_de_vente,
+            'region' => $this->id_region,
+            'variety' => $this->id_grape_variety,
+            'type' => $this->id_type_wine,
+            'taste' => $this->id_taste_tag,
+            'accord' => $this->id_accord_tag,
+            'supplier' => $this->id_supplier
         ]);
 
         return $this->pdo->lastInsertId();
