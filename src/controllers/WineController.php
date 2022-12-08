@@ -28,6 +28,7 @@ class WineController extends Controller
 
     public function insert()
     {
+        $title = "Ajout d'un vin";
 
         if (isset($_POST['submit'])) {
 
@@ -46,8 +47,8 @@ class WineController extends Controller
             $wine = new Wine();
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
-            $wine->setLinkPictureMax(strip_tags($_POST['lien']));
-            $wine->setLinkPictureMini($img_mini);
+            // $wine->setLinkPictureMax(strip_tags($_POST['lien']));
+            // $wine->setLinkPictureMini($img_mini);
             $wine->setPrixDAchat(strip_tags($_POST['PA']));
             $wine->setPrixDeVente(strip_tags($_POST['PV']));
             $wine->setIdRegion(strip_tags($_POST['region']));
@@ -65,11 +66,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderView('wines/insert', [
-                'message' => $message
-            ]);
+            $this->renderView('nos-vins/add', compact('message', 'title'));
         }
-        $this->renderView('wines/insert');
+        $this->renderView('wines/insert', compact('title'));
     }
 
     public function delete()
