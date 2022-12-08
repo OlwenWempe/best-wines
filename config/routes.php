@@ -8,7 +8,7 @@ use Core\Router;
 //client
 
 Router::register('/login', 'UserController::login');
-Router::register('/logout', 'UserController::logout');
+Router::register('/logout', 'AdminController::logout');
 Router::register('/register', 'UserController::register');
 
 //admin

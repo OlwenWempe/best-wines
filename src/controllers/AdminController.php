@@ -41,15 +41,12 @@ class AdminController extends Controller
 
     public function logout()
     {
-        // Initialiser la session
-
 
         // Détruire la session.
         $_SESSION['is_auth'] = false;
 
-        $message = "Vous avez bien été déconnecté";
         $title = "Homepage";
-        $this->renderAdminView('adminLayout', compact('title', 'message'));
+        $this->renderAdminView('adminLayout', compact('title'));
     }
     //permets aux admin de rajouter des produits
     // public function addWine()
