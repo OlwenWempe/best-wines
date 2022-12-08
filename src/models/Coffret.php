@@ -184,4 +184,29 @@ class Coffret  extends Model
     {
         $this->id_coffret_detail = $id_coffret_detail;
     }
+
+    /**
+     * Insérer une tache dans la BDD
+     * @return int|false l'id du dernier élément inséré ou false dans le cas d'échec
+     */
+    public function insert(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO coffret (`name`, `description`, `lien`, `lien_mini`, `PA` , `PV`, `stock`, `detail`) 
+            VALUES (:name, :description, :lien, :lien_mini, :PA, :PV, :stock, :detail)"
+        );
+
+        $stmt->execute([
+            'name' => $this->name,
+            'description' => $this->description,
+            'lien' => $this->link_picture_max,
+            'lien_mini' => $this->link_picture_mini,
+            'PA' => $this->prix_d_achat,
+            'PV' => $this->prix_de_vente,
+            'stock' => $this->stock,
+            'detail' => $this->id_coffret_detail
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
 }

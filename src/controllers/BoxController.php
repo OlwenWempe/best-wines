@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\Coffret;
 use Core\Controller;
 
-class ProductController extends Controller
+class BoxController extends Controller
 {
     /**
      * afficher la liste des tâches
@@ -12,11 +13,13 @@ class ProductController extends Controller
      */
     public function index(): void
     {
-        $product = new Product();
+        $params['title'] = "Nos-coffrets";
+        $title = "Nos-coffrets";
+        $coffret = new Coffret();
 
-        $products = $product->findAll();
+        $coffrets = $coffret->findAll();
         $message = 'hello';
-        $this->renderView('product/index', compact('products', 'message'));
+        $this->renderView('box/index', compact('coffrets', 'message', 'title'));
     }
     // ?id=10
     // task/show/10
@@ -29,24 +32,40 @@ class ProductController extends Controller
 
         if (isset($_POST['submit'])) {
 
+            $chemin = $_POST['lien']; // le chemin en absolu
+            // vous pouvez travailler en url relative aussi: img.jpg
+            $x = 500; # largeur a redimensionner
+            $y = 500; # hauteur a redimensionner
 
-            $product = new Product();
-            $product->setIdUser(1);
-            $product->setName(htmlentities($_POST['name']));
-            $product->setToDoAt(htmlentities($_POST['to_do_at']));
+            Header("Content-type: image/jpeg");
+            $img_new = imagecreatefromjpeg($chemin);
+            $size = getimagesize($chemin);
+            $img_mini = imagecreatetruecolor($x, $y);
+            imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
+            $img_mini = imagejpeg($img_mini);
 
-            $result = $product->insert();
+            $coffret = new Coffret();
+            $coffret->setName(strip_tags($_POST['name']));
+            $coffret->setDescription(strip_tags($_POST['description']));
+            $coffret->setLinkPictureMax(strip_tags($_POST['lien']));
+            $coffret->setLinkPictureMini($img_mini);
+            $coffret->setPrixDAchat(strip_tags($_POST['PA']));
+            $coffret->setPrixDeVente(strip_tags($_POST['PV']));
+            $coffret->setStock(strip_tags($_POST['stock']));
+            $coffret->setIdCoffretDetail(strip_tags($_POST['detail']));
+
+            $result = $coffret->insert();
 
             if ($result) {
                 $message =  "insertion bien effectuée";
             } else {
                 $message =  "échec";
             }
-            $this->renderView('product/insert', [
+            $this->renderView('box/insert', [
                 'message' => $message
             ]);
         }
-        $this->renderView('product/insert');
+        $this->renderView('box/insert');
     }
 
     public function delete()
