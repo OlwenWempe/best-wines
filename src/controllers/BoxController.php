@@ -32,27 +32,27 @@ class BoxController extends Controller
 
         if (isset($_POST['submit'])) {
 
-            $chemin = $_POST['lien']; // le chemin en absolu
-            // vous pouvez travailler en url relative aussi: img.jpg
-            $x = 500; # largeur a redimensionner
-            $y = 500; # hauteur a redimensionner
+            // $chemin = $_POST['lien']; // le chemin en absolu
+            // // vous pouvez travailler en url relative aussi: img.jpg
+            // $x = 500; # largeur a redimensionner
+            // $y = 500; # hauteur a redimensionner
 
-            Header("Content-type: image/jpeg");
-            $img_new = imagecreatefromjpeg($chemin);
-            $size = getimagesize($chemin);
-            $img_mini = imagecreatetruecolor($x, $y);
-            imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
-            $img_mini = imagejpeg($img_mini);
+            // Header("Content-type: image/jpeg");
+            // $img_new = imagecreatefromjpeg($chemin);
+            // $size = getimagesize($chemin);
+            // $img_mini = imagecreatetruecolor($x, $y);
+            // imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
+            // $img_mini = imagejpeg($img_mini);
 
             $coffret = new Coffret();
             $coffret->setName(strip_tags($_POST['name']));
             $coffret->setDescription(strip_tags($_POST['description']));
-            $coffret->setLinkPictureMax(strip_tags($_POST['lien']));
-            $coffret->setLinkPictureMini($img_mini);
-            $coffret->setPrixDAchat(strip_tags($_POST['PA']));
-            $coffret->setPrixDeVente(strip_tags($_POST['PV']));
+            // $coffret->setLinkPictureMax(strip_tags($_POST['link_picture_max']));
+            // $coffret->setLinkPictureMini($img_mini);
+            $coffret->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
+            $coffret->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
             $coffret->setStock(strip_tags($_POST['stock']));
-            $coffret->setIdCoffretDetail(strip_tags($_POST['detail']));
+            $coffret->setIdCoffretDetail(strip_tags($_POST['id_coffret_detail']));
 
             $result = $coffret->insert();
 
