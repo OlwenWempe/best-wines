@@ -41,7 +41,7 @@ class AdminController extends Controller
             $this->renderView('user/logout');
         }
     }
-
+    //permets aux admin de rajouter des produits
     public function addWine()
     {
         echo "ceci est la méthode " . __FUNCTION__;
@@ -52,6 +52,7 @@ class AdminController extends Controller
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'afficher la liste des vins ou box.
     public function indexWine()
     {
         echo "ceci est la méthode " . __FUNCTION__;
@@ -62,6 +63,7 @@ class AdminController extends Controller
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'éditer les produits existants.
     public function editWine()
     {
         echo "ceci est la méthode " . __FUNCTION__;
@@ -72,6 +74,7 @@ class AdminController extends Controller
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'effacer un produits de la liste.
     public function deleteWine()
     {
         echo "ceci est la méthode " . __FUNCTION__;
@@ -82,20 +85,25 @@ class AdminController extends Controller
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'ajouter une region dans le menu select
     public function addRegion()
     {
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'ajouter le type de vin dans le menu select
     public function addType()
     {
         echo "ceci est la méthode " . __FUNCTION__;
     }
+
+    //permets d'ajouter les goûts des vins dans le menu select.
     public function addTaste()
     {
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
+    //permets d'ajouter avec quoi accorder les vins dans le menu select.
     public function addAccord()
     {
         echo "ceci est la méthode " . __FUNCTION__;
