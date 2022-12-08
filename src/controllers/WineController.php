@@ -32,31 +32,32 @@ class WineController extends Controller
 
         if (isset($_POST['submit'])) {
 
-            $chemin = $_POST['lien']; // le chemin en absolu
-            // vous pouvez travailler en url relative aussi: img.jpg
-            $x = 500; # largeur a redimensionner
-            $y = 500; # hauteur a redimensionner
+            // $chemin = $_POST['lien']; // le chemin en absolu
+            // // vous pouvez travailler en url relative aussi: img.jpg
+            // $x = 500; # largeur a redimensionner
+            // $y = 500; # hauteur a redimensionner
 
-            Header("Content-type: image/jpeg");
-            $img_new = imagecreatefromjpeg($chemin);
-            $size = getimagesize($chemin);
-            $img_mini = imagecreatetruecolor($x, $y);
-            imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
-            $img_mini = imagejpeg($img_mini);
+            // Header("Content-type: image/jpeg");
+            // $img_new = imagecreatefromjpeg($chemin);
+            // $size = getimagesize($chemin);
+            // $img_mini = imagecreatetruecolor($x, $y);
+            // imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
+            // $img_mini = imagejpeg($img_mini);
 
             $wine = new Wine();
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
             // $wine->setLinkPictureMax(strip_tags($_POST['lien']));
             // $wine->setLinkPictureMini($img_mini);
-            $wine->setPrixDAchat(strip_tags($_POST['PA']));
-            $wine->setPrixDeVente(strip_tags($_POST['PV']));
-            $wine->setIdRegion(strip_tags($_POST['region']));
-            $wine->setIdGrapeVariety(strip_tags($_POST['variety']));
-            $wine->setIdTypeWine(strip_tags($_POST['type']));
-            $wine->setIdTasteTag(strip_tags($_POST['taste']));
-            $wine->setIdAccordTag(strip_tags($_POST['accord']));
-            $wine->setIdSupplier(strip_tags($_POST['supplier']));
+            $wine->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
+            $wine->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
+            $wine->setStock(strip_tags($_POST['stock']));
+            $wine->setIdRegion(strip_tags($_POST['id_region']));
+            $wine->setIdGrapeVariety(strip_tags($_POST['id_grape_variety']));
+            $wine->setIdTypeWine(strip_tags($_POST['id_type_wine']));
+            $wine->setIdTasteTag(strip_tags($_POST['id_taste_tag']));
+            $wine->setIdAccordTag(strip_tags($_POST['id_accord_tag']));
+            $wine->setIdSupplier(strip_tags($_POST['id_supplier']));
 
 
             $result = $wine->insert();
@@ -66,7 +67,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderView('nos-vins/add', compact('message', 'title'));
+            $this->renderView('wines/insert', compact('message', 'title'));
         }
         $this->renderView('wines/insert', compact('title'));
     }

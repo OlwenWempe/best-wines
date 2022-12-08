@@ -12,8 +12,8 @@ class Wine  extends Model
     private string $description;
     private string $link_picture_mini;
     private string $link_picture_max;
-    private int $prix_d_achat;
-    private int $prix_de_vente;
+    private float $prix_d_achat;
+    private float $prix_de_vente;
     private int $stock;
     private int $id_note;
     private int $id_region;
@@ -125,35 +125,35 @@ class Wine  extends Model
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPrixDAchat(): int
+    public function getPrixDAchat(): float
     {
         return $this->prix_d_achat;
     }
 
     /**
-     * @param int $prix_d_achat
+     * @param float $prix_d_achat
      * @return void
      */
-    public function setPrixDAchat(int $prix_d_achat): void
+    public function setPrixDAchat(float $prix_d_achat): void
     {
         $this->prix_d_achat = $prix_d_achat;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPrixDeVente(): int
+    public function getPrixDeVente(): float
     {
         return $this->prix_de_vente;
     }
 
     /**
-     * @param int $prix_de_vente
+     * @param float $prix_de_vente
      * @return void
      */
-    public function setPrixDeVente(int $prix_de_vente): void
+    public function setPrixDeVente(float $prix_de_vente): void
     {
         $this->prix_de_vente = $prix_de_vente;
     }
@@ -318,23 +318,24 @@ class Wine  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO wine (`name`, `description`, `lien`, `lien_mini`, `PA` , `PV`, `region`, `variety`, `type`, `taste`, `accord`, `supplier`) 
-            VALUES (:name, :description, :lien, :lien_mini, :PA, :PV, :region, :variety, :type, :taste, :accord, :supplier)"
+            "INSERT INTO wine (`name`, `description`, `prix_d_achat` , `prix_de_vente`, `stock`, `id_region`, `id_grape_variety`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
+            VALUES (:name, :description, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_grape_variety, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
         );
 
         $stmt->execute([
             'name' => $this->name,
             'description' => $this->description,
-            'lien' => $this->link_picture_max,
-            'lien_mini' => $this->link_picture_mini,
-            'PA'=> $this->prix_d_achat,
-            'PV' => $this->prix_de_vente,
-            'region' => $this->id_region,
-            'variety' => $this->id_grape_variety,
-            'type' => $this->id_type_wine,
-            'taste' => $this->id_taste_tag,
-            'accord' => $this->id_accord_tag,
-            'supplier' => $this->id_supplier
+            // 'link_picture_max' => $this->link_picture_max,
+            // 'link_picture_mini' => $this->link_picture_mini,
+            'prix_d_achat' => $this->prix_d_achat,
+            'prix_de_vente' => $this->prix_de_vente,
+            'stock' => $this->stock,
+            'id_region' => $this->id_region,
+            'id_grape_variety' => $this->id_grape_variety,
+            'id_type_wine' => $this->id_type_wine,
+            'id_taste_tag' => $this->id_taste_tag,
+            'id_accord_tag' => $this->id_accord_tag,
+            'id_supplier' => $this->id_supplier
         ]);
 
         return $this->pdo->lastInsertId();

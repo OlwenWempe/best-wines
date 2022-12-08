@@ -35,4 +35,83 @@ class AdminController extends Controller
             $this->renderView('user/logout');
         }
     }
+
+    public function indexWine()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function indexBox()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function editWine()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function editBox()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteWine()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteBox()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function addRegion()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function addType()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+    public function addTaste()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function addAccord()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteRegion()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteType()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteTaste()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteAccord()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function addDiscount()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function deleteDiscount()
+    {
+        echo "ceci est la méthode " . __FUNCTION__;
+    }
 }

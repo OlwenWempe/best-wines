@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= BASE_DIR ?>/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= BASE_DIR ?>/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= BASE_DIR ?>/favicon-16x16.png">
+    <link rel="manifest" href="<?= BASE_DIR ?>/site.webmanifest">
+    <link rel="stylesheet" href="<?= BASE_DIR ?>/assets/css/style.css">
     <title><?= $params['title'] ?></title>
 </head>
 
@@ -30,7 +30,8 @@
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand" href="#"><img src="assets/img/nav-logo.png" alt="brand logo"></a>
+                <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
+                        alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +70,7 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        <button class="btn btn-outline-danger" type="submit">Rechercher</button>
                     </form>
                 </div>
             </div>
@@ -85,8 +86,8 @@
     <footer>
 
     </footer>
-    <script src="assets/js/index.js"></script>
-    <script src="dist/index.js"></script>
+    <script src="<?= BASE_DIR ?>/assets/js/index.js"></script>
+    <script src="<?= BASE_DIR ?>/dist/index.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
