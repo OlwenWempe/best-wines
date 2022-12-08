@@ -6,6 +6,12 @@ use Core\Controller;
 
 class AdminController extends Controller
 {
+    public function homepage()
+    {
+        $title = "Homepage";
+        $this->renderView('admin/index', compact('title'));
+    }
+
 
     public function login()
     {
