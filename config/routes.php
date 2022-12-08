@@ -17,14 +17,14 @@ Router::register('/admin/', 'AdminController::homepage');
 Router::register('/admin/login', 'AdminController::login');
 Router::register('/admin/logout', 'AdminController::logout');
 Router::register('/admin/register', 'AdminController::register');
-Router::register('/admin/addwine', 'AdminController::addWine');
-Router::register('/admin/addbox', 'AdminController::addBox');
-Router::register('/admin/indexwine', 'AdminController::indexWine');
-Router::register('/admin/indexbox', 'AdminController::indexBox');
-Router::register('/admin/editwine', 'AdminController::editWine');
-Router::register('/admin/editbox', 'AdminController::editBox');
-Router::register('/admin/deletewine', 'AdminController::deleteWine');
-Router::register('/admin/deletebox', 'AdminController::deleteBox');
+Router::register('/admin/addwine', 'WineController::insert');
+Router::register('/admin/addbox', 'BoxController::insert');
+Router::register('/admin/indexwine', 'WineController::index');
+Router::register('/admin/indexbox', 'BoxController::index');
+Router::register('/admin/editwine', 'WineController::edit');
+Router::register('/admin/editbox', 'BoxController::edit');
+Router::register('/admin/deletewine', 'WineController::edit');
+Router::register('/admin/deletebox', 'BoxController::delete');
 
 //supplier
 
