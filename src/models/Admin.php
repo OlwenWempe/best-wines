@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Core\Model;
 
-class Employee  extends Model
+class Admin  extends Model
 {
     private int $id;
     private string $first_name;
@@ -21,7 +21,7 @@ class Employee  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
