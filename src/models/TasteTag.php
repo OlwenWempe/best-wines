@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Core\Model;
 
-class TagTas  extends Model
+class TasteTag  extends Model
 {
     private int $id;
     private string $name;
-    protected string $table_name = "tag_taste";
+    protected string $table_name = "taste_tag";
 
     // accesseurs (getters & setters)
 

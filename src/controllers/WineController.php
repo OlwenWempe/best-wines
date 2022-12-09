@@ -87,26 +87,78 @@ class WineController extends Controller
     //permets d'ajouter une region dans le menu select
     public function addRegion()
     {
-        echo "ceci est la méthode " . __FUNCTION__;
+        $title = "Ajout d'une région";
+
+        if (isset($_POST['submit'])) {
+
         $region = new Region();
+        $region -> setName(strip_tags($_POST["name"]));
+        $region -> setIdPays(strip_tags($_POST["id_pays"]));
+        $result = $region->insert();
+
+        if ($result) {
+            $message =  "insertion bien effectuée";
+        } else {
+            $message =  "échec";
+        }
+        $this->renderAdminView('admin/index', compact('message', 'title'));
+}
     }
 
     //permets d'ajouter le type de vin dans le menu select
     public function addType()
     {
-        echo "ceci est la méthode " . __FUNCTION__;
+        $title = "Ajout d'un type";
+
+        if (isset($_POST['submit'])) {
+        $type = new TypeWine();
+        $type -> setName(strip_tags($_POST["name"]));
+        $result = $type->insert();
+
+        if ($result) {
+            $message =  "insertion bien effectuée";
+        } else {
+            $message =  "échec";
+        }
+        $this->renderAdminView('admin/index', compact('message', 'title'));
     }
+        }
 
     //permets d'ajouter les goûts des vins dans le menu select.
     public function addTaste()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
+    { $title = "Ajout d'un goût";
+
+        if (isset($_POST['submit'])) {
+        $taste = new TasteTag();
+        $taste -> setName(strip_tags($_POST["name"]));
+        $result = $taste->insert();
+
+        if ($result) {
+            $message =  "insertion bien effectuée";
+        } else {
+            $message =  "échec";
+        }
+        $this->renderAdminView('admin/index', compact('message', 'title'));
+        }
     }
 
     //permets d'ajouter avec quoi accorder les vins dans le menu select.
     public function addAccord()
-    {
-        echo "ceci est la méthode " . __FUNCTION__;
+    { $title = "Ajout d'un accord";
+
+        if (isset($_POST['submit'])) {
+
+        $accord = new AccordTag();
+        $accord -> setName(strip_tags($_POST["name"]));
+        $result = $accord->insert();
+
+        if ($result) {
+            $message =  "insertion bien effectuée";
+        } else {
+            $message =  "échec";
+        }
+        $this->renderAdminView('admin/index', compact('message', 'title'));
+    }
     }
 
     public function deleteRegion()
