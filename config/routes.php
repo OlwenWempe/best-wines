@@ -19,7 +19,7 @@ Router::register('/admin/logout', 'AdminController::logout');
 Router::register('/admin/register', 'AdminController::register');
 Router::register('/admin/addwine', 'WineController::insert');
 Router::register('/admin/addbox', 'BoxController::insert');
-Router::register('/admin/indexwine', 'WineController::index');
+Router::register('/admin/indexwine', 'AdminController::indexWine');
 Router::register('/admin/indexbox', 'BoxController::index');
 Router::register('/admin/editwine', 'WineController::edit');
 Router::register('/admin/editbox', 'BoxController::edit');

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Wine;
+use App\Models\Region;
 use Core\Controller;
 
 class WineController extends Controller
@@ -87,6 +88,7 @@ class WineController extends Controller
     public function addRegion()
     {
         echo "ceci est la méthode " . __FUNCTION__;
+        $region = new Region();
     }
 
     //permets d'ajouter le type de vin dans le menu select
