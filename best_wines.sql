@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 07 déc. 2022 à 14:07
+-- Généré le : ven. 09 déc. 2022 à 11:56
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.0.19
 
@@ -35,6 +35,32 @@ CREATE TABLE `accord_tag` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `accord_tag_wine`
+--
+
+CREATE TABLE `accord_tag_wine` (
+  `id_accord_tag` int(11) NOT NULL,
+  `id_wine` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone_number` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `article`
 --
 
@@ -44,7 +70,7 @@ CREATE TABLE `article` (
   `content` text NOT NULL,
   `picture_link` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
-  `id_employee` int(11) NOT NULL
+  `id_admin` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -93,7 +119,6 @@ CREATE TABLE `coffret` (
 --
 
 CREATE TABLE `coffret_detail` (
-  `id` int(11) NOT NULL,
   `id_wine` int(11) NOT NULL,
   `id_coffret` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
@@ -408,34 +433,8 @@ CREATE TABLE `discount` (
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
   `pourcentage` int(11) NOT NULL,
-  `id_employee` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL,
   `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `employee`
---
-
-CREATE TABLE `employee` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `phone_number` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `grape_variety`
---
-
-CREATE TABLE `grape_variety` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -737,7 +736,7 @@ CREATE TABLE `promotional_code` (
   `end` datetime NOT NULL,
   `name` varchar(12) NOT NULL,
   `percentage` int(11) NOT NULL,
-  `id_employee` int(11) NOT NULL
+  `id_admin` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -796,6 +795,7 @@ CREATE TABLE `supplier` (
   `adress` varchar(255) NOT NULL,
   `zipcode` varchar(10) NOT NULL,
   `city` varchar(255) NOT NULL,
+  `id_pays` int(11) NOT NULL,
   `phone_number` varchar(25) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -812,6 +812,17 @@ CREATE TABLE `taste_tag` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `taste_tag_wine`
+--
+
+CREATE TABLE `taste_tag_wine` (
+  `id_taste_tag` int(11) NOT NULL,
+  `id_wine` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
 
@@ -847,14 +858,14 @@ CREATE TABLE `wine` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `grape_variety` varchar(255) NOT NULL,
   `link_picture_mini` varchar(255) DEFAULT NULL,
   `link_picture_max` varchar(255) DEFAULT NULL,
-  `prix_d_achat` decimal(2,0) NOT NULL,
-  `prix_de_vente` decimal(2,0) NOT NULL,
+  `prix_d_achat` decimal(5,2) NOT NULL,
+  `prix_de_vente` decimal(5,2) NOT NULL,
   `stock` int(11) NOT NULL,
   `id_note` int(11) DEFAULT NULL,
   `id_region` int(11) NOT NULL,
-  `id_grape_variety` int(11) NOT NULL,
   `id_type_wine` int(11) NOT NULL,
   `id_taste_tag` int(11) NOT NULL,
   `id_accord_tag` int(11) NOT NULL,
@@ -873,11 +884,24 @@ ALTER TABLE `accord_tag`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `accord_tag_wine`
+--
+ALTER TABLE `accord_tag_wine`
+  ADD KEY `id_accord_tag` (`id_accord_tag`),
+  ADD KEY `id_wine` (`id_wine`);
+
+--
+-- Index pour la table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_employee` (`id_employee`);
+  ADD KEY `id_employee` (`id_admin`);
 
 --
 -- Index pour la table `client`
@@ -898,7 +922,6 @@ ALTER TABLE `coffret`
 -- Index pour la table `coffret_detail`
 --
 ALTER TABLE `coffret_detail`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `id_wine` (`id_wine`),
   ADD KEY `id_coffret` (`id_coffret`);
 
@@ -919,18 +942,6 @@ ALTER TABLE `currencies`
 -- Index pour la table `discount`
 --
 ALTER TABLE `discount`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `employee`
---
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `grape_variety`
---
-ALTER TABLE `grape_variety`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -960,7 +971,7 @@ ALTER TABLE `pays`
 ALTER TABLE `promotional_code`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `id_employee` (`id_employee`);
+  ADD KEY `id_employee` (`id_admin`);
 
 --
 -- Index pour la table `purchase_order`
@@ -987,13 +998,21 @@ ALTER TABLE `region`
 -- Index pour la table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pays` (`id_pays`);
 
 --
 -- Index pour la table `taste_tag`
 --
 ALTER TABLE `taste_tag`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `taste_tag_wine`
+--
+ALTER TABLE `taste_tag_wine`
+  ADD KEY `id_taste_tag` (`id_taste_tag`),
+  ADD KEY `id_wine` (`id_wine`);
 
 --
 -- Index pour la table `ticket_de_vente`
@@ -1014,7 +1033,6 @@ ALTER TABLE `wine`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_note` (`id_note`),
   ADD KEY `id_region` (`id_region`),
-  ADD KEY `id_grape_variety` (`id_grape_variety`),
   ADD KEY `id_type_wine` (`id_type_wine`),
   ADD KEY `id_taste_tag` (`id_taste_tag`),
   ADD KEY `id_accord_tag` (`id_accord_tag`),
@@ -1029,6 +1047,12 @@ ALTER TABLE `wine`
 -- AUTO_INCREMENT pour la table `accord_tag`
 --
 ALTER TABLE `accord_tag`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `admin`
+--
+ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -1050,12 +1074,6 @@ ALTER TABLE `coffret`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `coffret_detail`
---
-ALTER TABLE `coffret_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
@@ -1071,18 +1089,6 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT pour la table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `employee`
---
-ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `grape_variety`
---
-ALTER TABLE `grape_variety`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
