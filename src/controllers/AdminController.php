@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function homepage()
     {
         $title = "Homepage";
-        $this->renderAdminView('adminLayout', compact('title'));
+        $this->renderAdminView('admin/index', compact('title'));
     }
 
 
