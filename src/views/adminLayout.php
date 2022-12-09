@@ -66,25 +66,25 @@
                         <label for="region">Ajouter une région</label>
                         <input type="text" name="name" id="region">
                         <select name="id_pays" id="id_pays">
-                        <option value="">Selectionner un pays</option>    
+                        <option selected value="">Selectionner un pays</option>    
                         <option value="75">France</option>
                         </select>
-                        <input type="submit" value="soumettre">
+                        <input type="submit" name="soumettre" value="soumettre">
                     </form>
                     <form action="<?= BASE_DIR ?>/admin/addtype" method="post">
-                        <label for="type"></label>
+                        <label for="type">Ajouter un type</label>
                         <input type="text" name="name" id="type">
-                        <input type="submit" value="soumettre">
+                        <input type="submit" name="soumettre" value="soumettre">
                     </form>
                     <form action="<?= BASE_DIR ?>/admin/addtaste" method="post">
-                        <label for="taste"></label>
+                        <label for="taste">Ajouter un goût</label>
                         <input type="text" name="name" id="taste">
-                        <input type="submit" value="soumettre">
+                        <input type="submit" name="soumettre" value="soumettre">
                     </form>
                     <form action="<?= BASE_DIR ?>/admin/addaccord" method="post">
-                        <label for="accord"></label>
+                        <label for="accord">Ajouter un accord</label>
                         <input type="text" name="name" id="accord">
-                        <input type="submit" value="soumettre">
+                        <input type="submit" name="soumettre" value="soumettre">
                     </form>
                     <button class="my-2 btn btn-primary"><a href="<?= BASE_DIR ?>/admin/addwine">Ajouter un
                             vin</a></button>
