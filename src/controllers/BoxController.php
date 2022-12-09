@@ -76,6 +76,43 @@ class BoxController extends Controller
 
     public function edit()
     {
-        echo "Product controller " . __FUNCTION__;
+        $title = "Modification d'un coffret";
+
+        if (isset($_POST['submit'])) {
+
+            // $chemin = $_POST['lien']; // le chemin en absolu
+            // // vous pouvez travailler en url relative aussi: img.jpg
+            // $x = 500; # largeur a redimensionner
+            // $y = 500; # hauteur a redimensionner
+
+            // Header("Content-type: image/jpeg");
+            // $img_new = imagecreatefromjpeg($chemin);
+            // $size = getimagesize($chemin);
+            // $img_mini = imagecreatetruecolor($x, $y);
+            // imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
+            // $img_mini = imagejpeg($img_mini);
+
+            $wine = new Coffret();
+            $wine->setName(strip_tags($_POST['name']));
+            $wine->setDescription(strip_tags($_POST['description']));
+            // $wine->setLinkPictureMax(strip_tags($_POST['lien']));
+            // $wine->setLinkPictureMini($img_mini);
+            $wine->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
+            $wine->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
+            $wine->setStock(strip_tags($_POST['stock']));
+            $wine->setIdDiscount(strip_tags($_POST['id_discount']));
+            $wine->setIdCoffretDetail(strip_tags($_POST['id_coffret_detail']));
+
+
+            $result = $wine->edit();
+
+            if ($result) {
+                $message =  "Modification bien effectuée";
+            } else {
+                $message =  "échec";
+            }
+            $this->renderAdminView('wines/insert', compact('message', 'title'));
+        }
+        $this->renderAdminView('wines/insert', compact('title'));
     }
 }

@@ -209,4 +209,25 @@ class Coffret  extends Model
 
         return $this->pdo->lastInsertId();
     }
+
+    public function edit(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "UPDATE coffret SET `name` = :new_name, `description` = :new_description, `prix_d_achat` = :new_prix_d_achat , `prix_de_vente` = :new_prix_de_vente, `stock = :new_stock, `id_discount` = :new_id_discount, `id_coffret_detail` = :new_id_coffret_detail WHERE id = :id"
+        );
+
+        $stmt->execute([
+            'new_name' => $this->name,
+            'new_description' => $this->description,
+            // 'link_picture_max' => $this->link_picture_max,
+            // 'link_picture_mini' => $this->link_picture_mini,
+            'new_prix_d_achat' => $this->prix_d_achat,
+            'new_prix_de_vente' => $this->prix_de_vente,
+            'new_stock' => $this->stock,
+            'new_id_discount' => $this->id_discount,
+            'new_id_coffre_detail' => $this->id_coffret_detail
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
 }
