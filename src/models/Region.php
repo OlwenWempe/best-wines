@@ -60,7 +60,6 @@ class Region  extends Model
     {
         $stmt = $this->pdo->prepare("INSERT INTO region (name, id_pays) VALUES (:name, :id_pays)");
 
-<<<<<<< HEAD
         $stmt->execute([
             'name' => $this->name,
             'id_pays' => $this->id_pays
@@ -69,7 +68,4 @@ class Region  extends Model
         return $this->pdo->lastInsertId();
     }
 }
-=======
     //sql
-}
->>>>>>> b6306cdd4e1380381a5bc6792a33479a8925ee21
