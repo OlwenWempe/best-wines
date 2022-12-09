@@ -65,6 +65,10 @@
                     <form action="<?= BASE_DIR ?>/admin/addregion" method="post">
                         <label for="region">Ajouter une région</label>
                         <input type="text" name="name" id="region">
+                        <select name="id_pays" id="id_pays">
+                        <option value="">Selectionner un pays</option>    
+                        <option value="75">France</option>
+                        </select>
                         <input type="submit" value="soumettre">
                     </form>
                     <form action="<?= BASE_DIR ?>/admin/addtype" method="post">
