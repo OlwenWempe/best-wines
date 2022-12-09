@@ -62,7 +62,7 @@
                 <div class="container">
                     <h2>Ajouter des tags</h2>
                     <hr class="ps-2">
-                    <form action="<?= BASE_DIR ?>/admin/addregion">
+                    <form action="<?= BASE_DIR ?>/admin/addregion" method="post">
                         <label for="">Ajouter une région</label>
                         <input type="text" name="" id="">
                         <input type="submit" value="soumettre">
