@@ -63,23 +63,23 @@
                     <h2>Ajouter des tags</h2>
                     <hr class="ps-2">
                     <form action="<?= BASE_DIR ?>/admin/addregion" method="post">
-                        <label for="">Ajouter une région</label>
-                        <input type="text" name="" id="">
+                        <label for="region">Ajouter une région</label>
+                        <input type="text" name="name" id="region">
                         <input type="submit" value="soumettre">
                     </form>
-                    <form action="<?= BASE_DIR ?>/admin/addtype">
-                        <label for=""></label>
-                        <input type="text" name="" id="">
+                    <form action="<?= BASE_DIR ?>/admin/addtype" method="post">
+                        <label for="type"></label>
+                        <input type="text" name="name" id="type">
                         <input type="submit" value="soumettre">
                     </form>
-                    <form action="<?= BASE_DIR ?>/admin/addtaste">
-                        <label for=""></label>
-                        <input type="text" name="" id="">
+                    <form action="<?= BASE_DIR ?>/admin/addtaste" method="post">
+                        <label for="taste"></label>
+                        <input type="text" name="name" id="taste">
                         <input type="submit" value="soumettre">
                     </form>
-                    <form action="<?= BASE_DIR ?>/admin/addaccord">
-                        <label for=""></label>
-                        <input type="text" name="" id="">
+                    <form action="<?= BASE_DIR ?>/admin/addaccord" method="post">
+                        <label for="accord"></label>
+                        <input type="text" name="name" id="accord">
                         <input type="submit" value="soumettre">
                     </form>
                     <button class="my-2 btn btn-primary"><a href="<?= BASE_DIR ?>/admin/addwine">Ajouter un

@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\Wine;
+use App\Models\AccordTag;
+use App\Models\GrapeVariety;
+use App\Models\TasteTag;
+use App\Models\TypeWine;
 use App\Models\Region;
 use Core\Controller;
 
