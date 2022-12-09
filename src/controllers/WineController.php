@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\Wine;
 use App\Models\AccordTag;
-use App\Models\GrapeVariety;
 use App\Models\TasteTag;
 use App\Models\TypeWine;
 use App\Models\Region;
@@ -52,13 +51,13 @@ class WineController extends Controller
             $wine = new Wine();
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
+            $wine->setGrapeVariety(strip_tags($_POST['grape_variety']));
             // $wine->setLinkPictureMax(strip_tags($_POST['lien']));
             // $wine->setLinkPictureMini($img_mini);
             $wine->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
             $wine->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
             $wine->setStock(strip_tags($_POST['stock']));
             $wine->setIdRegion(strip_tags($_POST['id_region']));
-            $wine->setIdGrapeVariety(strip_tags($_POST['id_grape_variety']));
             $wine->setIdTypeWine(strip_tags($_POST['id_type_wine']));
             $wine->setIdTasteTag(strip_tags($_POST['id_taste_tag']));
             $wine->setIdAccordTag(strip_tags($_POST['id_accord_tag']));

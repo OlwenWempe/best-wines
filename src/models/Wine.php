@@ -10,6 +10,7 @@ class Wine  extends Model
     private string $created_at;
     private string $name;
     private string $description;
+    private string $grape_variety;
     private string $link_picture_mini;
     private string $link_picture_max;
     private float $prix_d_achat;
@@ -17,7 +18,6 @@ class Wine  extends Model
     private int $stock;
     private int $id_note;
     private int $id_region;
-    private int $id_grape_variety;
     private int $id_type_wine;
     private int $id_taste_tag;
     private int $id_accord_tag;
@@ -88,6 +88,23 @@ class Wine  extends Model
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGrapeVariety(): string
+    {
+        return $this->grape_variety;
+    }
+
+    /**
+     * @param string $grape_variety
+     * @return void
+     */
+    public function setGrapeVariety(string $grape_variety): void
+    {
+        $this->grape_variety = $grape_variety;
     }
 
     /**
@@ -212,23 +229,6 @@ class Wine  extends Model
     /**
      * @return int
      */
-    public function getIdGrapeVariety(): int
-    {
-        return $this->id_grape_variety;
-    }
-
-    /**
-     * @param int $id_grape_variety
-     * @return void
-     */
-    public function setIdGrapeVariety(int $id_grape_variety): void
-    {
-        $this->id_grape_variety = $id_grape_variety;
-    }
-
-    /**
-     * @return int
-     */
     public function getIdTypeWine(): int
     {
         return $this->id_type_wine;
@@ -318,20 +318,20 @@ class Wine  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO wine (`name`, `description`, `prix_d_achat` , `prix_de_vente`, `stock`, `id_region`, `id_grape_variety`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
-            VALUES (:name, :description, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_grape_variety, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
+            "INSERT INTO wine (`name`, `description`, 'grape_variety', `prix_d_achat` , `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
+            VALUES (:name, :description, :grape_variety :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
         );
 
         $stmt->execute([
             'name' => $this->name,
             'description' => $this->description,
+            'grape_variety' => $this->grape_variety,
             // 'link_picture_max' => $this->link_picture_max,
             // 'link_picture_mini' => $this->link_picture_mini,
             'prix_d_achat' => $this->prix_d_achat,
             'prix_de_vente' => $this->prix_de_vente,
             'stock' => $this->stock,
             'id_region' => $this->id_region,
-            'id_grape_variety' => $this->id_grape_variety,
             'id_type_wine' => $this->id_type_wine,
             'id_taste_tag' => $this->id_taste_tag,
             'id_accord_tag' => $this->id_accord_tag,
