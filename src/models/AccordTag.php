@@ -38,5 +38,14 @@ class AccordTag  extends Model
     {
         $this->name = $name;
     }
+    public function insert() : int|false
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO accord_tag (name) VALUES (:name)");
 
+        $stmt->execute([
+            'name' => $this->name
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
 }

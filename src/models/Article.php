@@ -101,4 +101,17 @@ class Article  extends Model
     {
         $this->id_employee = $id_employee;
     }
+    // public function insert() : int|false
+    // {
+    //     $stmt = $this->pdo->prepare("INSERT INTO task (name, to_do_at, is_done,id_user) VALUES (:name, :to_do_at, :is_done, :id_user)");
+
+    //     $stmt->execute([
+    //         'name' => $this->name,
+    //         'to_do_at' => $this->to_do_at,
+    //         'is_done' => $this->is_done,
+    //         'id_user' => $this->id_user,
+    //     ]);
+
+    //     return $this->pdo->lastInsertId();
+    // }
 }
