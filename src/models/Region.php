@@ -18,7 +18,7 @@ class Region  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -57,4 +57,5 @@ class Region  extends Model
         $this->id_pays = $id_pays;
     }
 
+    //sql
 }
