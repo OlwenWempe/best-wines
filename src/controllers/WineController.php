@@ -71,9 +71,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderView('wines/insert', compact('message', 'title'));
+            $this->renderAdminView('wines/insert', compact('message', 'title'));
         }
-        $this->renderView('wines/insert', compact('title'));
+        $this->renderAdminView('wines/insert', compact('title'));
     }
 
     public function delete()
