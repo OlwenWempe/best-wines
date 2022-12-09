@@ -340,4 +340,29 @@ class Wine  extends Model
 
         return $this->pdo->lastInsertId();
     }
+
+    public function edit(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "UPDATE wine SET `name` = :new_name, `description` = :new_description, 'grape_variety' = :new_grape_variety, `prix_d_achat` = :new_prix_d_achat , `prix_de_vente` = :new_prix_de_vente, `stock = :new_stock, `id_region` = :new_id_region, `id_type_wine` = :new_id_type_wine, `id_taste_tag` = :new_id_taste_tag, `id_accord_tag` = :new_id_accord_tag, `id_supplier` = :new_id_supplier WHERE id = :id"
+        );
+
+        $stmt->execute([
+            'new_name' => $this->name,
+            'new_description' => $this->description,
+            'new_grape_variety' => $this->grape_variety,
+            // 'link_picture_max' => $this->link_picture_max,
+            // 'link_picture_mini' => $this->link_picture_mini,
+            'new_prix_d_achat' => $this->prix_d_achat,
+            'new_prix_de_vente' => $this->prix_de_vente,
+            'new_stock' => $this->stock,
+            'new_id_region' => $this->id_region,
+            'new_id_type_wine' => $this->id_type_wine,
+            'new_id_taste_tag' => $this->id_taste_tag,
+            'new_id_accord_tag' => $this->id_accord_tag,
+            'new_id_supplier' => $this->id_supplier
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
 }

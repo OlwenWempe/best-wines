@@ -35,6 +35,16 @@
                         <a class="nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
                     </li>
                     <?php endif; ?>
+                    <?php if (!$_SESSION['is_auth']) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">Vue administrateur</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['is_auth']) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_DIR ?>/logout">Vue client</a>
+                    </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>
