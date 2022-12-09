@@ -92,7 +92,7 @@ class WineController extends Controller
     {
         $title = "Ajout d'une région";
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['soumettre'])) {
 
         $region = new Region();
         $region -> setName(strip_tags($_POST["name"]));
@@ -113,7 +113,7 @@ class WineController extends Controller
     {
         $title = "Ajout d'un type";
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['soumettre'])) {
         $type = new TypeWine();
         $type -> setName(strip_tags($_POST["name"]));
         $result = $type->insert();
@@ -131,7 +131,7 @@ class WineController extends Controller
     public function addTaste()
     { $title = "Ajout d'un goût";
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['soumettre'])) {
         $taste = new TasteTag();
         $taste -> setName(strip_tags($_POST["name"]));
         $result = $taste->insert();
@@ -149,7 +149,7 @@ class WineController extends Controller
     public function addAccord()
     { $title = "Ajout d'un accord";
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['soumettre'])) {
 
         $accord = new AccordTag();
         $accord -> setName(strip_tags($_POST["name"]));
