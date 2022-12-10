@@ -5,7 +5,7 @@ namespace App\Models;
 
 class Session
 {
-    public function startSession()
+    public static function startSession()
     {
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
