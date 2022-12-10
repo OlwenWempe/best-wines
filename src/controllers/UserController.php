@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use Core\Controller;
-
+use App\Models\Session;
 
 
 class UserController extends Controller
@@ -35,6 +35,28 @@ class UserController extends Controller
         if (session_destroy()) {
             // Redirection vers la page de connexion
             $this->renderView('user/logout');
+        }
+    }
+
+    public function checkLogged()
+    {
+        $s = new Session;
+        $s->startSession();
+        if (!isset($_SESSION['user']['auth']) || !$_SESSION['user']['auth']) {
+            header('Location: user/login');
+            exit;
+        }
+    }
+
+    public function checkUnlogged(string $path): void
+    {
+        $s = new Session;
+        $s->startSession();
+        if (isset($_SESSION['user']['auth']) && $_SESSION['user']['auth']) {
+            $this->path = $path;
+            header('Location: ' . $this->path);
+            //admin/login
+            exit;
         }
     }
 }

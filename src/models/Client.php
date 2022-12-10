@@ -26,7 +26,7 @@ class Client  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -191,5 +191,4 @@ class Client  extends Model
     {
         $this->id_ticket_de_vente = $id_ticket_de_vente;
     }
-
 }

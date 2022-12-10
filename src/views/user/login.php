@@ -1,6 +1,6 @@
 <section class="mt-5">
     <div class="card mx-auto" style="width: 25vw;">
-        <div class="card-body">
+        <form method="POST" class="card-body">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Se connecter</h5>
             </div>
@@ -17,7 +17,7 @@
                     <input type="password" class="form-control" id="inputPassword">
                 </div>
             </div>
-            <a href="#" class="btn btn-primary">Connexion</a>
-        </div>
+            <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>
+        </form>
     </div>
 </section>

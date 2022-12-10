@@ -18,14 +18,14 @@ class Supplier
     private string $password;
     protected string $table_name = "supplier";
 
-// accesseurs (getters & setters)
+    // accesseurs (getters & setters)
 
     /**
      * Permet de récupérer l'identifiant de la tâche
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -172,5 +172,27 @@ class Supplier
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    public function checkLogged()
+    {
+        $s = new Session;
+        $s->startSession();
+        if (!isset($_SESSION['supplier']['auth']) || !$_SESSION['supplier']['auth']) {
+            header('Location: user/login');
+            exit;
+        }
+    }
+
+    public function checkUnlogged(string $path): void
+    {
+        $s = new Session;
+        $s->startSession();
+        if (isset($_SESSION['supplier']['auth']) && $_SESSION['supplier']['auth']) {
+            $this->path = $path;
+            header('Location: ' . $this->path);
+            //admin/login
+            exit;
+        }
     }
 }
