@@ -5,10 +5,9 @@
                 <h5 class="card-title text-center">Se connecter</h5>
             </div>
             <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                        value="email@example.com">
+                    <input type="text" readonly class="form-control-plaintext" id="userEmail"
+                        placeholder="email@example.com">
                 </div>
             </div>
             <div class="mb-3 row">

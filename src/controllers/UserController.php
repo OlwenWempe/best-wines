@@ -38,6 +38,7 @@ class UserController extends Controller
         }
     }
 
+    //verifier si le client est bien connecté sinon direction login
     public function checkLogged()
     {
         $s = new Session;
@@ -48,6 +49,7 @@ class UserController extends Controller
         }
     }
 
+    //verifier si le client est connecté avant de procéder à la redirection
     public function checkUnlogged(string $path): void
     {
         $s = new Session;
