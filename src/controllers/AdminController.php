@@ -4,9 +4,12 @@ namespace App\Controllers;
 
 use App\Models\Wine;
 use Core\Controller;
-use App\partials;
+use App\Models\Session;
 
-require_once 'src/partials/_start_session.php';
+
+$session = new Session;
+$session->startSession();
+
 if (!isset($_SESSION['is_auth'])) {
     $_SESSION['is_auth'] = false;
 }
@@ -24,7 +27,10 @@ class AdminController extends Controller
     public function login()
     {
         $title = "Connexion";
-        $_SESSION['is_auth'] = true;
+        if (isset($_POST['submit'])) {
+            $_SESSION['is_auth'] = true;
+        }
+
         $this->renderAdminView('user/login', compact('title'));
 
         //verifier si dans la bdd admin
@@ -48,8 +54,9 @@ class AdminController extends Controller
         // Détruire la session.
         $_SESSION['is_auth'] = false;
 
-        $title = "Connexion";
-        $this->renderAdminView('user/login', compact('title'));
+        header('Location: admin/login');
+        // $title = "Connexion";
+        // $this->renderAdminView('user/login', compact('title'));
     }
 
     //permets d'afficher la liste des vins ou box.
@@ -101,5 +108,27 @@ class AdminController extends Controller
     public function deleteDiscount()
     {
         echo "ceci est la méthode " . __FUNCTION__;
+    }
+
+    public function checkLogged()
+    {
+        $s = new Session;
+        $s->startSession();
+        if (!isset($_SESSION['admin']['auth']) || !$_SESSION['admin']['auth']) {
+            header('Location: admin/login');
+            exit;
+        }
+    }
+
+    public function checkUnlogged(string $path): void
+    {
+        $s = new Session;
+        $s->startSession();
+        if (isset($_SESSION['admin']['auth']) && $_SESSION['admin']['auth']) {
+            $this->path = $path;
+            header('Location: ' . $this->path);
+            //admin/login
+            exit;
+        }
     }
 }
