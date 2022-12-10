@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Session;
 
 const BASE_DIR = '/best-wines';
 
@@ -9,7 +10,7 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-require_once 'src/partials/_start_session.php';
+session::startSession();
 
 require_once 'config/routes.php';
 
