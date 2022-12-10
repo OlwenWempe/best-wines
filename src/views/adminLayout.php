@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md">
             <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/nav-logo.png" alt="brand logo"></a>
             <div class="container-fluid">
-                <ul class="navbar-nav justify-content-around">
+                <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/nos-vins/all">retour vers le site</a>
                     </li>

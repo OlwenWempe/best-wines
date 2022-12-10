@@ -18,7 +18,7 @@
 
 <body id="main-body">
     <header>
-        <nav class="navbar justify-content-end">
+        <nav class="navbar navbar-expand-lg justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="login">connexion</a>
@@ -28,7 +28,7 @@
                 </li>
                 <?php if (isset($_SESSION) && $_SESSION['admin']['auth']) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">Vue administrateur</a>
+                    <a class="nav-link" href="<?= BASE_DIR ?>/admin/">Vue administrateur</a>
                 </li>
                 <?php endif; ?>
             </ul>

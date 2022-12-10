@@ -7,7 +7,7 @@
             <div class="mb-3 row">
                 <div class="col-sm-10">
                     <input type="text" class="form-control mt-3" id="userEmail" placeholder="email@example.com"
-                        name="email">
+                        name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email'] ?>">
                 </div>
             </div>
             <?php if (isset($message)) : ?>

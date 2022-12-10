@@ -72,7 +72,7 @@ class AdminController extends Controller
                                 $this->renderAdminView('admin/index', compact('title', 'success'));
                             } else {
                                 $passerror = "Ce n'est pas le bon mot de passe.";
-                                $this->renderAdminView('user/login', compact('title', 'success', 'passerror'));
+                                $this->renderAdminView('user/login', compact('title', 'passerror'));
                             }
                         }
                     }
