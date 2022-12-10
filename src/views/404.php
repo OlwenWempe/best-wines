@@ -20,7 +20,8 @@
     <section id="section404" class="mt-5">
         <h1 class="pt-3 text-center">Erreur 404</h1>
         <h2 class="pb-3 text-center">Vous semblez un petit peu perdu.</h2>
-        <a id="button404" class="btn btn-primary text-light text-center mb-3" href="">Revenir sur la page d'accueil</a>
+        <a id="button404" class="btn btn-primary text-light text-center mb-3"
+            href="<?= BASE_DIR ?>/nos-vins/all">Revenir sur la page d'accueil</a>
     </section>
 </body>
 
