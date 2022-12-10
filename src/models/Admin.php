@@ -12,7 +12,7 @@ class Admin  extends Model
     private string $email;
     private string $password;
     private string $phone_number;
-    protected string $table_name = "employee";
+    protected string $table_name = "admin";
 
     // accesseurs (getters & setters)
 
@@ -109,5 +109,23 @@ class Admin  extends Model
     public function setPhoneNumber(string $phone_number): void
     {
         $this->phone_number = $phone_number;
+    }
+
+    public function register(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO admin (`first_name`, `last_name`, `email`, `password`, `phone_number`) 
+            VALUES (:first_name, :last_name, :email, :password, :phone_number)"
+        );
+
+        $stmt->execute([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'phone_number' => $this->phone_number
+        ]);
+
+        return $this->pdo->lastInsertId();
     }
 }

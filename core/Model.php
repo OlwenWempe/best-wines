@@ -116,11 +116,13 @@ abstract class Model
         foreach ($criteria as $key => $value) {
             $stmt->bindParam(":$key", $value);
         }
-        if ($is_array)
-            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-        else
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+        // if ($is_array)
+
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        // else
+        //     $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
+
         return $stmt->fetch();
     }
 }

@@ -25,12 +25,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/nos-vins/all">retour vers le site</a>
                     </li>
-                    <?php if (!$_SESSION['is_auth']) : ?>
+                    <?php if (!$_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">connexion</a>
                     </li>
                     <?php endif; ?>
-                    <?php if ($_SESSION['is_auth']) : ?>
+                    <?php if ($_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
                     </li>
