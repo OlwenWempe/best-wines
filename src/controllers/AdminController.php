@@ -4,8 +4,9 @@ namespace App\Controllers;
 
 use App\Models\Wine;
 use Core\Controller;
+use App\partials;
 
-session_start();
+require_once 'src/partials/_start_session.php';
 if (!isset($_SESSION['is_auth'])) {
     $_SESSION['is_auth'] = false;
 }
@@ -38,26 +39,18 @@ class AdminController extends Controller
         echo "ceci est la méthode register";
     }
 
-
-    public function logout()
+    /**
+     * 
+     */
+    public function logout(): void
     {
 
         // Détruire la session.
         $_SESSION['is_auth'] = false;
 
-        $title = "Homepage";
-        $this->renderAdminView('adminLayout', compact('title'));
+        $title = "Connexion";
+        $this->renderAdminView('user/login', compact('title'));
     }
-    //permets aux admin de rajouter des produits
-    // public function addWine()
-    // {
-    //     echo "ceci est la méthode " . __FUNCTION__;
-    // }
-
-    // public function addBox()
-    // {
-    //     echo "ceci est la méthode " . __FUNCTION__;
-    // }
 
     //permets d'afficher la liste des vins ou box.
     public function indexWine(): void
@@ -70,7 +63,6 @@ class AdminController extends Controller
             $message = "Désolé, nous n'avons pas pu récupérer les données.";
         } else {
             $this->renderAdminView('admin/index', compact('wines', 'message', 'title'));
-            echo "ceci est la méthode " . __FUNCTION__;
         }
     }
 

@@ -35,16 +35,7 @@
                         <a class="nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
                     </li>
                     <?php endif; ?>
-                    <?php if (!$_SESSION['is_auth']) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">Vue administrateur</a>
-                    </li>
-                    <?php endif; ?>
-                    <?php if ($_SESSION['is_auth']) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_DIR ?>/logout">Vue client</a>
-                    </li>
-                    <?php endif; ?>
+
                 </ul>
             </div>
         </nav>
@@ -76,8 +67,8 @@
                         <label for="region">Ajouter une région</label>
                         <input type="text" name="name" id="region">
                         <select name="id_pays" id="id_pays">
-                        <option selected value="">Selectionner un pays</option>    
-                        <option value="75">France</option>
+                            <option selected value="">Selectionner un pays</option>
+                            <option value="75">France</option>
                         </select>
                         <input type="submit" name="soumettre" value="soumettre">
                     </form>

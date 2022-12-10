@@ -9,6 +9,7 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
+require_once 'src/partials/_start_session.php';
 
 require_once 'config/routes.php';
 

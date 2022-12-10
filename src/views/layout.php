@@ -26,6 +26,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="register">inscription</a>
                 </li>
+                <?php if (isset($_SESSION) && $_SESSION['is_auth']) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">Vue administrateur</a>
+                </li>
+                <?php endif; ?>
             </ul>
         </nav>
         <nav class="navbar navbar-expand-lg">
