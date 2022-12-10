@@ -6,14 +6,12 @@
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="adminEmail"
-                        placeholder="email@example.com">
+                    <input type="text" class="form-control mt-3" id="userEmail" placeholder="email@example.com">
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Mot de passe</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Votre mot de passe">
                 </div>
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>
