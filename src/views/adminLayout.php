@@ -25,12 +25,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/nos-vins/all">retour vers le site</a>
                     </li>
-                    <?php if (!$_SESSION['admin']['auth']) : ?>
+                    <?php if (!isset($_SESSION['admin']['auth']) || !$_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">connexion</a>
                     </li>
                     <?php endif; ?>
-                    <?php if ($_SESSION['admin']['auth']) : ?>
+                    <?php if (isset($_SESSION['admin']['auth']) && $_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
                     </li>
@@ -41,7 +41,6 @@
         </nav>
     </header>
     <main>
-        <h1 class="text-center py-5">Bienvenue sur votre page admin</h1>
         <section class="row">
             <aside class="col-3 border-end">
                 <div class="container">

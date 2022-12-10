@@ -25,11 +25,7 @@
                     <span class="text-danger"><?= $passerror ?></span>
                 </div>
                 <?php endif; ?>
-                <?php if (isset($success)) : ?>
-                <div>
-                    <span class="text-danger"><?= $success ?></span>
-                </div>
-                <?php endif; ?>
+
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>
         </form>

@@ -12,15 +12,12 @@ use App\Models\Session;
 
 session::startSession();
 
-if (!isset($_SESSION['is_auth'])) {
-    $_SESSION['is_auth'] = false;
-}
-
 
 class AdminController extends Controller
 {
     public function homepage()
     {
+        AdminController::checkLogged();
         $title = "Homepage";
         $this->renderAdminView('admin/index', compact('title'));
     }
@@ -64,12 +61,13 @@ class AdminController extends Controller
                             if (password_verify(htmlspecialchars($_POST['password']), $admins["password"])) {
 
                                 $_SESSION['admin']['auth'] = TRUE;
+                                $_SESSION['admin']['id'] = $admins['id'];
                                 $_SESSION['admin']['first_name'] = $admins['first_name'];
                                 $_SESSION['admin']['last_name'] = $admins['last_name'];
                                 $_SESSION['admin']['email'] = $admins['email'];
                                 $_SESSION['admin']['phone'] = $admins['phone_number'];
-                                $success = "Bienvenue dans votre espace" . $admins['first_name'];
-                                $this->renderAdminView('admin/index', compact('title', 'success'));
+                                $title = "Homepage";
+                                $this->renderAdminView('admin/index', compact('title'));
                             } else {
                                 $passerror = "Ce n'est pas le bon mot de passe.";
                                 $this->renderAdminView('user/login', compact('title', 'passerror'));
@@ -96,7 +94,7 @@ class AdminController extends Controller
     {
         session::startSession();
         // Détruire la session.
-        $_SESSION['is_auth'] = false;
+        $_SESSION['admin']['auth'] = false;
 
         header('Location: admin/login');
         // $title = "Connexion";
