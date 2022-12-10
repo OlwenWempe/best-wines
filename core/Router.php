@@ -2,6 +2,9 @@
 
 namespace Core;
 
+use App\Controllers\AdminController;
+use Core\Controller;
+
 class Router
 {
 
@@ -29,7 +32,9 @@ class Router
         $request_uri = explode("?", $request_uri)[0];
 
         if (!isset(self::$routes[$request_uri])) {
-            throw new \Exception("404 Page not found");
+            $redirect = new AdminController;
+            $redirect->checkUnlogged(BASE_DIR . "/admin/");
+            Controller::render404View();
         }
 
         [$controller_name, $action_name] = explode('::', self::$routes[$request_uri]);

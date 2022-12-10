@@ -42,4 +42,9 @@ abstract class Controller
         $content = ob_get_clean();
         require_once "src/views/adminLayout.php";
     }
+
+    public static function render404View(): void
+    {
+        require_once "src/views/404.php";
+    }
 }

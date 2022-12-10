@@ -1,7 +1,7 @@
 :root{
     --main-color: #fff;
     --bordeaux : #9e121b;
-    --gris : #f3f3f3;
+    --gris : rgb(243, 243, 243);
 }
 
 .navbar{
@@ -25,4 +25,21 @@
 }
 section{
     background-color: var(--gris);
+}
+#body404{
+    background-color: var(--gris);
+    background-image: url("../../assets/img/wine5.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#section404{
+    background-color: rgba(243, 243, 243, 0.5);
+    width: 75vw;
+    margin: auto;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
