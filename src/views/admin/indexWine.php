@@ -13,21 +13,19 @@
         <table class="mx-auto table table-striped">
             <thead>
                 <tr>
-                    <th scope="col"></th>
-                    <th class="chalk" scope="col-2">2Do</th>
-                    <th class="chalk d-flex" scope="col-2">Date
-                        <span>
-                            <form method="GET" id="orderForm" class="ms-5">
-                                <select name="order" id="order">
-                                    <option value="">Trier par</option>
-                                    <option value="asc">Le plus récent </option>
-                                    <option value="desc">Le plus ancien</option>
-                                </select>
-                            </form>
-                        </span>
-                    </th>
-                    <th class="chalk" scope="col">Action</th>
-                    <th scope="col"></th>
+                    <th class="">Réference</th>
+                    <th class="">Nom</th>
+                    <th class="">Description</th>
+                    <th class="">Cépage</th>
+                    <th class="">Prix d'achat</th>
+                    <th class="">Prix de vente</th>
+                    <th class="">Stock</th>
+                    <th class="">Région</th>
+                    <th class="">Type</th>
+                    <th class="">Goût</th>
+                    <th class="">S'accorde avec</th>
+                    <th class="">Fournisseur</th>
+
                 </tr>
             </thead>
 
@@ -35,40 +33,23 @@
                 <form action="" method="POST">
 
                     <?php
-                        foreach ($tasks as $task) : ?>
+                        foreach ($wines as $wine) : ?>
                     <tr class=" table-success">
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type='checkbox' name='supp[]'
-                                    value='<?= $task->id; ?>' />
-                            </div>
-                        </td>
-                        <td><?= $task->name ?></td>
-                        <td><?= $task->to_do_at ?></td>
-
-                        <td>
-                            <a href=" edit.php?id=<?= $task->id ?>" class="btn btnMod">Modifier</a>
-                        </td>
-                        <td>
-                            <?php
-                                    if ($task->is_done == 1) : ?>
-                            <div class="text-success mb-3 mx-auto">DEJA FAIT</div>
-                            <?php elseif ($task->to_do_at <= date('Y-m-d')) : ?>
-                            <div class="text-danger mb-3 mx-auto">RETARD</div>
-                            <?php else : ?>
-                            <div class=" mb-3 mx-auto"></div>
-                            <?php endif; ?>
-                        </td>
+                        <td><?= $wine['id'] ?></td>
+                        <td><?= $wine['name'] ?></td>
+                        <td><?= $wine['description'] ?></td>
+                        <td><?= $wine['grape_variety'] ?></td>
+                        <td><?= $wine['prix_d_achat'] ?></td>
+                        <td><?= $wine['prix_de_vente'] ?></td>
+                        <td><?= $wine['stock'] ?></td>
+                        <td><?= $wine['id_region'] ?></td>
+                        <td><?= $wine['id_type_wine'] ?></td>
+                        <td><?= $wine['id_taste_tag'] ?></td>
+                        <td><?= $wine['id_accord_tag'] ?></td>
+                        <td><?= $wine['id_supplier'] ?></td>
                     </tr>
                     <?php endforeach; ?>
-                    <div class="container d-flex justify-content-around my-5">
-                        <input type='submit' value='Supprimer' name="delete" class="btn btn-danger mb-3 mx-auto">
 
-                        <a name="task-add" id="task-add" class="btn btnPos mb-3" href="task.php">Ajouter
-                            un 2Do</a>
-
-                        <button type=" submit" class="btnPos btn  mb-3 mx-auto" name="done">Déjà fait</button>
-                    </div>
                 </form>
             </tbody>
             <?php endif; ?>
