@@ -318,8 +318,8 @@ class Wine  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO wine (`name`, `description`, 'grape_variety', `prix_d_achat` , `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
-            VALUES (:name, :description, :grape_variety :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
+            "INSERT INTO wine (`name`, `description`, `grape_variety`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
+            VALUES (:name, :description, :grape_variety, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
         );
 
         $stmt->execute([

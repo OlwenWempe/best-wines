@@ -13,20 +13,26 @@ use App\Models\Session;
 
 
 session::startSession();
-
+pays::countrySearch();
 
 class AdminController extends Controller
 {
     public function homepage()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
+
         AdminController::checkLogged();
         $title = "Homepage";
-        $this->renderAdminView('admin/index', compact('title'));
+        $this->renderAdminView('admin/index', compact('title', 'payss'));
     }
 
 
     public function login()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
+
         $title = "Connexion";
 
         if (isset($_POST['submit'])) {
@@ -38,11 +44,11 @@ class AdminController extends Controller
                 // vérifier si les champs sont remplis
                 if (empty($_POST['email'])) {
                     $message = 'Veuillez rentrer votre adresse mail.';
-                    $this->renderAdminView('user/login', compact('title', 'message'));
+                    $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
                 }
                 if (empty($_POST['password'])) {
                     $message = 'Veuillez rentrer votre mot de passe.';
-                    $this->renderAdminView('user/login', compact('title', 'message'));
+                    $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
                 } else {
                     // Récupérer les données du formulaire
 
@@ -51,7 +57,7 @@ class AdminController extends Controller
 
                     if (!$email) {
                         $message = "Veuillez rentrer un mail valide.";
-                        $this->renderAdminView('user/login', compact('title', 'message'));
+                        $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
                     } else {
                         $email = strip_tags($email);
                         $admin = new Admin;
@@ -69,10 +75,10 @@ class AdminController extends Controller
                                 $_SESSION['admin']['email'] = $admins['email'];
                                 $_SESSION['admin']['phone'] = $admins['phone_number'];
                                 $title = "Homepage";
-                                $this->renderAdminView('admin/index', compact('title'));
+                                $this->renderAdminView('admin/index', compact('title', 'payss'));
                             } else {
                                 $passerror = "Ce n'est pas le bon mot de passe.";
-                                $this->renderAdminView('user/login', compact('title', 'passerror'));
+                                $this->renderAdminView('user/login', compact('title', 'passerror', 'payss'));
                             }
                         }
                     }
@@ -106,30 +112,38 @@ class AdminController extends Controller
     //permets d'afficher la liste des vins ou box.
     public function indexWine(): void
     {
+        $pays = new Pays();
+        $payss = $pays->findAll();
         $title = "Nos-vins";
         $wine = new Wine();
 
         $wines = $wine->findAll();
         if (!$wines) {
             $message = "Désolé, nous n'avons pas pu récupérer les données.";
-            $this->renderAdminView('admin/indexWine', compact('wines', 'message', 'title'));
+            $this->renderAdminView('admin/indexWine', compact('wines', 'message', 'title', 'payss'));
         } else {
-            $this->renderAdminView('admin/indexWine', compact('wines', 'title'));
+            $this->renderAdminView('admin/indexWine', compact('wines', 'title', 'payss'));
         }
     }
 
     public function indexBox()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll();
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
     public function addDiscount()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll();
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
     public function deleteDiscount()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll();
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
@@ -155,6 +169,9 @@ class AdminController extends Controller
 
     public function register()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll();
+
         $title = "Ajout d'un administrateur";
 
 
@@ -173,13 +190,13 @@ class AdminController extends Controller
 
             if ($result) {
                 $success =  "insertion bien effectuée";
-                $this->renderAdminView('admin/register', compact('success', 'title'));
+                $this->renderAdminView('admin/register', compact('success', 'title', 'payss'));
             } else {
                 $error = "échec";
-                $this->renderAdminView('admin/register', compact('error', 'title'));
+                $this->renderAdminView('admin/register', compact('error', 'title', 'payss'));
             }
         }
-        $this->renderAdminView('admin/register', compact('title'));
+        $this->renderAdminView('admin/register', compact('title', 'payss'));
     }
 
     public function registerSupplier()
@@ -205,10 +222,10 @@ class AdminController extends Controller
             $result = $supplier->insert();
             if ($result) {
                 $success = "insertion bien effectuée";
-                $this->renderAdminView('admin/addSupplier', compact('success', 'title'));
+                $this->renderAdminView('admin/addSupplier', compact('success', 'title', 'payss'));
             } else {
                 $error = "échec";
-                $this->renderAdminView('admin/addSupplier', compact('error', 'title'));
+                $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
             }
         }
         $this->renderAdminView('admin/addSupplier', compact('title', 'payss'));

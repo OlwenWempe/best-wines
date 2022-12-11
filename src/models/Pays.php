@@ -92,4 +92,10 @@ class Pays  extends Model
     {
         $this->id_currencies = $id_currencies;
     }
+
+    public static function countrySearch()
+    {
+        $pays = new Pays();
+        $payss = $pays->findAll();
+    }
 }
