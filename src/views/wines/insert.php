@@ -28,11 +28,16 @@
         </div>
         <div>
             <label for="stock">Quantité :</label>
-            <input type="text" name="stock" id="stock">
+            <input type="number" name="stock" id="stock">
         </div>
         <div>
             <label for="id_region">Region :</label>
-            <input type="text" name="id_region" id="id_region">
+            <select name="id_region" id="id_region">
+                <option selected>Selectionnez la région</option>
+                <?php foreach ($regions as $region) : ?>
+                <option value="<?= $region['id'] ?>"><?= $region['name'] ?></option>
+                <?php endforeach ?>
+            </select>
         </div>
         <div>
             <label for="id_grape_variety">Cépage :</label>
@@ -40,19 +45,39 @@
         </div>
         <div>
             <label for="id_type_wine">Type :</label>
-            <input type="text" name="id_type_wine" id="id_type_wine">
+            <select name="id_type_wine" id="id_type_wine">
+                <option selected>Selectionnez le type de vin.</option>
+                <?php foreach ($types as $type) : ?>
+                <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                <?php endforeach ?>
+            </select>
         </div>
         <div>
             <label for="id_taste_tag">Goûts :</label>
-            <input type="text" name="id_taste_tag" id="id_taste_tag">
+            <select name="id_taste_tag" id="id_taste_tag">
+                <option selected>Selectionnez le type de vin.</option>
+                <?php foreach ($tasteTags as $tasteTag) : ?>
+                <option value="<?= $tasteTag['id'] ?>"><?= $tasteTag['name'] ?></option>
+                <?php endforeach ?>
+            </select>
         </div>
         <div>
             <label for="id_accord_tag">S'accorde avec :</label>
-            <input type="text" name="id_accord_tag" id="id_accord_tag">
+            <select name="id_accord_tag" id="id_accord_tag">
+                <option selected>Selectionnez le type de vin.</option>
+                <?php foreach ($accordTags as $accordTag) : ?>
+                <option value="<?= $accordTag['id'] ?>"><?= $accordTag['name'] ?></option>
+                <?php endforeach ?>
+            </select>
         </div>
         <div>
             <label for="id_supplier">Fournisseur :</label>
-            <input type="text" name="id_supplier" id="id_supplier">
+            <select name="id_supplier" id="id_supplier">
+                <option selected>Selectionnez le type de vin.</option>
+                <?php foreach ($suppliers as $supplier) : ?>
+                <option value="<?= $supplier['id'] ?>"><?= $supplier['name'] ?></option>
+                <?php endforeach ?>
+            </select>
         </div>
 
         <div>

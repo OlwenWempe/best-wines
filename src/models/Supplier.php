@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Core\Model;
 
-class Supplier
+class Supplier extends Model
 {
     private int $id;
     private string $logo;
@@ -21,14 +21,14 @@ class Supplier
     private string $siren;
     protected string $table_name = "supplier";
 
-// accesseurs (getters & setters)
+    // accesseurs (getters & setters)
 
     /**
      * Permet de récupérer l'identifiant de la tâche
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -226,5 +226,33 @@ class Supplier
     public function setSiren(string $siren): void
     {
         $this->siren = $siren;
+    }
+
+    /**
+     * Insérer une tache dans la BDD
+     * @return int|false l'id du dernier élément inséré ou false dans le cas d'échec
+     */
+    public function insert(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO supplier (`name`, `adress`, 'zipcode', `city` , `id_pays`, `phone_number`, `email`, `password`, `siren`) 
+            VALUES (:name, :adress, :zipcode :city, :id_pays, :phone_number, :email, :password, :siren)"
+        );
+
+        $stmt->execute([
+            'name' => $this->name,
+            'adress' => $this->adress,
+            'zipcode' => $this->zipcode,
+            // 'link_picture_max' => $this->link_picture_max,
+            // 'link_picture_mini' => $this->link_picture_mini,
+            'city' => $this->city,
+            'id_pays' => $this->id_pays,
+            'phone_number' => $this->phone_number,
+            'email' => $this->email,
+            'password' => $this->password,
+            'siren' => $this->siren,
+        ]);
+
+        return $this->pdo->lastInsertId();
     }
 }

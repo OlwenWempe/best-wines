@@ -29,6 +29,7 @@ Router::register('/admin/addregion', 'WineController::addregion');
 Router::register('/admin/addtype', 'WineController::addtype');
 Router::register('/admin/addtaste', 'WineController::addtaste');
 Router::register('/admin/addaccord', 'WineController::addaccord');
+Router::register('/admin/addsupplier', 'AdminController::registerSupplier');
 Router::register('/admin/deleteregion', 'WineController::deleteregion');
 Router::register('/admin/deletetype', 'WineController::deletetype');
 Router::register('/admin/deletetaste', 'WineController::deletetaste');

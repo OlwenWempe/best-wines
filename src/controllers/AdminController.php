@@ -6,6 +6,8 @@ namespace App\Controllers;
 
 use App\Models\Admin;
 use App\Models\Wine;
+use App\Models\Supplier;
+use App\Models\Pays;
 use Core\Controller;
 use App\Models\Session;
 
@@ -110,8 +112,9 @@ class AdminController extends Controller
         $wines = $wine->findAll();
         if (!$wines) {
             $message = "Désolé, nous n'avons pas pu récupérer les données.";
+            $this->renderAdminView('admin/indexWine', compact('wines', 'message', 'title'));
         } else {
-            $this->renderAdminView('admin/index', compact('wines', 'message', 'title'));
+            $this->renderAdminView('admin/indexWine', compact('wines', 'title'));
         }
     }
 
@@ -130,7 +133,7 @@ class AdminController extends Controller
         echo "ceci est la méthode " . __FUNCTION__;
     }
 
-    public static function checkLogged()
+    public static function checkLogged(): void
     {
         session::startSession();
         if (!isset($_SESSION['admin']['auth']) || !$_SESSION['admin']['auth']) {
@@ -172,10 +175,43 @@ class AdminController extends Controller
                 $success =  "insertion bien effectuée";
                 $this->renderAdminView('admin/register', compact('success', 'title'));
             } else {
-                $error =  "échec";
+                $error = "échec";
                 $this->renderAdminView('admin/register', compact('error', 'title'));
             }
         }
         $this->renderAdminView('admin/register', compact('title'));
+    }
+
+    public function registerSupplier()
+    {
+        $title = "Ajout d'un fournisseur";
+        $this->checkLogged();
+
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
+
+        if (isset($_POST['submit'])) {
+
+            $supplier = new Supplier();
+            $supplier->setName(strip_tags($_POST['name']));
+            $supplier->setAdress(strip_tags($_POST['adress']));
+            $supplier->setZipcode(strip_tags($_POST['zipcode']));
+            $supplier->setCity(strip_tags($_POST['city']));
+            $supplier->setIdPays(strip_tags($_POST['id_pays']));
+            $supplier->setPhoneNumber(strip_tags($_POST['phone_number']));
+            $supplier->setEmail(strip_tags($_POST['email']));
+            $supplier->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
+            $supplier->setSiren(strip_tags($_POST['siren']));
+            $result = $supplier->insert();
+            dd($result);
+            if ($result) {
+                $success = "insertion bien effectuée";
+                $this->renderAdminView('admin/addSupplier', compact('success', 'title'));
+            } else {
+                $error = "échec";
+                $this->renderAdminView('admin/addSupplier', compact('error', 'title'));
+            }
+        }
+        $this->renderAdminView('admin/addSupplier', compact('title', 'payss'));
     }
 }

@@ -16,6 +16,7 @@ class Supplier
     private int $phone_number;
     private string $email;
     private string $password;
+    private string $siren;
     protected string $table_name = "supplier";
 
     // accesseurs (getters & setters)
@@ -172,6 +173,25 @@ class Supplier
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * Get the value of siren
+     * @return string
+     */
+    public function getSiren(): string
+    {
+        return $this->siren;
+    }
+
+    /**
+     * Set the value of siren
+     * @param string $siren
+     * @return void
+     */
+    public function setSiren(string $siren): void
+    {
+        $this->siren = $siren;
     }
 
     public function checkLogged()

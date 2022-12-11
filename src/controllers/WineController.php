@@ -7,6 +7,8 @@ use App\Models\AccordTag;
 use App\Models\TasteTag;
 use App\Models\TypeWine;
 use App\Models\Region;
+use App\Models\Pays;
+use App\Models\Supplier;
 use Core\Controller;
 
 class WineController extends Controller
@@ -21,8 +23,7 @@ class WineController extends Controller
         $wine = new Wine();
 
         $wines = $wine->findAll();
-        $message = "hello";
-        $this->renderView('wines/index', compact('wines', 'message', 'title'));
+        $this->renderView('wines/index', compact('wines', 'title'));
     }
     // ?id=10
     // task/show/10
@@ -33,6 +34,24 @@ class WineController extends Controller
     public function insert()
     {
         $title = "Ajout d'un vin";
+        AdminController::checkLogged();
+        $tag = new AccordTag();
+        $accordTags = $tag->findAll();
+
+        $region = new Region();
+        $regions = $region->findAll();
+
+        $pays = new Pays();
+        $payss = $pays->findAll();
+
+        $type = new TypeWine();
+        $types = $type->findAll();
+
+        $tastetag = new TasteTag();
+        $tasteTags = $tastetag->findAll();
+
+        $supplier = new Supplier();
+        $suppliers = $supplier->findAll();
 
         if (isset($_POST['submit'])) {
 
@@ -71,9 +90,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('wines/insert', compact('message', 'title'));
+            $this->renderAdminView('wines/insert', compact('message', 'accordTags', 'regions', 'payss', 'types', 'tasteTags', 'suppliers', 'title'));
         }
-        $this->renderAdminView('wines/insert', compact('title'));
+        $this->renderAdminView('wines/insert', compact('title', 'accordTags', 'regions', 'payss', 'types', 'tasteTags', 'suppliers'));
     }
 
     public function delete()
@@ -135,18 +154,18 @@ class WineController extends Controller
 
         if (isset($_POST['soumettre'])) {
 
-        $region = new Region();
-        $region -> setName(strip_tags($_POST["name"]));
-        $region -> setIdPays(strip_tags($_POST["id_pays"]));
-        $result = $region->insert();
+            $region = new Region();
+            $region->setName(strip_tags($_POST["name"]));
+            $region->setIdPays(strip_tags($_POST["id_pays"]));
+            $result = $region->insert();
 
-        if ($result) {
-            $message =  "insertion bien effectuée";
-        } else {
-            $message =  "échec";
+            if ($result) {
+                $message =  "insertion bien effectuée";
+            } else {
+                $message =  "échec";
+            }
+            $this->renderAdminView('admin/index', compact('message', 'title'));
         }
-        $this->renderAdminView('admin/index', compact('message', 'title'));
-}
     }
 
     //permets d'ajouter le type de vin dans le menu select
@@ -155,54 +174,56 @@ class WineController extends Controller
         $title = "Ajout d'un type";
 
         if (isset($_POST['soumettre'])) {
-        $type = new TypeWine();
-        $type -> setName(strip_tags($_POST["name"]));
-        $result = $type->insert();
+            $type = new TypeWine();
+            $type->setName(strip_tags($_POST["name"]));
+            $result = $type->insert();
 
-        if ($result) {
-            $message =  "insertion bien effectuée";
-        } else {
-            $message =  "échec";
+            if ($result) {
+                $message =  "insertion bien effectuée";
+            } else {
+                $message =  "échec";
+            }
+            $this->renderAdminView('admin/index', compact('message', 'title'));
         }
-        $this->renderAdminView('admin/index', compact('message', 'title'));
     }
-        }
 
     //permets d'ajouter les goûts des vins dans le menu select.
     public function addTaste()
-    { $title = "Ajout d'un goût";
+    {
+        $title = "Ajout d'un goût";
 
         if (isset($_POST['soumettre'])) {
-        $taste = new TasteTag();
-        $taste -> setName(strip_tags($_POST["name"]));
-        $result = $taste->insert();
+            $taste = new TasteTag();
+            $taste->setName(strip_tags($_POST["name"]));
+            $result = $taste->insert();
 
-        if ($result) {
-            $message =  "insertion bien effectuée";
-        } else {
-            $message =  "échec";
-        }
-        $this->renderAdminView('admin/index', compact('message', 'title'));
+            if ($result) {
+                $message =  "insertion bien effectuée";
+            } else {
+                $message =  "échec";
+            }
+            $this->renderAdminView('admin/index', compact('message', 'title'));
         }
     }
 
     //permets d'ajouter avec quoi accorder les vins dans le menu select.
     public function addAccord()
-    { $title = "Ajout d'un accord";
+    {
+        $title = "Ajout d'un accord";
 
         if (isset($_POST['soumettre'])) {
 
-        $accord = new AccordTag();
-        $accord -> setName(strip_tags($_POST["name"]));
-        $result = $accord->insert();
+            $accord = new AccordTag();
+            $accord->setName(strip_tags($_POST["name"]));
+            $result = $accord->insert();
 
-        if ($result) {
-            $message =  "insertion bien effectuée";
-        } else {
-            $message =  "échec";
+            if ($result) {
+                $message =  "insertion bien effectuée";
+            } else {
+                $message =  "échec";
+            }
+            $this->renderAdminView('admin/index', compact('message', 'title'));
         }
-        $this->renderAdminView('admin/index', compact('message', 'title'));
-    }
     }
 
     public function deleteRegion()
