@@ -34,13 +34,13 @@
 
                     <?php
                         foreach ($wines as $wine) : ?>
-                    <tr class=" table-success">
+                    <tr class=" table-danger">
                         <td><?= $wine['id'] ?></td>
                         <td><?= $wine['name'] ?></td>
                         <td><?= $wine['description'] ?></td>
                         <td><?= $wine['grape_variety'] ?></td>
-                        <td><?= $wine['prix_d_achat'] ?></td>
-                        <td><?= $wine['prix_de_vente'] ?></td>
+                        <td><?= $wine['prix_d_achat'] ?> €</td>
+                        <td><?= $wine['prix_de_vente'] ?> €</td>
                         <td><?= $wine['stock'] ?></td>
                         <td><?= $wine['id_region'] ?></td>
                         <td><?= $wine['id_type_wine'] ?></td>
