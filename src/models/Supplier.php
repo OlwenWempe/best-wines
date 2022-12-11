@@ -172,7 +172,7 @@ class Supplier extends Model
      * @param string $phone_number
      * @return void
      */
-    public function setPhoneNumber(int $phone_number): void
+    public function setPhoneNumber(string $phone_number): void
     {
         $this->phone_number = $phone_number;
     }
@@ -236,7 +236,7 @@ class Supplier extends Model
     {
         $stmt = $this->pdo->prepare(
             "INSERT INTO supplier (`name`, `adress`, 'zipcode', `city` , `id_pays`, `phone_number`, `email`, `password`, `siren`) 
-            VALUES (:name, :adress, :zipcode :city, :id_pays, :phone_number, :email, :password, :siren)"
+            VALUES (:name, :adress, :zipcode, :city, :id_pays, :phone_number, :email, :password, :siren)"
         );
 
         $stmt->execute([
