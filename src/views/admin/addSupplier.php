@@ -16,6 +16,11 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
+                    <input required type="text" class="form-control mt-3" id="logo" placeholder="logo" name="logo">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
                     <input required type="text" class="form-control mt-3" id="name" placeholder="Raison Sociale"
                         name="name">
                 </div>

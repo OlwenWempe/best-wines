@@ -191,8 +191,8 @@ class AdminController extends Controller
         $payss = $pays->findAll($is_array = true);
 
         if (isset($_POST['submit'])) {
-
             $supplier = new Supplier();
+            $supplier->setLogo(strip_tags($_POST['logo']));
             $supplier->setName(strip_tags($_POST['name']));
             $supplier->setAdress(strip_tags($_POST['adress']));
             $supplier->setZipcode(strip_tags($_POST['zipcode']));
@@ -203,7 +203,6 @@ class AdminController extends Controller
             $supplier->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
             $supplier->setSiren(strip_tags($_POST['siren']));
             $result = $supplier->insert();
-            dd($result);
             if ($result) {
                 $success = "insertion bien effectuée";
                 $this->renderAdminView('admin/addSupplier', compact('success', 'title'));
