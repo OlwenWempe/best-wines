@@ -103,6 +103,9 @@ class WineController extends Controller
 
     public function edit()
     {
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
+
         $title = "Modification d'un vin";
 
         if (isset($_POST['submit'])) {
@@ -142,15 +145,18 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('wines/insert', compact('message', 'title'));
+            $this->renderAdminView('wines/insert', compact('message', 'title', 'payss'));
         }
-        $this->renderAdminView('wines/insert', compact('title'));
+        $this->renderAdminView('wines/insert', compact('title', 'payss'));
     }
 
     //permets d'ajouter une region dans le menu select
     public function addRegion()
     {
         $title = "Ajout d'une région";
+
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
 
@@ -164,7 +170,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title'));
+            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
         }
     }
 
@@ -172,6 +178,9 @@ class WineController extends Controller
     public function addType()
     {
         $title = "Ajout d'un type";
+
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
             $type = new TypeWine();
@@ -183,7 +192,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title'));
+            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
         }
     }
 
@@ -191,6 +200,9 @@ class WineController extends Controller
     public function addTaste()
     {
         $title = "Ajout d'un goût";
+
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
             $taste = new TasteTag();
@@ -202,7 +214,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title'));
+            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
         }
     }
 
@@ -210,6 +222,9 @@ class WineController extends Controller
     public function addAccord()
     {
         $title = "Ajout d'un accord";
+
+        $pays = new Pays();
+        $payss = $pays->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
 
@@ -222,7 +237,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title'));
+            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
         }
     }
 

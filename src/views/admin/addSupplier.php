@@ -16,25 +16,32 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="text" class="form-control mt-3" id="name" placeholder="Raison Sociale"
-                        name="name">
+                    <input required value="<?php if (isset($_POST['logo'])) echo $_POST['logo'] ?>" type="text"
+                        class="form-control mt-3" id="logo" placeholder="logo" name="logo">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="adress" class="form-control mt-3" id="adress" placeholder="adresse"
-                        name="adress">
+                    <input required value="<?php if (isset($_POST['name'])) echo $_POST['name'] ?>" type="text"
+                        class="form-control mt-3" id="name" placeholder="Raison Sociale" name="name">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="text" class="form-control mt-3" id="zipcode" placeholder="code postal"
-                        name="zipcode">
+                    <input required value="<?php if (isset($_POST['adress'])) echo $_POST['adress'] ?>" type="adress"
+                        class="form-control mt-3" id="adress" placeholder="adresse" name="adress">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="text" class="form-control mt-3" id="city" placeholder="ville" name="city">
+                    <input required value="<?php if (isset($_POST['zipcode'])) echo $_POST['zipcode'] ?>" type="text"
+                        class="form-control mt-3" id="zipcode" placeholder="code postal" name="zipcode">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
+                    <input required value="<?php if (isset($_POST['city'])) echo $_POST['city'] ?>" type="text"
+                        class="form-control mt-3" id="city" placeholder="ville" name="city">
                 </div>
             </div>
             <div class="mb-3">
@@ -49,13 +56,15 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="tel" class="form-control mt-3" id="phone_number"
-                        placeholder="Numero de téléphone" name="phone_number">
+                    <input value="<?php if (isset($_POST['phone_number'])) echo $_POST['phone_number'] ?>" required
+                        type="tel" class="form-control mt-3" id="phone_number" placeholder="Numero de téléphone"
+                        name="phone_number">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="email" class="form-control mt-3" id="email" placeholder="Email" name="email">
+                    <input value="<?php if (isset($_POST['email'])) echo $_POST['email'] ?>" required type="email"
+                        class="form-control mt-3" id="email" placeholder="Email" name="email">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -66,8 +75,8 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input required type="text" class="form-control mt-3" id="siren" placeholder="Numéro de SIREN"
-                        name="siren">
+                    <input value="<?php if (isset($_POST['siren'])) echo $_POST['siren'] ?>" required type="text"
+                        class="form-control mt-3" id="siren" placeholder="Numéro de SIREN" name="siren">
                 </div>
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>

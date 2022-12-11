@@ -40,8 +40,8 @@
             </select>
         </div>
         <div>
-            <label for="id_grape_variety">Cépage :</label>
-            <input type="text" name="id_grape_variety" id="id_grape_variety">
+            <label for="grape_variety">Cépage :</label>
+            <input type="text" name="grape_variety" id="grape_variety">
         </div>
         <div>
             <label for="id_type_wine">Type :</label>
@@ -55,7 +55,7 @@
         <div>
             <label for="id_taste_tag">Goûts :</label>
             <select name="id_taste_tag" id="id_taste_tag">
-                <option selected>Selectionnez le type de vin.</option>
+                <option selected>Selectionnez le goût.</option>
                 <?php foreach ($tasteTags as $tasteTag) : ?>
                 <option value="<?= $tasteTag['id'] ?>"><?= $tasteTag['name'] ?></option>
                 <?php endforeach ?>
@@ -64,7 +64,7 @@
         <div>
             <label for="id_accord_tag">S'accorde avec :</label>
             <select name="id_accord_tag" id="id_accord_tag">
-                <option selected>Selectionnez le type de vin.</option>
+                <option selected>Selectionnez l'accord'.</option>
                 <?php foreach ($accordTags as $accordTag) : ?>
                 <option value="<?= $accordTag['id'] ?>"><?= $accordTag['name'] ?></option>
                 <?php endforeach ?>
@@ -73,7 +73,7 @@
         <div>
             <label for="id_supplier">Fournisseur :</label>
             <select name="id_supplier" id="id_supplier">
-                <option selected>Selectionnez le type de vin.</option>
+                <option selected>Selectionnez le fournisseur.</option>
                 <?php foreach ($suppliers as $supplier) : ?>
                 <option value="<?= $supplier['id'] ?>"><?= $supplier['name'] ?></option>
                 <?php endforeach ?>

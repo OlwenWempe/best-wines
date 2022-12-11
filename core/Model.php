@@ -38,10 +38,10 @@ abstract class Model
     public function findAll(bool $is_array = false): array|false
     {
         $stmt = $this->pdo->prepare("SELECT * FROM {$this->table_name}");
-        if ($is_array)
-            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-        else
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+        // if ($is_array)
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        // else
+        //     $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
         return $stmt->fetchAll();
     }
