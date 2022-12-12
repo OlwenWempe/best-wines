@@ -36,8 +36,12 @@
                     <?php
                         foreach ($wines as $wine) : ?>
                     <tr class=" table-danger">
+                        <td>
+                            <a href="<?= BASE_DIR ?>/nos-vins/?id=<?= $wine['id'] ?>" class="btn btn-primary">Voir le
+                                vin</a>
+                        </td>
                         <td><?= $wine['id'] ?></td>
-                        <td><img src=" <?= BASE_DIR . "/".$wine['link_picture_mini'] ?>" alt="<?= $wine['name'] ?>">
+                        <td><img src=" <?= BASE_DIR . "/" . $wine['link_picture_mini'] ?>" alt="<?= $wine['name'] ?>">
                         </td>
                         <td><?= $wine['name'] ?></td>
                         <td><?= substr($wine['description'], 0, 100) ?></td>
