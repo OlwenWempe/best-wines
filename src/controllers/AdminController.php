@@ -87,7 +87,7 @@ class AdminController extends Controller
             }
         }
 
-        $this->renderAdminView('user/login', compact('title'));
+        $this->renderAdminView('user/login', compact('title', 'payss'));
 
         //verifier si dans la bdd admin
         // header("Location admin/login.php");

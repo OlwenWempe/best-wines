@@ -318,16 +318,16 @@ class Wine  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO wine (`name`, `description`, `grape_variety`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
-            VALUES (:name, :description, :grape_variety, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
+            "INSERT INTO wine (`name`, `description`, `grape_variety`, `link_picture_max`, `link_picture_mini`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
+            VALUES (:name, :description, :grape_variety, :link_picture_max, :link_picture_mini, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
         );
 
         $stmt->execute([
             'name' => $this->name,
             'description' => $this->description,
             'grape_variety' => $this->grape_variety,
-            // 'link_picture_max' => $this->link_picture_max,
-            // 'link_picture_mini' => $this->link_picture_mini,
+            'link_picture_max' => $this->link_picture_max,
+            'link_picture_mini' => $this->link_picture_mini,
             'prix_d_achat' => $this->prix_d_achat,
             'prix_de_vente' => $this->prix_de_vente,
             'stock' => $this->stock,
