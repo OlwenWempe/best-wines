@@ -10,7 +10,7 @@
     </div>
     <?php endif; ?>
     <div class="card mx-auto" style="width: 25vw;">
-        <form action="<?= BASE_DIR ?>/admin/register" method="POST" class="card-body">
+        <form action="<?= BASE_DIR ?>/user/register" method="POST" class="card-body">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Ajouter un utilisateur</h5>
             </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="email" class="form-control mt-3" id="userEmail" placeholder="son email" name="email">
+                    <input type="email" class="form-control mt-3" id="userEmail" placeholder="Email" name="email">
                 </div>
             </div>
 
@@ -35,6 +35,21 @@
                 <div class="">
                     <input type="password" class="form-control" id="inputPassword" placeholder="Le mot de passe"
                         name="password">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
+                    <input type="text" class="form-control mt-3" id="adress" placeholder="Adresse" name="adress">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
+                    <input type="text" class="form-control mt-3" id="zipcode" placeholder="Code postal" name="zipcode">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
+                    <input type="text" class="form-control mt-3" id="city" placeholder="Ville" name="city">
                 </div>
             </div>
             <div class="mb-3 row">
