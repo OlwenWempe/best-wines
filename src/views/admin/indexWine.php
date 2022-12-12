@@ -37,7 +37,7 @@
                     <tr class=" table-danger">
                         <td><?= $wine['id'] ?></td>
                         <td><?= $wine['name'] ?></td>
-                        <td><?= $wine['description'] ?></td>
+                        <td><?= substr($wine['description'], 0, 100) ?></td>
                         <td><?= $wine['grape_variety'] ?></td>
                         <td><?= $wine['prix_d_achat'] ?> €</td>
                         <td><?= $wine['prix_de_vente'] ?> €</td>
