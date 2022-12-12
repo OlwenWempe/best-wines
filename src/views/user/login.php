@@ -6,24 +6,22 @@
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control mt-3" id="userEmail" placeholder="email@example.com"
-                        name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email'] ?>">
+                    <input type="text" class="form-control mt-3" id="userEmail" placeholder="email@example.com" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email'] ?>">
                 </div>
             </div>
             <?php if (isset($message)) : ?>
-            <div>
-                <span class="text-danger"><?= $message ?></span>
-            </div>
+                <div>
+                    <span class="text-danger"><?= $message ?></span>
+                </div>
             <?php endif; ?>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Votre mot de passe"
-                        name="password">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Votre mot de passe" name="password">
                 </div>
                 <?php if (isset($passerror)) : ?>
-                <div>
-                    <span class="text-danger"><?= $passerror ?></span>
-                </div>
+                    <div>
+                        <span class="text-danger"><?= $passerror ?></span>
+                    </div>
                 <?php endif; ?>
 
             </div>

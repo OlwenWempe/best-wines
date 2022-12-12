@@ -30,7 +30,6 @@ class Router
     public static function resolve(string $request_uri): void
     {
         $request_uri = explode("?", $request_uri)[0];
-
         if (!isset(self::$routes[$request_uri])) {
             $redirect = new AdminController;
             $redirect->checkUnlogged(BASE_DIR . "/admin/");
