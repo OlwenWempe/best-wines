@@ -32,14 +32,12 @@ class WineController extends Controller
         $title = "Nos-vins detail";
         $wine = new Wine();
 
-        $wine = $wine->findOneBy($id);
+        $wine = $wine->find($id);
         if ($_SESSION['admin']['auth']) {
-            $this->renderAdminView('wines/showBox', compact('wine', 'title'));
+            $this->renderAdminView('wines/showWine', compact('wine', 'title'));
         } else {
-            $this->renderView('wines/showBox', compact('wines', 'title'));
+            $this->renderView('wines/showWine', compact('wine', 'title'));
         }
-        
-        
     }
 
     public function insert()
