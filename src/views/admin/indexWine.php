@@ -15,6 +15,7 @@
                 <tr>
                     <th class="">Réference</th>
                     <th class="">Nom</th>
+                    <th class="">Image</th>
                     <th class="">Description</th>
                     <th class="">Cépage</th>
                     <th class="">Prix d'achat</th>
@@ -36,6 +37,8 @@
                         foreach ($wines as $wine) : ?>
                     <tr class=" table-danger">
                         <td><?= $wine['id'] ?></td>
+                        <td><img src=" <?= BASE_DIR . "/".$wine['link_picture_mini'] ?>" alt="<?= $wine['name'] ?>">
+                        </td>
                         <td><?= $wine['name'] ?></td>
                         <td><?= substr($wine['description'], 0, 100) ?></td>
                         <td><?= $wine['grape_variety'] ?></td>
