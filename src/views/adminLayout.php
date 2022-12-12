@@ -59,6 +59,13 @@
                     <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addbox">Ajouter un
                         box</a>
                 </div>
+                <!-- <div class="container">
+                    <h2>Ajouter des régions</h2>
+                    <hr class="ps-2">
+                    <div class="d-flex justify-content-center">
+                    <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addregion">Ajouter une région</a>
+                    </div>
+                </div> -->
                 <div class="container">
                     <h2>Ajouter des tags</h2>
                     <hr class="ps-2">
@@ -76,18 +83,39 @@
                         <input class="my-2 btn btn-primary form-control" type="submit" name="soumettre"
                             value="soumettre">
                     </form>
+                <!-- <div class="container">
+                    <h2>Ajouter des types</h2>
+                    <hr class="ps-2">
+                    <div class="d-flex justify-content-center">
+                    <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addtype">Ajouter un type</a>
+                    </div>
+                </div> -->
                     <form class="mt-3" action="<?= BASE_DIR ?>/admin/addtype" method="post">
                         <label class="ms-2 form-label" for="type">Ajouter un type</label>
                         <input class="form-control" type="text" name="name" id="type">
                         <input class="my-2 btn btn-primary form-control" type="submit" name="soumettre"
                             value="soumettre">
                     </form>
+                <!-- <div class="container">
+                    <h2>Ajouter des goûts</h2>
+                    <hr class="ps-2">
+                    <div class="d-flex justify-content-center">
+                    <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addtaste">Ajouter un goût</a>
+                    </div>
+                </div> -->
                     <form class="mt-3" action="<?= BASE_DIR ?>/admin/addtaste" method="post">
                         <label class="ms-2 form-label" for="taste">Ajouter un goût</label>
                         <input class="form-control" type="text" name="name" id="taste">
                         <input class="my-2 btn btn-primary form-control" type="submit" name="soumettre"
                             value="soumettre">
                     </form>
+                <!-- <div class="container">
+                    <h2>Ajouter des accords</h2>
+                    <hr class="ps-2">
+                    <div class="d-flex justify-content-center">
+                    <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addregion">Ajouter un accord</a>
+                    </div>
+                </div> -->
                     <form class="mt-3 mb-5" action="<?= BASE_DIR ?>/admin/addaccord" method="post">
                         <label class="ms-2 form-label" for="accord">Ajouter un accord</label>
                         <input class="form-control" type="text" name="name" id="accord">
