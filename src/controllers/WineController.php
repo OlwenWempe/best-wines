@@ -83,6 +83,10 @@ class WineController extends Controller
                     if (!file_exists($folderMini)) {
                         mkdir($folderMini, 0777, true);
                     }
+                    $folderIcon = "uploadsIcon/";
+                    if (!file_exists($folderIcon)) {
+                        mkdir($folderIcon, 0777, true);
+                    }
                     if ($_FILES['link_picture_max']['type'] == "image/jpeg") {
                         $nameFile = uniqid() . ".jpeg";
                     } else {
@@ -90,14 +94,19 @@ class WineController extends Controller
                     }
 
                     $destination = $folder . $nameFile;
+                    $destination2 = $folderMini . $nameFile;
+                    $destination3 = $folderIcon . $nameFile;
                     move_uploaded_file($_FILES['link_picture_max']['tmp_name'], $destination);
                     $_POST['link_picture_max'] = $destination;
 
                     //resize function
-                    $destination2 = $folderMini . $nameFile;
+
                     $img_mini = new \Gumlet\ImageResize($destination);
                     $img_mini->crop(250, 250);
                     $img_mini->save($destination2);
+                    $img_mini->crop(80, 80);
+                    $img_mini->save($destination3);
+
                     $_POST['link_picture_mini'] = $destination2;
                 }
             }
