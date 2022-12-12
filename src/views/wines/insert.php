@@ -5,7 +5,7 @@
     </div>
 
     <?php endif; ?>
-    <form action="<?= BASE_DIR ?>/nos-vins/add" method="post">
+    <form action="<?= BASE_DIR ?>/nos-vins/add" method="post" enctype="multipart/form-data">
         <div>
             <label for="name">Nom :</label>
             <input type="text" name="name" id="name">
@@ -16,7 +16,7 @@
         </div>
         <div>
             <label for="link_picture_max">photo :</label>
-            <input type="text" name="link_picture_max" id="link_picture_max">
+            <input type="file" name="link_picture_max" id="link_picture_max">
         </div>
         <div>
             <label for="prix_d_achat">Prix d'achat :</label>

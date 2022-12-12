@@ -55,24 +55,70 @@ class WineController extends Controller
 
         if (isset($_POST['submit'])) {
 
-            // $chemin = $_POST['lien']; // le chemin en absolu
+            // $chemin = $_FILES['link_picture_max']['name']; // le chemin en absolu
             // // vous pouvez travailler en url relative aussi: img.jpg
-            // $x = 500; # largeur a redimensionner
-            // $y = 500; # hauteur a redimensionner
+            // $x = 250; # largeur a redimensionner
+            // $y = 250; # hauteur a redimensionner
 
             // Header("Content-type: image/jpeg");
             // $img_new = imagecreatefromjpeg($chemin);
+            // dd($img_new);
             // $size = getimagesize($chemin);
             // $img_mini = imagecreatetruecolor($x, $y);
             // imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
             // $img_mini = imagejpeg($img_mini);
 
+
+
+            if (count($_FILES) == 1) {
+                $allowed[] = "image/jpeg";
+                $allowed[] = "image/png";
+                if ($_FILES['link_picture_max']['error'] == 0 && in_array($_FILES['link_picture_max']['type'], $allowed)) {
+
+                    $folder = "uploads/";
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777, true);
+                    }
+                    $folderMini = "uploadsMini/";
+                    if (!file_exists($folderMini)) {
+                        mkdir($folderMini, 0777, true);
+                    }
+                    $folderIcon = "uploadsIcon/";
+                    if (!file_exists($folderIcon)) {
+                        mkdir($folderIcon, 0777, true);
+                    }
+                    if ($_FILES['link_picture_max']['type'] == "image/jpeg") {
+                        $nameFile = uniqid() . ".jpeg";
+                    } else {
+                        $nameFile = uniqid() . ".png";
+                    }
+
+                    $destination = $folder . $nameFile;
+                    $destination2 = $folderMini . $nameFile;
+                    $destination3 = $folderIcon . $nameFile;
+                    move_uploaded_file($_FILES['link_picture_max']['tmp_name'], $destination);
+                    $_POST['link_picture_max'] = $destination;
+
+                    //resize function
+
+                    $img_mini = new \Gumlet\ImageResize($destination);
+                    $img_mini->crop(250, 250);
+                    $img_mini->save($destination2);
+                    $img_mini->crop(80, 80);
+                    $img_mini->save($destination3);
+
+                    $_POST['link_picture_mini'] = $destination2;
+                }
+            }
+
+
+
             $wine = new Wine();
             $wine->setName(strip_tags($_POST['name']));
             $wine->setDescription(strip_tags($_POST['description']));
             $wine->setGrapeVariety(strip_tags($_POST['grape_variety']));
-            // $wine->setLinkPictureMax(strip_tags($_POST['lien']));
-            // $wine->setLinkPictureMini($img_mini);
+            $wine->setLinkPictureMax($_POST['link_picture_max']);
+            $wine->setLinkPictureMini($_POST['link_picture_mini']);
             $wine->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
             $wine->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
             $wine->setStock(strip_tags($_POST['stock']));
@@ -81,6 +127,7 @@ class WineController extends Controller
             $wine->setIdTasteTag(strip_tags($_POST['id_taste_tag']));
             $wine->setIdAccordTag(strip_tags($_POST['id_accord_tag']));
             $wine->setIdSupplier(strip_tags($_POST['id_supplier']));
+
 
 
             $result = $wine->insert();

@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Models\Admin;
 use App\Models\Wine;
+use App\Models\Coffret;
 use App\Models\Supplier;
 use App\Models\Pays;
 use Core\Controller;
@@ -86,7 +87,7 @@ class AdminController extends Controller
             }
         }
 
-        $this->renderAdminView('user/login', compact('title'));
+        $this->renderAdminView('user/login', compact('title', 'payss'));
 
         //verifier si dans la bdd admin
         // header("Location admin/login.php");
@@ -130,7 +131,16 @@ class AdminController extends Controller
     {
         $pays = new Pays();
         $payss = $pays->findAll();
-        echo "ceci est la méthode " . __FUNCTION__;
+        $title = "Nos-box";
+        $box = new Coffret();
+
+        $boxes = $box->findAll();
+        if (!$boxes) {
+            $message = "Désolé, nous n'avons pas pu récupérer les données.";
+            $this->renderAdminView('admin/indexBox', compact('boxes', 'message', 'title', 'payss'));
+        } else {
+            $this->renderAdminView('admin/indexBox', compact('boxes', 'title', 'payss'));
+        }
     }
 
     public function addDiscount()
