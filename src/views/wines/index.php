@@ -6,7 +6,7 @@
   <div class="card-body">
     <h5 class="card-title"><?= $wine['name'] ?></h5>
     <p class="card-text"><?= $wine['description'] ?></p>
-    <a href="href=<?= BASE_DIR ?>/nos-vins/id=<?= $wine['id'] ?>" class="btn btn-primary">Voir le vin</a>
+    <a href="href=<?= BASE_DIR ?>/nos-vins/id?=<?= $wine['id'] ?>" class="btn btn-primary">Voir le vin</a>
   </div>
 </div>
 <?php endforeach; ?>
