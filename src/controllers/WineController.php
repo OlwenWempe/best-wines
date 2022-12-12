@@ -29,6 +29,17 @@ class WineController extends Controller
     // task/show/10
     public function show(int $id)
     {
+        $title = "Nos-vins detail";
+        $wine = new Wine();
+
+        $wine = $wine->findOneBy($id);
+        if ($_SESSION['admin']['auth']) {
+            $this->renderAdminView('wines/showBox', compact('wine', 'title'));
+        } else {
+            $this->renderView('wines/showBox', compact('wines', 'title'));
+        }
+        
+        
     }
 
     public function insert()

@@ -12,7 +12,7 @@
     <div class="card mx-auto" style="width: 25vw;">
         <form action="<?= BASE_DIR ?>/user/register" method="POST" class="card-body">
             <div id="connection-card" class="card-header">
-                <h5 class="card-title text-center">Ajouter un utilisateur</h5>
+                <h5 class="card-title text-center">S'inscrire</h5>
             </div>
             <div class="mb-3 row">
                 <div class="">
