@@ -25,6 +25,42 @@ class WineController extends Controller
         $wines = $wine->findAll();
         $this->renderView('wines/index', compact('wines', 'title'));
     }
+
+    public function indexRed(): void
+    {
+        $title = "Nos-rouges";
+        $wine = new Wine();
+
+        $wines = $wine->findAllBy(['id_type_wine' => 1]);
+        $this->renderView('wines/index', compact('wines', 'title'));
+    }
+
+    public function indexWhite(): void
+    {
+        $title = "Nos-blancs";
+        $wine = new Wine();
+
+        $wines = $wine->findAllBy(['id_type_wine' => 2]);
+        $this->renderView('wines/index', compact('wines', 'title'));
+    }
+
+    public function indexRose(): void
+    {
+        $title = "Nos-roses";
+        $wine = new Wine();
+
+        $wines = $wine->findAllBy(['id_type_wine' => 3]);
+        $this->renderView('wines/index', compact('wines', 'title'));
+    }
+
+    public function indexChampagne(): void
+    {
+        $title = "Nos-champagnes";
+        $wine = new Wine();
+
+        $wines = $wine->findAllBy(['id_type_wine' => 4]);
+        $this->renderView('wines/index', compact('wines', 'title'));
+    }
     // ?id=10
     // task/show/10
     public function show(): void
