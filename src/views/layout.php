@@ -50,14 +50,19 @@
                                 Nos vins
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Nos rouges</a></li>
-                                <li><a class="dropdown-item" href="#">Nos blancs</a></li>
-                                <li><a class="dropdown-item" href="#">Nos rosés</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-vins/all">Tous nos vins</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-rouges/all">Nos
+                                        rouges</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-blancs/all">Nos
+                                        blancs</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-roses/all">Nos
+                                        rosés</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Nos champagnes</a></li>
-                                <li><a class="dropdown-item" href="#">Nos mousseux</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-champagnes/all">Nos
+                                        champagnes</a></li>
+                                <!-- <li><a class="dropdown-item" href="<?= BASE_DIR ?>/nos-vins/all">Nos mousseux</a></li> -->
                             </ul>
                         </li>
                         <li class="nav-item">

@@ -54,13 +54,13 @@ Router::register('/nos-coffrets/edit', 'BoxController::edit');
 Router::register('/nos-vins/', 'WineController::show');
 Router::register('/nos-vins/all', 'WineController::index');
 Router::register('/nos-rouges/', 'WineController::show');
-Router::register('/nos-rouges/all', 'WineController::indexRed');
+Router::register('/nos-rouges/all', 'WineController::indexColor');
 Router::register('/nos-blancs/', 'WineController::show');
-Router::register('/nos-blancs/all', 'WineController::indexWhite');
+Router::register('/nos-blancs/all', 'WineController::indexColor');
 Router::register('/nos-roses/', 'WineController::show');
-Router::register('/nos-roses/all', 'WineController::indexRose');
+Router::register('/nos-roses/all', 'WineController::indexColor');
 Router::register('/nos-champagnes/', 'WineController::show');
-Router::register('/nos-champagnes/all', 'WineController::indexChampagne');
+Router::register('/nos-champagnes/all', 'WineController::indexColor');
 
 //Blog
 
