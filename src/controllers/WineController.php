@@ -31,7 +31,7 @@ class WineController extends Controller
         $title = "Nos-rouges";
         $wine = new Wine();
 
-        $wines = $wine->findAllBy(['id_type_wine' => 1]);
+        $wines = $wine->findAllBy(['id_type_wine' => 1], $is_array = true);
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
@@ -40,7 +40,7 @@ class WineController extends Controller
         $title = "Nos-blancs";
         $wine = new Wine();
 
-        $wines = $wine->findAllBy(['id_type_wine' => 2]);
+        $wines = $wine->findAllBy(['id_type_wine' => 2], $is_array = true);
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
@@ -49,7 +49,7 @@ class WineController extends Controller
         $title = "Nos-roses";
         $wine = new Wine();
 
-        $wines = $wine->findAllBy(['id_type_wine' => 3]);
+        $wines = $wine->findAllBy(['id_type_wine' => 3], $is_array = true);
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
@@ -58,7 +58,7 @@ class WineController extends Controller
         $title = "Nos-champagnes";
         $wine = new Wine();
 
-        $wines = $wine->findAllBy(['id_type_wine' => 4]);
+        $wines = $wine->findAllBy(['id_type_wine' => 4], $is_array = true);
         $this->renderView('wines/index', compact('wines', 'title'));
     }
     // ?id=10
