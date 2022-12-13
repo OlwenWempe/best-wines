@@ -107,13 +107,6 @@
     <footer>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <style> #footer{
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
                 <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/Logo_icon .png"
                         alt="brand logo" width="200" height="200"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -122,8 +115,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <ul class="nav-item">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <div class="nav-item">
                             <a class="nav-link" href="#">
                                 Nos vins
                             </a>
@@ -142,11 +135,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Nos mousseux</a>
                         </li>
-                        </ul>
+                        </div>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Nos coffrets</a>
                         </li>
-                        <ul class="nav-item">
+                        <div class="nav-item">
                             <a class="nav-link" href="#">Aide</a>
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
@@ -157,8 +150,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
-                        </ul>
-                        <ul class="nav-item">
+                        </div>
+                        <div class="nav-item">
                             <a class="nav-link" href="#"> </br></a>
                             <li class="nav-item">
                             <a class="nav-link" href="#">Presse</a>
@@ -169,7 +162,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Blog</a>
                         </li>
-                        </ul>
+                </div>
                     </ul>
                 </div>
             </div>
