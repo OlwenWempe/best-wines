@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 09 déc. 2022 à 11:56
--- Version du serveur : 10.4.24-MariaDB
--- Version de PHP : 8.0.19
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 13 déc. 2022 à 14:37
+-- Version du serveur : 8.0.27
+-- Version de PHP : 8.1.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `best_wines`
+-- Base de données : `best-wines`
 --
 
 -- --------------------------------------------------------
@@ -27,10 +27,35 @@ SET time_zone = "+00:00";
 -- Structure de la table `accord_tag`
 --
 
-CREATE TABLE `accord_tag` (
-  `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `accord_tag`;
+CREATE TABLE IF NOT EXISTS `accord_tag` (
+  `accord_id` int NOT NULL AUTO_INCREMENT,
+  `accord_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`accord_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `accord_tag`
+--
+
+INSERT INTO `accord_tag` (`accord_id`, `accord_name`) VALUES
+(2, 'viande rouge'),
+(3, 'viande blanche'),
+(4, 'fromages'),
+(5, 'apéritif'),
+(6, 'dessert'),
+(7, 'crustacés'),
+(8, 'Gibier'),
+(9, 'Cuisine du monde'),
+(10, 'Volaille'),
+(11, 'Charcuterie'),
+(12, 'Dessert chocolaté'),
+(13, 'Barbecue'),
+(14, 'Champignon'),
+(15, 'Poisson'),
+(16, 'Foie gras'),
+(17, 'Entrée'),
+(18, 'Dessert fruité');
 
 -- --------------------------------------------------------
 
@@ -38,9 +63,12 @@ CREATE TABLE `accord_tag` (
 -- Structure de la table `accord_tag_wine`
 --
 
-CREATE TABLE `accord_tag_wine` (
-  `id_accord_tag` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
+DROP TABLE IF EXISTS `accord_tag_wine`;
+CREATE TABLE IF NOT EXISTS `accord_tag_wine` (
+  `id_accord_tag` int NOT NULL,
+  `id_wine` int NOT NULL,
+  KEY `id_accord_tag` (`id_accord_tag`),
+  KEY `id_wine` (`id_wine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -49,14 +77,26 @@ CREATE TABLE `accord_tag_wine` (
 -- Structure de la table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `phone_number` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `phone_number` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`, `phone_number`) VALUES
+(1, 'Xavier', 'Dorival', 'xavierdorival@hotmail.com', '$argon2i$v=19$m=65536,t=4,p=1$MkhBdGcydGlpbVN5M2dWYg$i0K6yA/SbHMeGGpHuP55tDkvMTvVJUqYjJV4vm30aPw', '0683620301'),
+(2, 'Olwen', 'Wempe', 'olwen.wempe@hotmail.fr', '$argon2i$v=19$m=65536,t=4,p=1$c0lVMFJZeXNmcjNHQXFLTw$Uk3N25yQASsI8UGatuhHaBdQAqqwDXFXPT3Ibna/UK8', '0683620301'),
+(3, 'Rie', 'Manzani', 'rie.manzani@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$R29JMk94YUllZDhrTTJNeA$JYS2BI+mWDWXxI5WXDtUdhZ73C0LtIlvzv4Xa5hFkmI', '0123456789'),
+(5, 'Raphaël', 'Gonçalves', 'raphael.goncalves.viana@gmail.com', '$argon2i$v=19$m=65536,t=4,p=1$NnBkd2kxWHhJZ01Ra1VYNg$r6hVNL3zgz0bX35uBExhjInWnegIUeYQrGYGvTvriVY', '0123456789');
 
 -- --------------------------------------------------------
 
@@ -64,14 +104,17 @@ CREATE TABLE `admin` (
 -- Structure de la table `article`
 --
 
-CREATE TABLE `article` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `picture_link` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
-  `id_admin` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id_admin` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_employee` (`id_admin`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -79,8 +122,9 @@ CREATE TABLE `article` (
 -- Structure de la table `client`
 --
 
-CREATE TABLE `client` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -89,9 +133,11 @@ CREATE TABLE `client` (
   `zipcode` varchar(10) NOT NULL,
   `city` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `joined_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `id_ticket_de_vente` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `joined_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_ticket_de_vente` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_ticket_de_vente` (`id_ticket_de_vente`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -99,17 +145,21 @@ CREATE TABLE `client` (
 -- Structure de la table `coffret`
 --
 
-CREATE TABLE `coffret` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+DROP TABLE IF EXISTS `coffret`;
+CREATE TABLE IF NOT EXISTS `coffret` (
+  `box_id` int NOT NULL AUTO_INCREMENT,
+  `box_name` varchar(255) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `description` text NOT NULL,
   `link_picture_mini` varchar(255) NOT NULL,
   `link_picture_max` varchar(255) NOT NULL,
-  `prix_d_achat` int(8) NOT NULL,
-  `prix_de_vente` int(8) NOT NULL,
-  `stock` int(8) NOT NULL,
-  `id_discount` int(11) NOT NULL,
-  `id_coffret_detail` int(11) NOT NULL
+  `prix_d_achat` int NOT NULL,
+  `prix_de_vente` int NOT NULL,
+  `stock` int NOT NULL,
+  `id_discount` int NOT NULL,
+  `id_coffret_detail` int NOT NULL,
+  PRIMARY KEY (`box_id`),
+  KEY `id_discount` (`id_discount`),
+  KEY `id_product` (`id_coffret_detail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -118,9 +168,12 @@ CREATE TABLE `coffret` (
 -- Structure de la table `coffret_detail`
 --
 
-CREATE TABLE `coffret_detail` (
-  `id_wine` int(11) NOT NULL,
-  `id_coffret` int(11) NOT NULL
+DROP TABLE IF EXISTS `coffret_detail`;
+CREATE TABLE IF NOT EXISTS `coffret_detail` (
+  `id_wine` int NOT NULL,
+  `id_coffret` int NOT NULL,
+  KEY `id_wine` (`id_wine`),
+  KEY `id_coffret` (`id_coffret`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -129,13 +182,16 @@ CREATE TABLE `coffret_detail` (
 -- Structure de la table `comment`
 --
 
-CREATE TABLE `comment` (
-  `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id_wine` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_product` (`id_wine`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -143,13 +199,15 @@ CREATE TABLE `comment` (
 -- Structure de la table `currencies`
 --
 
-CREATE TABLE `currencies` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `currencies`;
+CREATE TABLE IF NOT EXISTS `currencies` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `country` varchar(58) DEFAULT NULL,
   `currency` varchar(39) DEFAULT NULL,
   `code` varchar(14) DEFAULT NULL,
-  `minor_unit` varchar(9) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `minor_unit` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=267 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `currencies`
@@ -428,14 +486,16 @@ INSERT INTO `currencies` (`id`, `country`, `currency`, `code`, `minor_unit`) VAL
 -- Structure de la table `discount`
 --
 
-CREATE TABLE `discount` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `discount`;
+CREATE TABLE IF NOT EXISTS `discount` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL,
-  `pourcentage` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `pourcentage` int NOT NULL,
+  `id_admin` int NOT NULL,
+  `id_wine` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -443,11 +503,14 @@ CREATE TABLE `discount` (
 -- Structure de la table `ligne_de_vente`
 --
 
-CREATE TABLE `ligne_de_vente` (
-  `id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `ligne_de_vente`;
+CREATE TABLE IF NOT EXISTS `ligne_de_vente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` int NOT NULL,
+  `id_wine` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_article` (`id_wine`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -455,13 +518,15 @@ CREATE TABLE `ligne_de_vente` (
 -- Structure de la table `note`
 --
 
-CREATE TABLE `note` (
-  `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `note` int(11) NOT NULL,
-  `id_client` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `note` int NOT NULL,
+  `id_client` int NOT NULL,
+  `id_wine` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -469,13 +534,17 @@ CREATE TABLE `note` (
 -- Structure de la table `pays`
 --
 
-CREATE TABLE `pays` (
-  `id` smallint(5) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `pays`;
+CREATE TABLE IF NOT EXISTS `pays` (
+  `id` smallint UNSIGNED NOT NULL AUTO_INCREMENT,
   `alpha3` varchar(3) NOT NULL,
   `nom_en_gb` varchar(45) NOT NULL,
   `nom_fr_fr` varchar(45) NOT NULL,
-  `id_currencies` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id_currencies` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alpha3` (`alpha3`),
+  KEY `id_currencies` (`id_currencies`)
+) ENGINE=MyISAM AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `pays`
@@ -730,14 +799,18 @@ INSERT INTO `pays` (`id`, `alpha3`, `nom_en_gb`, `nom_fr_fr`, `id_currencies`) V
 -- Structure de la table `promotional_code`
 --
 
-CREATE TABLE `promotional_code` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `promotional_code`;
+CREATE TABLE IF NOT EXISTS `promotional_code` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
   `name` varchar(12) NOT NULL,
-  `percentage` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `percentage` int NOT NULL,
+  `id_admin` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
+  KEY `id_employee` (`id_admin`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -745,16 +818,19 @@ CREATE TABLE `promotional_code` (
 -- Structure de la table `purchase_order`
 --
 
-CREATE TABLE `purchase_order` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `purchase_order`;
+CREATE TABLE IF NOT EXISTS `purchase_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `comment` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_delivery` datetime NOT NULL,
   `date_last_update` datetime NOT NULL,
-  `id_supplier` int(11) NOT NULL,
+  `id_supplier` int NOT NULL,
   `currency_code` varchar(4) NOT NULL,
-  `send` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `send` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_supplier` (`id_supplier`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -762,11 +838,14 @@ CREATE TABLE `purchase_order` (
 -- Structure de la table `purchase_order_line`
 --
 
-CREATE TABLE `purchase_order_line` (
-  `id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `purchase_order_line`;
+CREATE TABLE IF NOT EXISTS `purchase_order_line` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` int NOT NULL,
+  `id_wine` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_product` (`id_wine`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -774,11 +853,27 @@ CREATE TABLE `purchase_order_line` (
 -- Structure de la table `region`
 --
 
-CREATE TABLE `region` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `id_pays` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `region`;
+CREATE TABLE IF NOT EXISTS `region` (
+  `region_id` int NOT NULL AUTO_INCREMENT,
+  `region_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `id_pays` int NOT NULL,
+  PRIMARY KEY (`region_id`),
+  KEY `id_country` (`id_pays`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `region`
+--
+
+INSERT INTO `region` (`region_id`, `region_name`, `id_pays`) VALUES
+(1, 'Languedoc-Roussillon', 75),
+(2, 'Bordeaux', 75),
+(3, 'Champagne', 75),
+(4, 'Navarre', 203),
+(5, 'Rhône', 75),
+(6, 'Sud-Ouest', 75),
+(7, 'Savoie-Bugey', 75);
 
 -- --------------------------------------------------------
 
@@ -786,21 +881,33 @@ CREATE TABLE `region` (
 -- Structure de la table `supplier`
 --
 
-CREATE TABLE `supplier` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE IF NOT EXISTS `supplier` (
+  `supplier_id` int NOT NULL AUTO_INCREMENT,
   `logo` varchar(255) NOT NULL,
   `photo_optionnelle` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
+  `supplier_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `supplier_created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `adress` varchar(255) NOT NULL,
   `zipcode` varchar(10) NOT NULL,
   `city` varchar(255) NOT NULL,
-  `id_pays` int(11) NOT NULL,
+  `id_pays` int NOT NULL,
   `phone_number` varchar(25) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `siren` varchar(14) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `siren` varchar(14) NOT NULL,
+  PRIMARY KEY (`supplier_id`),
+  KEY `id_pays` (`id_pays`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `supplier`
+--
+
+INSERT INTO `supplier` (`supplier_id`, `logo`, `photo_optionnelle`, `supplier_name`, `supplier_created_at`, `adress`, `zipcode`, `city`, `id_pays`, `phone_number`, `email`, `password`, `siren`) VALUES
+(1, 'shgjjhghhghg', NULL, 'Super-vin', '2022-12-11 16:38:36', 'Kerimelin', '56930', 'Pluméliau-Bieuzy', 75, '0683620301', 'olwen.wempe@hotmail.fr', '$argon2i$v=19$m=65536,t=4,p=1$VW9SY1dnVkxtZHZQNVA5WQ$YAZ++WcUmeFqzxDTseWto6PLkKJDKBgc5bRbqZhk7yc', '05468435435358'),
+(2, 'shgjjhghhghg', NULL, 'premier vin', '2022-12-11 16:53:34', 'Kerimelin', '56930', 'Pluméliau-Bieuzy', 1, '0123456789', 'vanessa.marais@hotmail.fr', '$argon2i$v=19$m=65536,t=4,p=1$NVBUVU5zTXZVbTR3VmtXdw$D2Jm1bUBUm14JjNLOsQWmOxUsiQLCyCDDmWdSVT/sM4', '05468435435358'),
+(3, 'shgjjhghhghg', NULL, 'olwen', '2022-12-11 16:56:07', 'Kerimelin', '56930', 'Pluméliau-Bieuzy', 75, '0658362031', 'julien.wempe@hotmail.fr', '$argon2i$v=19$m=65536,t=4,p=1$VlMzN1lKc28uQXhyWjYyNQ$zRQNHY7Ps2E+1PCgBBdDBR4YuocvxkwYbNehgNdspQs', '05468435435358');
 
 -- --------------------------------------------------------
 
@@ -808,10 +915,33 @@ CREATE TABLE `supplier` (
 -- Structure de la table `taste_tag`
 --
 
-CREATE TABLE `taste_tag` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `taste_tag`;
+CREATE TABLE IF NOT EXISTS `taste_tag` (
+  `taste_id` int NOT NULL AUTO_INCREMENT,
+  `taste_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`taste_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `taste_tag`
+--
+
+INSERT INTO `taste_tag` (`taste_id`, `taste_name`) VALUES
+(1, 'boisé'),
+(2, 'fruité'),
+(3, 'puissant'),
+(4, 'charpenté'),
+(5, 'délicat'),
+(6, 'charnu'),
+(7, 'vif'),
+(8, 'Léger'),
+(9, 'Elégant'),
+(10, 'Racé'),
+(11, 'Sec '),
+(12, 'aromatique'),
+(13, 'souple '),
+(14, 'Effervescent'),
+(15, 'Agrumes');
 
 -- --------------------------------------------------------
 
@@ -819,9 +949,12 @@ CREATE TABLE `taste_tag` (
 -- Structure de la table `taste_tag_wine`
 --
 
-CREATE TABLE `taste_tag_wine` (
-  `id_taste_tag` int(11) NOT NULL,
-  `id_wine` int(11) NOT NULL
+DROP TABLE IF EXISTS `taste_tag_wine`;
+CREATE TABLE IF NOT EXISTS `taste_tag_wine` (
+  `id_taste_tag` int NOT NULL,
+  `id_wine` int NOT NULL,
+  KEY `id_taste_tag` (`id_taste_tag`),
+  KEY `id_wine` (`id_wine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -830,11 +963,13 @@ CREATE TABLE `taste_tag_wine` (
 -- Structure de la table `ticket_de_vente`
 --
 
-CREATE TABLE `ticket_de_vente` (
-  `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `id_ligne_de_vente` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `ticket_de_vente`;
+CREATE TABLE IF NOT EXISTS `ticket_de_vente` (
+  `vente_id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_ligne_de_vente` int NOT NULL,
+  PRIMARY KEY (`vente_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -842,10 +977,22 @@ CREATE TABLE `ticket_de_vente` (
 -- Structure de la table `type_wine`
 --
 
-CREATE TABLE `type_wine` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `type_wine`;
+CREATE TABLE IF NOT EXISTS `type_wine` (
+  `type_id` int NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`type_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `type_wine`
+--
+
+INSERT INTO `type_wine` (`type_id`, `type_name`) VALUES
+(1, 'rouge'),
+(2, 'blanc'),
+(3, 'rosé'),
+(4, 'champagne');
 
 -- --------------------------------------------------------
 
@@ -853,315 +1000,47 @@ CREATE TABLE `type_wine` (
 -- Structure de la table `wine`
 --
 
-CREATE TABLE `wine` (
-  `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `name` varchar(255) NOT NULL,
+DROP TABLE IF EXISTS `wine`;
+CREATE TABLE IF NOT EXISTS `wine` (
+  `wine_id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `wine_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `description` text NOT NULL,
   `grape_variety` varchar(255) NOT NULL,
   `link_picture_mini` varchar(255) DEFAULT NULL,
   `link_picture_max` varchar(255) DEFAULT NULL,
   `prix_d_achat` decimal(5,2) NOT NULL,
   `prix_de_vente` decimal(5,2) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `id_note` int(11) DEFAULT NULL,
-  `id_region` int(11) NOT NULL,
-  `id_type_wine` int(11) NOT NULL,
-  `id_taste_tag` int(11) NOT NULL,
-  `id_accord_tag` int(11) NOT NULL,
-  `id_discount` int(11) DEFAULT NULL,
-  `id_supplier` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stock` int NOT NULL,
+  `id_note` int DEFAULT NULL,
+  `id_region` int NOT NULL,
+  `id_type_wine` int NOT NULL,
+  `id_taste_tag` int NOT NULL,
+  `id_accord_tag` int NOT NULL,
+  `id_discount` int DEFAULT NULL,
+  `id_supplier` int NOT NULL,
+  PRIMARY KEY (`wine_id`),
+  KEY `id_note` (`id_note`),
+  KEY `id_region` (`id_region`),
+  KEY `id_type_wine` (`id_type_wine`),
+  KEY `id_taste_tag` (`id_taste_tag`),
+  KEY `id_accord_tag` (`id_accord_tag`),
+  KEY `id_discount` (`id_discount`),
+  KEY `id_supplier` (`id_supplier`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 --
--- Index pour les tables déchargées
+-- Déchargement des données de la table `wine`
 --
 
---
--- Index pour la table `accord_tag`
---
-ALTER TABLE `accord_tag`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `accord_tag_wine`
---
-ALTER TABLE `accord_tag_wine`
-  ADD KEY `id_accord_tag` (`id_accord_tag`),
-  ADD KEY `id_wine` (`id_wine`);
-
---
--- Index pour la table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_employee` (`id_admin`);
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_ticket_de_vente` (`id_ticket_de_vente`);
-
---
--- Index pour la table `coffret`
---
-ALTER TABLE `coffret`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_discount` (`id_discount`),
-  ADD KEY `id_product` (`id_coffret_detail`);
-
---
--- Index pour la table `coffret_detail`
---
-ALTER TABLE `coffret_detail`
-  ADD KEY `id_wine` (`id_wine`),
-  ADD KEY `id_coffret` (`id_coffret`);
-
---
--- Index pour la table `comment`
---
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_wine`);
-
---
--- Index pour la table `currencies`
---
-ALTER TABLE `currencies`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `discount`
---
-ALTER TABLE `discount`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `ligne_de_vente`
---
-ALTER TABLE `ligne_de_vente`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_article` (`id_wine`);
-
---
--- Index pour la table `note`
---
-ALTER TABLE `note`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `pays`
---
-ALTER TABLE `pays`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `alpha3` (`alpha3`),
-  ADD KEY `id_currencies` (`id_currencies`);
-
---
--- Index pour la table `promotional_code`
---
-ALTER TABLE `promotional_code`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `id_employee` (`id_admin`);
-
---
--- Index pour la table `purchase_order`
---
-ALTER TABLE `purchase_order`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_supplier` (`id_supplier`);
-
---
--- Index pour la table `purchase_order_line`
---
-ALTER TABLE `purchase_order_line`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_product` (`id_wine`);
-
---
--- Index pour la table `region`
---
-ALTER TABLE `region`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_country` (`id_pays`);
-
---
--- Index pour la table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pays` (`id_pays`);
-
---
--- Index pour la table `taste_tag`
---
-ALTER TABLE `taste_tag`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `taste_tag_wine`
---
-ALTER TABLE `taste_tag_wine`
-  ADD KEY `id_taste_tag` (`id_taste_tag`),
-  ADD KEY `id_wine` (`id_wine`);
-
---
--- Index pour la table `ticket_de_vente`
---
-ALTER TABLE `ticket_de_vente`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `type_wine`
---
-ALTER TABLE `type_wine`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `wine`
---
-ALTER TABLE `wine`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_note` (`id_note`),
-  ADD KEY `id_region` (`id_region`),
-  ADD KEY `id_type_wine` (`id_type_wine`),
-  ADD KEY `id_taste_tag` (`id_taste_tag`),
-  ADD KEY `id_accord_tag` (`id_accord_tag`),
-  ADD KEY `id_discount` (`id_discount`),
-  ADD KEY `id_supplier` (`id_supplier`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `accord_tag`
---
-ALTER TABLE `accord_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `article`
---
-ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `coffret`
---
-ALTER TABLE `coffret`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `comment`
---
-ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `currencies`
---
-ALTER TABLE `currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=267;
-
---
--- AUTO_INCREMENT pour la table `discount`
---
-ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `ligne_de_vente`
---
-ALTER TABLE `ligne_de_vente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `note`
---
-ALTER TABLE `note`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `pays`
---
-ALTER TABLE `pays`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
-
---
--- AUTO_INCREMENT pour la table `promotional_code`
---
-ALTER TABLE `promotional_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `purchase_order`
---
-ALTER TABLE `purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `purchase_order_line`
---
-ALTER TABLE `purchase_order_line`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `region`
---
-ALTER TABLE `region`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `taste_tag`
---
-ALTER TABLE `taste_tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `ticket_de_vente`
---
-ALTER TABLE `ticket_de_vente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `type_wine`
---
-ALTER TABLE `type_wine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `wine`
---
-ALTER TABLE `wine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `wine` (`wine_id`, `created_at`, `wine_name`, `description`, `grape_variety`, `link_picture_mini`, `link_picture_max`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_note`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_discount`, `id_supplier`) VALUES
+(1, '2022-12-11 17:48:20', 'Super-vin', 'hjjfjdfjhjhdjs', '100% Merlot', NULL, NULL, '15.00', '20.00', 100, NULL, 1, 1, 1, 2, NULL, 1),
+(2, '2022-12-11 22:33:51', 'BBBB', 'sdfggfshgfgfsfd', '100% Sauvignon', NULL, NULL, '15.25', '30.00', 200, NULL, 1, 2, 1, 2, NULL, 2),
+(3, '2022-12-11 22:36:20', 'Languedoc-Roussillon', 'fkdjgfkjgirei,gvi', '100% Sauvignon', NULL, 'wine4.jpg', '2.25', '5.60', 100, NULL, 1, 2, 1, 2, NULL, 3),
+(4, '2022-12-11 22:39:29', 'premier vin', 'knfdgkbnndfgb', '100% Merlot', NULL, 'uploads/63964e119c084.jpeg', '2.54', '5.60', 150, NULL, 1, 1, 1, 2, NULL, 2),
+(5, '2022-12-11 23:28:48', 'vin numero 1', 'vbvcbvcbvnhgh', 'kfkdfkfk', '????\0JFIF\0\0`\0`\0\0??\0;CREATOR: gd-jpeg v1.0 (using IJG JPEG v80), quality = 85\n??\0C\0	\Z!\Z\"$\"$??\0C??\0\0?\0?\"\0??\0\0\0\0\0\0\0\0\0', 'uploads/639659a01b7d2.png', '12.00', '30.00', 12, NULL, 1, 1, 1, 2, NULL, 1),
+(6, '2022-12-11 23:42:06', 'dffdfd', 'fggfggfhgf', 'hgkjkjhkjh jhk', 'uploads/63965cbe7ba45.jpeg', 'uploads/63965cbe773bd.jpeg', '14.00', '28.00', 14, NULL, 1, 4, 1, 2, NULL, 3),
+(7, '2022-12-12 00:06:02', 'ANGEL DE LARRAINZAR 2018', ': Régalez vous avec ce Angel 2018 doublement médaillé... Une vraie bête de concours, d\'une souplesse et d\'un soyeux incroyable !\r\nLa Bodega Pago de Larrainzar plantée sur un terroir calcaire est parfaitement adapté à la production de grands vins espagnols. Souhaitant créer de vins de grande qualité, elle a décidé de planter des cépages comme le Merlot, le Cabernet Sauvignon en plus des cépages beaucoup plus traditionnels comme le Tempranillo et le Garnacha. Vendanges réalisées entre Septembre et Octobre, vinification digne de celles utilisée des grands châteaux de Bordeaux, une sélection très minitieuse des raisins pour un résultat somptueux : Vos papilles vont naviguer entre suavité et puissance aromatique...\r\n', '40% Tempranillo, 30% Cabernet-sauvignon, 25% Merlot, 5% Grenache', 'uploadsMini/6396625aab119.png', 'uploads/6396625aab119.png', '4.50', '9.00', 12, NULL, 1, 1, 1, 2, NULL, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
