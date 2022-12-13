@@ -37,7 +37,6 @@ class Router
         }
 
         [$controller_name, $action_name] = explode('::', self::$routes[$request_uri]);
-
         $controller_name = 'App\\Controllers\\' . $controller_name;
         $instance = new $controller_name();
         call_user_func_array([$instance, $action_name], []);

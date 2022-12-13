@@ -52,10 +52,7 @@ Router::register('/nos-coffrets/edit', 'BoxController::edit');
 //nos vins
 
 Router::register('/nos-vins/all', 'WineController::index');
-Router::register('/nos-vins/delete', 'WineController::delete');
 Router::register('/nos-vins/', 'WineController::show');
-Router::register('/nos-vins/add', 'WineController::insert');
-Router::register('/nos-vins/edit', 'WineController::edit');
 
 //exemple
 

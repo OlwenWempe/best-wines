@@ -1,7 +1,9 @@
 :root{
     --main-color: #fff;
-    --bordeaux : #9e121b;
-    --gris : rgb(243, 243, 243);
+    --bordeaux : rgb(158, 18, 27);
+    --gris : #f3f3f3;
+    --gris-trans : rgba(243, 243, 243, 0.5);
+    --bordeaux-trans : rgba(158, 18, 27, 0.5);
 }
 
 .navbar{
@@ -19,11 +21,21 @@
     color: var(--gris) !important;
     border-color: var(--bordeaux) !important;
 }
+.wineShow{
+    background-color: rgba(243, 243, 243, 0.5);
+    width: 75vw;
+    margin: auto;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
 #main-body{
     background-image: url("../../assets/img/wine1.png");
     background-size: cover;
 }
-section{
+.adminSection{
     background-color: var(--gris);
 }
 #body404{
@@ -42,4 +54,8 @@ section{
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
+}
+.showSubtitle{
+    font-size: 1.25rem;
+    color: var(--bordeaux);
 }
