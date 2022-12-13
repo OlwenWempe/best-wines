@@ -20,7 +20,7 @@
     border-color: var(--bordeaux) !important;
 }
 #main-body{
-    background-image: url("../../assets/img/wine1.jpg");
+    background-image: url("../../assets/img/wine1.png");
     background-size: cover;
 }
 section{
@@ -28,7 +28,7 @@ section{
 }
 #body404{
     background-color: var(--gris);
-    background-image: url("../../assets/img/wine70.jpg");
+    background-image: url("../../assets/img/wine70.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
