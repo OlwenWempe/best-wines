@@ -192,7 +192,7 @@ class Coffret  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO coffret (`name`, `description`, `link_picture_max`, `link_picture_mini`, `prix_d_achat` , `prix_de_vente`, `stock`, `id_coffret_detail`) 
+            "INSERT INTO coffret (`box_name`, `description`, `link_picture_max`, `link_picture_mini`, `prix_d_achat` , `prix_de_vente`, `stock`, `id_coffret_detail`) 
             VALUES (:name, :description, :link_picture_max, :link_picture_mini, :prix_d_achat, :prix_de_vente, :stock, :id_coffret_detail)"
         );
 
@@ -213,7 +213,7 @@ class Coffret  extends Model
     public function edit(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "UPDATE coffret SET `name` = :new_name, `description` = :new_description, `prix_d_achat` = :new_prix_d_achat , `prix_de_vente` = :new_prix_de_vente, `stock = :new_stock, `id_discount` = :new_id_discount, `id_coffret_detail` = :new_id_coffret_detail WHERE id = :id"
+            "UPDATE coffret SET `box_name` = :new_name, `description` = :new_description, `prix_d_achat` = :new_prix_d_achat , `prix_de_vente` = :new_prix_de_vente, `stock = :new_stock, `id_discount` = :new_id_discount, `id_coffret_detail` = :new_id_coffret_detail WHERE id = :id"
         );
 
         $stmt->execute([

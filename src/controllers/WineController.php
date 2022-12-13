@@ -35,7 +35,8 @@ class WineController extends Controller
             try {
                 $wine = new Wine();
 
-                $wine = $wine->find($id, $is_array = true);
+                $wine = $wine->findWine($id, $is_array = true);
+                dump($wine);
                 if ($_SESSION['admin']['auth']) {
                     $pays = new Pays();
                     $payss = $pays->findAll();
