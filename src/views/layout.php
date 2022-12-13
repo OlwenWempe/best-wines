@@ -88,6 +88,7 @@
 
     </main>
 
+<<<<<<< HEAD
     <footer>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -177,4 +178,81 @@
         </body>
     </footer>
 
+=======
+    <footer class="container-fluid">
+        <nav id="footerNav" class="navbar navbar-expand-lg">
+            
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <div class="nav-item">
+                            <a class="nav-link" href="#">
+                                <h3>Nos vins</h3>
+                            </a>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">- Nos rouges</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Nos blanc</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Nos rosés</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Nos champagnes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Nos mousseux</a>
+                        </li>
+                        </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><h3>Nos coffrets</h3></a>
+                        </li>
+                        <div class="d-flex align-items-center">
+                        <a class=" navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/Logo_icon .png"
+                        alt="brand logo" width="150" height="150"></a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link" href="#"><h3>Aide</h3></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Mentions légales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Contact</a>
+                        </li>
+                        </div>
+                        <div class="nav-item">
+                            <a class="nav-link" href="#"><h3 style="color:var(--bordeaux)">placeholder</h3></a>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">- Presse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Qui sommes nous ?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">- Blog</a>
+                        </li>
+                </div>
+                    </ul>
+                </div>
+            
+        </nav>
+                </footer>
+
+    <script src="<?= BASE_DIR ?>/assets/js/index.js"></script>
+    <script src="<?= BASE_DIR ?>/dist/index.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+</body>
+>>>>>>> d9626ab2141ea96dbabfa7ffb9247c8f971d69a6
 </html>
