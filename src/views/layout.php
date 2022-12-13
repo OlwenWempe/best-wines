@@ -100,24 +100,24 @@
             <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <div class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= BASE_DIR ?>/nos-vins/all">
                             <h3>Nos vins</h3>
                         </a>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Nos rouges</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-rouges/all">- Nos rouges</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Nos blanc</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-blancs/all">- Nos blanc</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Nos rosés</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-roses/all">- Nos rosés</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Nos champagnes</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-champagnes/all">- Nos champagnes</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">- Nos mousseux</a>
-                        </li>
+                        </li> -->
                     </div>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
