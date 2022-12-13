@@ -88,27 +88,10 @@
 
     </main>
 
-<footer>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= BASE_DIR ?>/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= BASE_DIR ?>/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= BASE_DIR ?>/favicon-16x16.png"> 
-    <link rel="manifest" href="<?= BASE_DIR ?>/site.webmanifest">
-    <link rel="stylesheet" href="<?= BASE_DIR ?>/assets/css/style.css">
-    <title><?= $params['title'] ?></title>
-
-
-<body id="main-body">
-    <footer>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/Logo_icon .png"
-                        alt="brand logo" width="200" height="200"></a>
+    <footer class="container-fluid">
+        <nav id="footerNav" class="navbar navbar-expand-lg">
+            
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -118,54 +101,58 @@
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <div class="nav-item">
                             <a class="nav-link" href="#">
-                                Nos vins
+                                <h3>Nos vins</h3>
                             </a>
                             <li class="nav-item">
-                            <a class="nav-link" href="#">Nos rouges</a>
+                            <a class="nav-link" href="#">- Nos rouges</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos blanc</a>
+                            <a class="nav-link" href="#">- Nos blanc</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos rosés</a>
+                            <a class="nav-link" href="#">- Nos rosés</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos champagnes</a>
+                            <a class="nav-link" href="#">- Nos champagnes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos mousseux</a>
+                            <a class="nav-link" href="#">- Nos mousseux</a>
                         </li>
                         </div>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos coffrets</a>
+                            <a class="nav-link" href="#"><h3>Nos coffrets</h3></a>
                         </li>
+                        <div class="d-flex align-items-center">
+                        <a class=" navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/Logo_icon .png"
+                        alt="brand logo" width="150" height="150"></a>
+                        </div>
                         <div class="nav-item">
-                            <a class="nav-link" href="#">Aide</a>
+                            <a class="nav-link" href="#"><h3>Aide</h3></a>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">FAQ</a>
+                            <a class="nav-link" href="#">- FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mentions légales</a>
+                            <a class="nav-link" href="#">- Mentions légales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="#">- Contact</a>
                         </li>
                         </div>
                         <div class="nav-item">
-                            <a class="nav-link" href="#"> </br></a>
+                            <a class="nav-link" href="#"><h3 style="color:var(--bordeaux)">placeholder</h3></a>
                             <li class="nav-item">
-                            <a class="nav-link" href="#">Presse</a>
+                            <a class="nav-link" href="#">- Presse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Qui sommes nous ?</a>
+                            <a class="nav-link" href="#">- Qui sommes nous ?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="#">- Blog</a>
                         </li>
                 </div>
                     </ul>
                 </div>
-            </div>
+            
         </nav>
                 </footer>
 
@@ -176,6 +163,4 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 </body>
-</footer>
-
 </html>
