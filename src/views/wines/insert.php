@@ -35,7 +35,7 @@
             <select name="id_region" id="id_region">
                 <option selected>Selectionnez la région</option>
                 <?php foreach ($regions as $region) : ?>
-                <option value="<?= $region['id'] ?>"><?= $region['name'] ?></option>
+                <option value="<?= $region['region_id'] ?>"><?= $region['region_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -48,7 +48,7 @@
             <select name="id_type_wine" id="id_type_wine">
                 <option selected>Selectionnez le type de vin.</option>
                 <?php foreach ($types as $type) : ?>
-                <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                <option value="<?= $type['type_id'] ?>"><?= $type['type_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -57,7 +57,7 @@
             <select name="id_taste_tag" id="id_taste_tag">
                 <option selected>Selectionnez le goût.</option>
                 <?php foreach ($tasteTags as $tasteTag) : ?>
-                <option value="<?= $tasteTag['id'] ?>"><?= $tasteTag['name'] ?></option>
+                <option value="<?= $tasteTag['taste_id'] ?>"><?= $tasteTag['taste_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -66,7 +66,7 @@
             <select name="id_accord_tag" id="id_accord_tag">
                 <option selected>Selectionnez l'accord'.</option>
                 <?php foreach ($accordTags as $accordTag) : ?>
-                <option value="<?= $accordTag['id'] ?>"><?= $accordTag['name'] ?></option>
+                <option value="<?= $accordTag['accord_id'] ?>"><?= $accordTag['accord_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -75,7 +75,7 @@
             <select name="id_supplier" id="id_supplier">
                 <option selected>Selectionnez le fournisseur.</option>
                 <?php foreach ($suppliers as $supplier) : ?>
-                <option value="<?= $supplier['id'] ?>"><?= $supplier['name'] ?></option>
+                <option value="<?= $supplier['supplier_id'] ?>"><?= $supplier['supplier_name'] ?></option>
                 <?php endforeach ?>
             </select>
         </div>
