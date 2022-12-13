@@ -224,6 +224,10 @@ class WineController extends Controller
         $pays = new Pays();
         $payss = $pays->findAll($is_array = true);
 
+        $region = new Region();
+        $regions = $region->findAll($is_array = true);
+
+
         if (isset($_POST['soumettre'])) {
 
             $region = new Region();
@@ -236,8 +240,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
+            $this->renderAdminView('tags/addRegion', compact('regions', 'message', 'title', 'payss'));
         }
+        $this->renderAdminView('tags/addRegion', compact('regions', 'title', 'payss'));
     }
 
     //permets d'ajouter le type de vin dans le menu select
@@ -247,6 +252,9 @@ class WineController extends Controller
 
         $pays = new Pays();
         $payss = $pays->findAll($is_array = true);
+
+        $type = new TypeWine();
+        $types = $type->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
             $type = new TypeWine();
@@ -258,8 +266,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
+            $this->renderAdminView('tags/addType', compact('types', 'title','message', 'payss'));
         }
+        $this->renderAdminView('tags/addType', compact('types', 'title', 'payss'));
     }
 
     //permets d'ajouter les goûts des vins dans le menu select.
@@ -269,6 +278,9 @@ class WineController extends Controller
 
         $pays = new Pays();
         $payss = $pays->findAll($is_array = true);
+
+        $taste = new TasteTag();
+        $tastes = $taste->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
             $taste = new TasteTag();
@@ -280,8 +292,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
+            $this->renderAdminView('tags/addTaste', compact('tastes', 'title','message', 'payss'));
         }
+        $this->renderAdminView('tags/addTaste', compact('tastes', 'title', 'payss'));
     }
 
     //permets d'ajouter avec quoi accorder les vins dans le menu select.
@@ -291,6 +304,9 @@ class WineController extends Controller
 
         $pays = new Pays();
         $payss = $pays->findAll($is_array = true);
+
+        $accord = new AccordTag();
+        $accords = $accord->findAll($is_array = true);
 
         if (isset($_POST['soumettre'])) {
 
@@ -303,8 +319,9 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('admin/index', compact('message', 'title', 'payss'));
+            $this->renderAdminView('tags/addAccord', compact('accords', 'title', 'message', 'payss'));
         }
+        $this->renderAdminView('tags/addAccord', compact('accords', 'title', 'payss'));
     }
 
     public function deleteRegion()
