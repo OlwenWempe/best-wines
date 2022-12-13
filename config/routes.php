@@ -54,6 +54,20 @@ Router::register('/nos-coffrets/edit', 'BoxController::edit');
 Router::register('/nos-vins/all', 'WineController::index');
 Router::register('/nos-vins/', 'WineController::show');
 
+//Blog
+
+
+
+// rubrique aide
+
+Router::register('/aide/', 'HelpController::show');
+Router::register('/aide/qui-sommes-nous', 'HelpController::showQui');
+Router::register('/aide/mentions-legales', 'HelpController::showMentions');
+Router::register('/aide/faq', 'HelpController::showFaq');
+Router::register('/aide/contact', 'HelpController::showcontact');
+Router::register('/aide/presse', 'HelpController::showPresse');
+
+
 //exemple
 
 Router::register('/products/all', 'ProductController::index');
