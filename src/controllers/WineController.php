@@ -25,6 +25,68 @@ class WineController extends Controller
         $wines = $wine->findAll();
         $this->renderView('wines/index', compact('wines', 'title'));
     }
+
+    public function indexColor(): void
+    {
+        if ($_SERVER['REQUEST_URI'] == BASE_DIR . "/nos-rouges/all") {
+            $id = 1;
+            $name = "rouges";
+        }
+        if ($_SERVER['REQUEST_URI'] == BASE_DIR . "/nos-blancs/all") {
+            $id = 2;
+            $name = "blancs";
+        }
+        if ($_SERVER['REQUEST_URI'] == BASE_DIR . "/nos-roses/all") {
+            $id = 3;
+            $name = "roses";
+        }
+        if ($_SERVER['REQUEST_URI'] == BASE_DIR . "/nos-champagnes/all") {
+            $id = 4;
+            $name = "champagnes";
+        }
+
+        $title = "Nos-" . $name;
+        $wine = new Wine();
+
+        $wines = $wine->findAllBy(['id_type_wine' => $id], $is_array = true);
+        $this->renderView('wines/index', compact('wines', 'title'));
+    }
+
+    // public function indexRed(): void
+    // {
+    //     $title = "Nos-rouges";
+    //     $wine = new Wine();
+
+    //     $wines = $wine->findAllBy(['id_type_wine' => 1], $is_array = true);
+    //     $this->renderView('wines/index', compact('wines', 'title'));
+    // }
+
+    // public function indexWhite(): void
+    // {
+    //     $title = "Nos-blancs";
+    //     $wine = new Wine();
+
+    //     $wines = $wine->findAllBy(['id_type_wine' => 2], $is_array = true);
+    //     $this->renderView('wines/index', compact('wines', 'title'));
+    // }
+
+    // public function indexRose(): void
+    // {
+    //     $title = "Nos-roses";
+    //     $wine = new Wine();
+
+    //     $wines = $wine->findAllBy(['id_type_wine' => 3], $is_array = true);
+    //     $this->renderView('wines/index', compact('wines', 'title'));
+    // }
+
+    // public function indexChampagne(): void
+    // {
+    //     $title = "Nos-champagnes";
+    //     $wine = new Wine();
+
+    //     $wines = $wine->findAllBy(['id_type_wine' => 4], $is_array = true);
+    //     $this->renderView('wines/index', compact('wines', 'title'));
+    // }
     // ?id=10
     // task/show/10
     public function show(): void

@@ -1,14 +1,15 @@
 <section class='my-5'>
     <?php if (isset($success)) : ?>
-    <div>
-        <span class="text-success text-center"><?= $success ?></span>
+    <div class="mx-auto col-5 alert alert-success">
+        <p class="text-center"><?= $success ?></p>
     </div>
     <?php endif; ?>
     <?php if (isset($error)) : ?>
-    <div>
-        <span class="text-danger text-center"><?= $error ?></span>
+    <div class="mx-auto col-5 alert alert-danger">
+        <p class="text-center"><?= $error ?></p>
     </div>
     <?php else : ?>
+    <?php dump($_GET) ?>
     <div class="container wineShow">
         <div class="row">
             <h1 class="text-center my-5"><?= $wine['wine_name'] ?></h1>

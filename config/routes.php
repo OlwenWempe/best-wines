@@ -51,8 +51,30 @@ Router::register('/nos-coffrets/edit', 'BoxController::edit');
 
 //nos vins
 
-Router::register('/nos-vins/all', 'WineController::index');
 Router::register('/nos-vins/', 'WineController::show');
+Router::register('/nos-vins/all', 'WineController::index');
+Router::register('/nos-rouges/', 'WineController::show');
+Router::register('/nos-rouges/all', 'WineController::indexColor');
+Router::register('/nos-blancs/', 'WineController::show');
+Router::register('/nos-blancs/all', 'WineController::indexColor');
+Router::register('/nos-roses/', 'WineController::show');
+Router::register('/nos-roses/all', 'WineController::indexColor');
+Router::register('/nos-champagnes/', 'WineController::show');
+Router::register('/nos-champagnes/all', 'WineController::indexColor');
+
+//Blog
+
+
+
+// rubrique aide
+
+Router::register('/aide/', 'HelpController::show');
+Router::register('/aide/qui-sommes-nous', 'HelpController::showQui');
+Router::register('/aide/mentions-legales', 'HelpController::showMentions');
+Router::register('/aide/faq', 'HelpController::showFaq');
+Router::register('/aide/contact', 'HelpController::showcontact');
+Router::register('/aide/presse', 'HelpController::showPresse');
+
 
 //exemple
 

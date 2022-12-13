@@ -9,6 +9,9 @@ main{
     min-height: 70vh;
 }
 
+main{
+    min-height: 70vh;
+}
 .navbar{
     background-color: var(--gris);
 }
