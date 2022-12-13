@@ -30,7 +30,6 @@ class Router
     public static function resolve(string $request_uri): void
     {
         $request_uri = explode("?", $request_uri)[0];
-
         if (!isset(self::$routes[$request_uri])) {
             $redirect = new AdminController;
             $redirect->checkUnlogged(BASE_DIR . "/admin/");
@@ -38,7 +37,6 @@ class Router
         }
 
         [$controller_name, $action_name] = explode('::', self::$routes[$request_uri]);
-
         $controller_name = 'App\\Controllers\\' . $controller_name;
         $instance = new $controller_name();
         call_user_func_array([$instance, $action_name], []);

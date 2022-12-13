@@ -58,7 +58,7 @@ class Region  extends Model
     }
     public function insert(): int|false
     {
-        $stmt = $this->pdo->prepare("INSERT INTO region (name, id_pays) VALUES (:name, :id_pays)");
+        $stmt = $this->pdo->prepare("INSERT INTO region (region_name, id_pays) VALUES (:name, :id_pays)");
 
         $stmt->execute([
             'name' => $this->name,

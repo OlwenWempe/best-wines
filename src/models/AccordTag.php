@@ -17,7 +17,7 @@ class AccordTag  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -38,9 +38,9 @@ class AccordTag  extends Model
     {
         $this->name = $name;
     }
-    public function insert() : int|false
+    public function insert(): int|false
     {
-        $stmt = $this->pdo->prepare("INSERT INTO accord_tag (name) VALUES (:name)");
+        $stmt = $this->pdo->prepare("INSERT INTO accord_tag (accord_name) VALUES (:name)");
 
         $stmt->execute([
             'name' => $this->name

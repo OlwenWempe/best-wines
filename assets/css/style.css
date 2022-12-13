@@ -1,7 +1,9 @@
 :root{
     --main-color: #fff;
     --bordeaux : #9e121b;
-    --gris : rgb(243, 243, 243);
+    --gris : #f3f3f3;
+    --gris-trans : rgba(243, 243, 243, 0.5);
+    --bordeaux-trans : rgba(158, 18, 27, 0.5);
 }
 
 .navbar{
@@ -19,22 +21,8 @@
     color: var(--gris) !important;
     border-color: var(--bordeaux) !important;
 }
-#main-body{
-    background-image: url("../../assets/img/wine1.jpg");
-    background-size: cover;
-}
-section{
-    background-color: var(--gris);
-}
-#body404{
-    background-color: var(--gris);
-    background-image: url("../../assets/img/wine5.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-#section404{
-    background-color: rgba(243, 243, 243, 0.5);
+.wineShow{
+    background-color: var(--gris-trans);
     width: 75vw;
     margin: auto;
     border-radius: 1rem;
@@ -42,4 +30,51 @@ section{
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
+}
+#main-body{
+    background-image: url("../../assets/img/wine1.png");
+    background-size: cover;
+}
+.adminSection{
+    background-color: var(--gris);
+}
+#body404{
+    background-color: var(--gris);
+    background-image: url("../../assets/img/wine70.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#section404{
+    background-color: var(--gris-trans);
+    width: 75vw;
+    margin: auto;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+.showSubtitle{
+    font-size: 1.25rem;
+    color: var(--bordeaux);
+}
+
+footer{
+    background-color: var(--bordeaux) !important;
+    border-top: 2px solid black;
+    padding: 10px;
+}
+#footerNav{
+    background-color: var(--bordeaux) !important;
+}
+#footerNav a{
+    color: var(--gris);
+}
+#footerNav ul{
+    line-height: 0.75rem;
+}
+#footerNav h3{
+    font-size: 1.2rem;
+    font-weight: bold;
 }

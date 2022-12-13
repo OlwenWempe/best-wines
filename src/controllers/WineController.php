@@ -27,8 +27,27 @@ class WineController extends Controller
     }
     // ?id=10
     // task/show/10
-    public function show(int $id)
+    public function show(): void
     {
+        $title = "Nos-vins detail";
+        if (isset($_GET['id']) && $_GET['id'] != '' && is_numeric($_GET['id'])) {
+            $id = $_GET['id'];
+            try {
+                $wine = new Wine();
+
+                $wine = $wine->findWine($id, $is_array = true);
+                if ($_SESSION['admin']['auth']) {
+                    $pays = new Pays();
+                    $payss = $pays->findAll();
+                    $this->renderAdminView('wines/showWine', compact('wine', 'payss', 'title'));
+                } else {
+                    $this->renderView('wines/showWine', compact('wine', 'title'));
+                }
+            } catch (\Exception $th) {
+                $error = "Désolé nous ne connaissons pas ce produit.";
+                $this->renderView('wines/showWine', compact('title', 'error'));
+            }
+        }
     }
 
     public function insert()

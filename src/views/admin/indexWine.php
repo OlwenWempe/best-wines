@@ -36,10 +36,16 @@
                     <?php
                         foreach ($wines as $wine) : ?>
                     <tr class=" table-danger">
-                        <td><?= $wine['id'] ?></td>
-                        <td><img src=" <?= BASE_DIR . "/".$wine['link_picture_mini'] ?>" alt="<?= $wine['name'] ?>">
+                        <td>
+                            <a href="<?= BASE_DIR ?>/nos-vins/?id=<?= $wine['wine_id'] ?>" class="btn btn-primary">Voir
+                                le
+                                vin</a>
                         </td>
-                        <td><?= $wine['name'] ?></td>
+                        <td><?= $wine['wine_id'] ?></td>
+                        <td><img src=" <?= BASE_DIR . "/" . $wine['link_picture_mini'] ?>"
+                                alt="<?= $wine['wine_name'] ?>">
+                        </td>
+                        <td><?= $wine['wine_name'] ?></td>
                         <td><?= substr($wine['description'], 0, 100) ?></td>
                         <td><?= $wine['grape_variety'] ?></td>
                         <td><?= $wine['prix_d_achat'] ?> €</td>
