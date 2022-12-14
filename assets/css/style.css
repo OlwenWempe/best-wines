@@ -5,6 +5,9 @@
     --gris-trans : rgba(243, 243, 243, 0.5);
     --bordeaux-trans : rgba(158, 18, 27, 0.5);
 }
+main{
+    min-height: 70vh;
+}
 
 main{
     min-height: 70vh;
