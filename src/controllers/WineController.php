@@ -52,43 +52,7 @@ class WineController extends Controller
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
-    // public function indexRed(): void
-    // {
-    //     $title = "Nos-rouges";
-    //     $wine = new Wine();
 
-    //     $wines = $wine->findAllBy(['id_type_wine' => 1], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexWhite(): void
-    // {
-    //     $title = "Nos-blancs";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 2], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexRose(): void
-    // {
-    //     $title = "Nos-roses";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 3], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexChampagne(): void
-    // {
-    //     $title = "Nos-champagnes";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 4], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-    // ?id=10
-    // task/show/10
     public function show(): void
     {
         $title = "Nos-vins detail";
@@ -98,6 +62,7 @@ class WineController extends Controller
                 $wine = new Wine();
 
                 $wine = $wine->findWine($id, $is_array = true);
+                dd($wine);
                 if ($_SESSION['admin']['auth']) {
                     $pays = new Pays();
                     $payss = $pays->findAll();
@@ -136,6 +101,7 @@ class WineController extends Controller
 
         if (isset($_POST['submit'])) {
 
+            dd($_POST);
             // $chemin = $_FILES['link_picture_max']['name']; // le chemin en absolu
             // // vous pouvez travailler en url relative aussi: img.jpg
             // $x = 250; # largeur a redimensionner
@@ -328,7 +294,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('tags/addType', compact('types', 'title','message', 'payss'));
+            $this->renderAdminView('tags/addType', compact('types', 'title', 'message', 'payss'));
         }
         $this->renderAdminView('tags/addType', compact('types', 'title', 'payss'));
     }
@@ -354,7 +320,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('tags/addTaste', compact('tastes', 'title','message', 'payss'));
+            $this->renderAdminView('tags/addTaste', compact('tastes', 'title', 'message', 'payss'));
         }
         $this->renderAdminView('tags/addTaste', compact('tastes', 'title', 'payss'));
     }
