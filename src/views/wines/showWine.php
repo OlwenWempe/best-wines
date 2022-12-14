@@ -9,15 +9,15 @@
         <p class="text-center"><?= $error ?></p>
     </div>
     <?php else : ?>
-    <?php dump($_GET) ?>
     <div class="container wineShow">
         <div class="row">
             <h1 class="text-center my-5"><?= $wine['wine_name'] ?></h1>
             <div class="col-5">
-                <img src="<?= BASE_DIR . "/" . $wine['link_picture_max'] ?>" alt="<?= $wine['name'] ?>">
+                <img class="w-100" src="<?= BASE_DIR . "/" . $wine['link_picture_max'] ?>"
+                    alt="<?= $wine['wine_name'] ?>">
                 <div class="mt-5 d-flex justify-content-around">
                     <div>
-                        <p class="btn btn-light">Réf : <?= $wine['id'] ?></p>
+                        <p class="btn btn-light">Réf : <?= $wine['wine_id'] ?></p>
                         <?php if ($wine['stock'] <= 10) : ?>
                         <p>Stock limité</p>
                         <?php endif ?>
@@ -48,9 +48,9 @@
                 <h2 class="ms-2 showSubtitle">Variant :</h2>
                 <p><?= $wine['type_name'] ?></p>
                 <h2 class="ms-2 showSubtitle">Saveurs :</h2>
-                <p><?= $wine['id_taste_tag'] ?></p>
+                <p></p>
                 <h2 class="ms-2 showSubtitle">S'accorde avec :</h2>
-                <p><?= $wine['id_accord_tag'] ?></p>
+                <p></p>
 
             </div>
         </div>
