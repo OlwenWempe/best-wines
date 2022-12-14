@@ -48,4 +48,22 @@ class TasteTag  extends Model
 
         return $this->pdo->lastInsertId();
     }
+
+    public function findAccord(int $id, bool $is_array = false): array|object|false
+    {
+
+        $stmt = $this->pdo->prepare("SELECT * FROM taste_tag_wine INNER JOIN taste_tag on taste_tag.taste_id = taste_tag_wine.id_taste_tag WHERE taste_tag_wine.id_wine = :id ");
+        $stmt->bindParam(':id', $id);
+
+
+        if ($is_array)
+            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+
+
+        else
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
