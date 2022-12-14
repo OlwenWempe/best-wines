@@ -5,6 +5,7 @@ require_once 'core/Router.php';
 
 use Core\Router;
 
+Router::register('/', 'PageController::homepage');
 //client
 
 Router::register('/login', 'UserController::login');
@@ -63,9 +64,8 @@ Router::register('/nos-champagnes/', 'WineController::show');
 Router::register('/nos-champagnes/all', 'WineController::indexColor');
 
 //Blog
-Router::register('/blog/blog', 'HelpController::showBlog');
-Router::register('/blog/article1', 'HelpController::showarticle1');
-Router::register('/blog/article2', 'HelpController::showarticle2');
+Router::register('/blog/all', 'HelpController::showBlog');
+Router::register('/blog/', 'HelpController::showarticle');
 
 
 // rubrique aide
