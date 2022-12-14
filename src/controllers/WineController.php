@@ -101,6 +101,7 @@ class WineController extends Controller
 
         if (isset($_POST['submit'])) {
 
+            dd($_POST);
             // $chemin = $_FILES['link_picture_max']['name']; // le chemin en absolu
             // // vous pouvez travailler en url relative aussi: img.jpg
             // $x = 250; # largeur a redimensionner
@@ -293,7 +294,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('tags/addType', compact('types', 'title','message', 'payss'));
+            $this->renderAdminView('tags/addType', compact('types', 'title', 'message', 'payss'));
         }
         $this->renderAdminView('tags/addType', compact('types', 'title', 'payss'));
     }
@@ -319,7 +320,7 @@ class WineController extends Controller
             } else {
                 $message =  "échec";
             }
-            $this->renderAdminView('tags/addTaste', compact('tastes', 'title','message', 'payss'));
+            $this->renderAdminView('tags/addTaste', compact('tastes', 'title', 'message', 'payss'));
         }
         $this->renderAdminView('tags/addTaste', compact('tastes', 'title', 'payss'));
     }

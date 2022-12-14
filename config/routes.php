@@ -68,7 +68,6 @@ Router::register('/nos-champagnes/all', 'WineController::indexColor');
 
 // rubrique aide
 
-Router::register('/aide/', 'HelpController::show');
 Router::register('/aide/qui-sommes-nous', 'HelpController::showQui');
 Router::register('/aide/mentions-legales', 'HelpController::showMentions');
 Router::register('/aide/faq', 'HelpController::showFaq');
