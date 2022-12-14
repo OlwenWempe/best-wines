@@ -22,7 +22,7 @@
                             <?php endforeach ?>
                     </select>
                     <input class="my-2 btn btn-primary form-control" type="submit" name="soumettre"
-                    value="soumettre">
+                    value="Envoyer">
                 </form>
         </div>
 
