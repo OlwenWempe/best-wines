@@ -22,8 +22,17 @@ class WineController extends Controller
         $title = "Nos-vins";
         $wine = new Wine();
 
-        $wines = $wine->findAll();
-        $this->renderView('wines/index', compact('wines', 'title'));
+        $winess = $wine->findAll();
+        $accord_tag = new AccordTag();
+        foreach ($winess as $wine) {
+            $id = $wine['wine_id'];
+            $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+            $wine['accord_tags'] = $accord_tags;
+            $wines[] = $wine;
+        }
+
+
+        $this->renderView('wines/index', compact('wines', 'accord_tags', 'title'));
     }
 
     public function indexColor(): void
@@ -62,7 +71,6 @@ class WineController extends Controller
                 $wine = new Wine();
 
                 $wine = $wine->findWine($id, $is_array = true);
-                dd($wine);
                 if ($_SESSION['admin']['auth']) {
                     $pays = new Pays();
                     $payss = $pays->findAll();
@@ -100,22 +108,6 @@ class WineController extends Controller
         $suppliers = $supplier->findAll();
 
         if (isset($_POST['submit'])) {
-
-            dd($_POST);
-            // $chemin = $_FILES['link_picture_max']['name']; // le chemin en absolu
-            // // vous pouvez travailler en url relative aussi: img.jpg
-            // $x = 250; # largeur a redimensionner
-            // $y = 250; # hauteur a redimensionner
-
-            // Header("Content-type: image/jpeg");
-            // $img_new = imagecreatefromjpeg($chemin);
-            // dd($img_new);
-            // $size = getimagesize($chemin);
-            // $img_mini = imagecreatetruecolor($x, $y);
-            // imagecopyresampled($img_mini, $img_new, 0, 0, 0, 0, $x, $y, $size[0], $size[1]);
-            // $img_mini = imagejpeg($img_mini);
-
-
 
             if (count($_FILES) == 1) {
                 $allowed[] = "image/jpeg";
@@ -171,8 +163,8 @@ class WineController extends Controller
             $wine->setStock(strip_tags($_POST['stock']));
             $wine->setIdRegion(strip_tags($_POST['id_region']));
             $wine->setIdTypeWine(strip_tags($_POST['id_type_wine']));
-            $wine->setIdTasteTag(strip_tags($_POST['id_taste_tag']));
-            $wine->setIdAccordTag(strip_tags($_POST['id_accord_tag']));
+            $wine->setIdTasteTag(($_POST['id_taste_tag']));
+            $wine->setIdAccordTag(($_POST['id_accord_tag']));
             $wine->setIdSupplier(strip_tags($_POST['id_supplier']));
 
 
@@ -227,8 +219,8 @@ class WineController extends Controller
             $wine->setStock(strip_tags($_POST['stock']));
             $wine->setIdRegion(strip_tags($_POST['id_region']));
             $wine->setIdTypeWine(strip_tags($_POST['id_type_wine']));
-            $wine->setIdTasteTag(strip_tags($_POST['id_taste_tag']));
-            $wine->setIdAccordTag(strip_tags($_POST['id_accord_tag']));
+            $wine->setIdTasteTag(($_POST['id_taste_tag']));
+            $wine->setIdAccordTag(($_POST['id_accord_tag']));
             $wine->setIdSupplier(strip_tags($_POST['id_supplier']));
 
 

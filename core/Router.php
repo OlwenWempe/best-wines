@@ -31,8 +31,8 @@ class Router
     {
         $request_uri = explode("?", $request_uri)[0];
         if (!isset(self::$routes[$request_uri])) {
-            $redirect = new AdminController;
-            $redirect->checkUnlogged(BASE_DIR . "/admin/");
+            // $redirect = new AdminController;
+            // $redirect->checkUnlogged(BASE_DIR . "/admin/");
             Controller::render404View();
         }
 

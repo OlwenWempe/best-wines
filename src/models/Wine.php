@@ -19,8 +19,8 @@ class Wine  extends Model
     private int $id_note;
     private int $id_region;
     private int $id_type_wine;
-    private int $id_taste_tag;
-    private int $id_accord_tag;
+    private array $id_taste_tag;
+    private array $id_accord_tag;
     private int $id_discount;
     private int $id_supplier;
     protected string $table_name = "wine";
@@ -244,35 +244,35 @@ class Wine  extends Model
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getIdTasteTag(): int
+    public function getIdTasteTag(): array
     {
         return $this->id_taste_tag;
     }
 
     /**
-     * @param int $id_taste_tag
+     * @param array $id_taste_tag
      * @return void
      */
-    public function setIdTasteTag(int $id_taste_tag): void
+    public function setIdTasteTag(array $id_taste_tag): void
     {
         $this->id_taste_tag = $id_taste_tag;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getIdAccordTag(): int
+    public function getIdAccordTag(): array
     {
         return $this->id_accord_tag;
     }
 
     /**
-     * @param int $id_accord_tag
+     * @param array $id_accord_tag
      * @return void
      */
-    public function setIdAccordTag(int $id_accord_tag): void
+    public function setIdAccordTag(array $id_accord_tag): void
     {
         $this->id_accord_tag = $id_accord_tag;
     }
@@ -318,8 +318,8 @@ class Wine  extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO wine (`wine_name`, `description`, `grape_variety`, `link_picture_max`, `link_picture_mini`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_taste_tag`, `id_accord_tag`, `id_supplier`) 
-            VALUES (:name, :description, :grape_variety, :link_picture_max, :link_picture_mini, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_taste_tag, :id_accord_tag, :id_supplier)"
+            "INSERT INTO wine (`wine_name`, `description`, `grape_variety`, `link_picture_max`, `link_picture_mini`, `prix_d_achat`, `prix_de_vente`, `stock`, `id_region`, `id_type_wine`, `id_supplier`) 
+            VALUES (:name, :description, :grape_variety, :link_picture_max, :link_picture_mini, :prix_d_achat, :prix_de_vente, :stock, :id_region, :id_type_wine, :id_supplier)"
         );
 
         $stmt->execute([
@@ -333,12 +333,37 @@ class Wine  extends Model
             'stock' => $this->stock,
             'id_region' => $this->id_region,
             'id_type_wine' => $this->id_type_wine,
-            'id_taste_tag' => $this->id_taste_tag,
-            'id_accord_tag' => $this->id_accord_tag,
             'id_supplier' => $this->id_supplier
         ]);
 
-        return $this->pdo->lastInsertId();
+        $id_wine = $this->pdo->lastInsertId();
+        $count = count($_POST['id_taste_tag']);
+
+        for ($i = 0; $i < $count; $i++) {
+            $stmt1 = $this->pdo->prepare(
+                "INSERT INTO taste_tag_wine (`id_taste_tag`, `id_wine`) 
+                VALUES (:id_taste_tag, :id_wine)"
+            );
+
+            $stmt1->execute([
+                'id_taste_tag' => $this->id_taste_tag[$i],
+                'id_wine' => $id_wine
+            ]);
+        }
+
+        $count = count($_POST['id_accord_tag']);
+        for ($i = 0; $i < $count; $i++) {
+            $stmt2 = $this->pdo->prepare(
+                "INSERT INTO accord_tag_wine (`id_accord_tag`, `id_wine`) 
+                VALUES (:id_accord_tag, :id_wine)"
+            );
+
+            $stmt2->execute([
+                'id_accord_tag' => $this->id_accord_tag[$i],
+                'id_wine' => $id_wine
+            ]);
+        }
+        return $id_wine;
     }
 
     public function edit(): int|false
@@ -351,8 +376,8 @@ class Wine  extends Model
             'new_name' => $this->name,
             'new_description' => $this->description,
             'new_grape_variety' => $this->grape_variety,
-            // 'link_picture_max' => $this->link_picture_max,
-            // 'link_picture_mini' => $this->link_picture_mini,
+            'link_picture_max' => $this->link_picture_max,
+            'link_picture_mini' => $this->link_picture_mini,
             'new_prix_d_achat' => $this->prix_d_achat,
             'new_prix_de_vente' => $this->prix_de_vente,
             'new_stock' => $this->stock,

@@ -6,44 +6,50 @@
 
     <?php endif; ?>
     <div class="card mx-auto" style="width: 25vw;">
-        <form action="<?= BASE_DIR ?>/nos-vins/add" method="post" class="card-body" enctype="multipart/form-data">
+        <form action="<?= BASE_DIR ?>/admin/addwine" method="post" class="card-body" enctype="multipart/form-data">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Ajouter un vin</h5>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="name">Nom :</label>
-                    <input class="form-control mt-3" type="text" name="name" id="name">
+                    <input value="<?php if (isset($_POST['name'])) echo $_POST['name'] ?>" class="form-control mt-3"
+                        type="text" name="name" id="name">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="description">Description :</label>
-                    <textarea class="form-control mt-3" type="text" name="description" id="description"></textarea>
+                    <textarea value="<?php if (isset($_POST['description'])) echo $_POST['description'] ?>"
+                        class="form-control mt-3" type="text" name="description" id="description"></textarea>
                 </div>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="link_picture_max">photo :</label>
-                    <input class="form-control mt-3" type="file" name="link_picture_max" id="link_picture_max">
+                    <input value="<?php if (isset($_POST['link_picture_max'])) echo $_POST['link_picture_max'] ?>"
+                        class="form-control mt-3" type="file" name="link_picture_max" id="link_picture_max">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="prix_d_achat">Prix d'achat :</label>
-                    <input class="form-control mt-3" type="number" step="any" name="prix_d_achat" id="prix_d_achat">
+                    <input value="<?php if (isset($_POST['prix_d_achat'])) echo $_POST['prix_d_achat'] ?>"
+                        class="form-control mt-3" type="number" step="any" name="prix_d_achat" id="prix_d_achat">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="prix_de_vente">Prix de vente :</label>
-                    <input class="form-control mt-3" type="number" step="any" name="prix_de_vente" id="prix_de_vente">
+                    <input value="<?php if (isset($_POST['prix_de_vente'])) echo $_POST['prix_de_vente'] ?>"
+                        class="form-control mt-3" type="number" step="any" name="prix_de_vente" id="prix_de_vente">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div>
                     <label for="stock">Quantité :</label>
-                    <input class="form-control mt-3" type="number" name="stock" id="stock">
+                    <input value="<?php if (isset($_POST['stock'])) echo $_POST['stock'] ?>" class="form-control mt-3"
+                        type="number" name="stock" id="stock">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -77,8 +83,8 @@
             <div class="mb-3 row">
                 <div>
                     <label for="id_taste_tag">Goûts :</label>
-                    <select class="form-control mt-3" multiple="yes" name="id_taste_tag" id="id_taste_tag">
-                        <option selected>Selectionnez le goût.</option>
+                    <select class="form-control mt-3" multiple="yes" name="id_taste_tag[]" id="id_taste_tag">
+                        <option>Selectionnez le goût.</option>
                         <?php foreach ($tasteTags as $tasteTag) : ?>
                         <option value="<?= $tasteTag['taste_id'] ?>"><?= $tasteTag['taste_name'] ?></option>
                         <?php endforeach ?>
@@ -88,8 +94,8 @@
             <div class="mb-3 row">
                 <div>
                     <label for="id_accord_tag">S'accorde avec :</label>
-                    <select class="form-control mt-3" multiple="yes" name="id_accord_tag" id="id_accord_tag">
-                        <option selected>Selectionnez l'accord'.</option>
+                    <select class="form-control mt-3" multiple="yes" name="id_accord_tag[]" id="id_accord_tag">
+                        <option>Selectionnez l'accord'.</option>
                         <?php foreach ($accordTags as $accordTag) : ?>
                         <option value="<?= $accordTag['accord_id'] ?>"><?= $accordTag['accord_name'] ?></option>
                         <?php endforeach ?>
@@ -108,7 +114,7 @@
                 </div>
             </div>
             <div>
-                <input type="submit" name="submit" value="Enregistrer">
+                <input class="btn btn-primary" type="submit" name="submit" value="Enregistrer">
             </div>
         </form>
     </div>

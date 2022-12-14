@@ -48,4 +48,22 @@ class AccordTag  extends Model
 
         return $this->pdo->lastInsertId();
     }
+
+    public function findAccord(int $id, bool $is_array = false): array|object|false
+    {
+
+        $stmt = $this->pdo->prepare("SELECT * FROM accord_tag_wine INNER JOIN accord_tag on accord_tag.accord_id = accord_tag_wine.id_accord_tag WHERE accord_tag_wine.id_wine = :id ");
+        $stmt->bindParam(':id', $id);
+
+
+        if ($is_array)
+            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+
+
+        else
+            $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
