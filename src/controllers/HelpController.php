@@ -40,4 +40,11 @@ class HelpController extends Controller
         $title = "Presse";
         $this->renderView('aide/presse', compact('title'));
     }
+    
+    public function showBlog()
+    {
+
+        $title = "Presse";
+        $this->renderView('aide/presse', compact('title'));
+    }
 }

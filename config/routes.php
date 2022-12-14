@@ -63,7 +63,9 @@ Router::register('/nos-champagnes/', 'WineController::show');
 Router::register('/nos-champagnes/all', 'WineController::indexColor');
 
 //Blog
-
+Router::register('/blog/blog', 'HelpController::showBlog');
+Router::register('/blog/article1', 'HelpController::showarticle1');
+Router::register('/blog/article2', 'HelpController::showarticle2');
 
 
 // rubrique aide
@@ -73,6 +75,7 @@ Router::register('/aide/mentions-legales', 'HelpController::showMentions');
 Router::register('/aide/faq', 'HelpController::showFaq');
 Router::register('/aide/contact', 'HelpController::showContact');
 Router::register('/aide/presse', 'HelpController::showPresse');
+
 
 
 //exemple
