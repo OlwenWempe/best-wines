@@ -12,4 +12,11 @@ class HelpController extends Controller
         $title = "Qui sommes nous";
         $this->renderView('aide/qui', compact('title'));
     }
+
+    public function showMentions()
+    {
+
+        $title = "Qui sommes nous";
+        $this->renderView('aide/qui', compact('title'));
+    }
 }
