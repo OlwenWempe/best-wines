@@ -23,11 +23,14 @@ class WineController extends Controller
         $wine = new Wine();
 
         $winess = $wine->findAll();
+        $taste_tag = new TasteTag();
         $accord_tag = new AccordTag();
         foreach ($winess as $wine) {
             $id = $wine['wine_id'];
             $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+            $taste_tags = $taste_tag->findAccord($id, $is_array = true);
             $wine['accord_tags'] = $accord_tags;
+            $wine['taste_tags'] = $taste_tags;
             $wines[] = $wine;
         }
 
