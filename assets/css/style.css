@@ -37,10 +37,6 @@ main{
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
 }
-#main-body{
-    background-image: url("../../assets/img/wine1.png");
-    background-size: cover;
-}
 .adminSection{
     background-color: var(--gris);
 }
@@ -83,4 +79,12 @@ footer{
 #footerNav h3{
     font-size: 1.2rem;
     font-weight: bold;
+}
+.asideimg{
+    width: 20vw;
+    height: auto;
+}
+.card-img-top{
+    width: auto;
+    max-height: 150vh;
 }

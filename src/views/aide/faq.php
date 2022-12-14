@@ -1,5 +1,6 @@
-<section class="my-5">
-				<h1>FAQ</h1>
+<section class="my-5" id="bodyfaq">
+			
+            <h1>FAQ</h1>
 			<div>
 					<div class="faq">
 						<h2>Qu'est-ce que la page FAQ ?</h2>
