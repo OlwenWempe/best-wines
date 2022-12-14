@@ -17,6 +17,15 @@
                 <?php endfor ?>
             </div>
             <?php endif ?>
+            <?php if (count($wine['taste_tags']) > 0) : ?>
+            <div>
+                <?php $count = count($wine['taste_tags']);
+                        for ($i = 0; $i < $count; $i++) : ?>
+
+                <p class="rounded bg-warning my-2 px-2 d-inline-flex"><?= $wine['taste_tags'][$i]['taste_name'] ?></p>
+                <?php endfor ?>
+            </div>
+            <?php endif ?>
         </div>
     </div>
     <?php endforeach; ?>
