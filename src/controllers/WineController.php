@@ -52,43 +52,7 @@ class WineController extends Controller
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
-    // public function indexRed(): void
-    // {
-    //     $title = "Nos-rouges";
-    //     $wine = new Wine();
 
-    //     $wines = $wine->findAllBy(['id_type_wine' => 1], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexWhite(): void
-    // {
-    //     $title = "Nos-blancs";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 2], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexRose(): void
-    // {
-    //     $title = "Nos-roses";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 3], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-
-    // public function indexChampagne(): void
-    // {
-    //     $title = "Nos-champagnes";
-    //     $wine = new Wine();
-
-    //     $wines = $wine->findAllBy(['id_type_wine' => 4], $is_array = true);
-    //     $this->renderView('wines/index', compact('wines', 'title'));
-    // }
-    // ?id=10
-    // task/show/10
     public function show(): void
     {
         $title = "Nos-vins detail";
@@ -98,6 +62,7 @@ class WineController extends Controller
                 $wine = new Wine();
 
                 $wine = $wine->findWine($id, $is_array = true);
+                dd($wine);
                 if ($_SESSION['admin']['auth']) {
                     $pays = new Pays();
                     $payss = $pays->findAll();

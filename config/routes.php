@@ -72,7 +72,7 @@ Router::register('/aide/', 'HelpController::show');
 Router::register('/aide/qui-sommes-nous', 'HelpController::showQui');
 Router::register('/aide/mentions-legales', 'HelpController::showMentions');
 Router::register('/aide/faq', 'HelpController::showFaq');
-Router::register('/aide/contact', 'HelpController::showcontact');
+Router::register('/aide/contact', 'HelpController::showContact');
 Router::register('/aide/presse', 'HelpController::showPresse');
 
 
