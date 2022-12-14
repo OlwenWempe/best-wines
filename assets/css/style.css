@@ -88,3 +88,13 @@ footer{
     width: auto;
     max-height: 150vh;
 }
+
+.bdx{
+    color: var(--bordeaux);
+}
+.gray{
+    color: var(--gris);
+}
+.carousem-item{
+    height: 70vh;
+}
