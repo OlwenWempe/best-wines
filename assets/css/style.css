@@ -9,9 +9,6 @@ main{
     min-height: 70vh;
 }
 
-main{
-    min-height: 70vh;
-}
 #mainNav{
     background-color: var(--bordeaux);
     max-height: 7vh;
@@ -127,4 +124,9 @@ footer{
 
 #bodyfaq{
     background-position: right;
+}
+
+.navbar-brand
+{
+    background-size: cover;
 }
