@@ -18,7 +18,7 @@
 
 <body id="main-body">
     <header>
-        <nav class="navbar navbar-expand-lg justify-content-end">
+        <nav id="conNav" class="navbar navbar-expand-lg justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="login">connexion</a>
@@ -33,9 +33,9 @@
                 <?php endif; ?>
             </ul>
         </nav>
-        <nav class="navbar navbar-expand-lg">
+        <nav id="mainNav" class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
+                <a class="navbar-brand" href="#"><img class="navImg" src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
                         alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -79,8 +79,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
-                        <button class="btn btn-outline-danger" type="submit">Rechercher</button>
+                        <input class="form-control me-2" type="search" aria-label="Search">
+                        <input id="navBtn" class="gray" value="Rechercher" type="submit"></input>
                     </form>
                 </div>
             </div>
@@ -95,8 +95,6 @@
 
     <footer class="container-fluid">
         <nav id="footerNav" class="navbar navbar-expand-lg">
-
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -104,7 +102,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <div class="nav-item">
+                    <div class="">
                         <a class="nav-link" href="<?= BASE_DIR ?>/nos-vins/all">
                             <h3>Nos vins</h3>
                         </a>

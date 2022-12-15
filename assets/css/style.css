@@ -12,8 +12,35 @@ main{
 main{
     min-height: 70vh;
 }
-.navbar{
+#mainNav{
     background-color: var(--bordeaux);
+    max-height: 7vh;
+    border: 1px solid black ;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+#conNav{
+    background-color: var(--gris);
+    max-height: 3vh;
+    border: 1px solid black ;
+}
+#conNav a{
+    color: var(--bordeaux);
+}
+#mainNav img{
+    background-color: var(--main-color);
+    max-height: 6.8vh;
+}
+#navBtn{
+    background-color: var(--bordeaux);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 .nav-link{
     color: var(--gris);
@@ -70,7 +97,7 @@ footer{
 #footerNav{
     background-color: var(--bordeaux) !important;
 }
-#footerNav a{
+#footerNav li{
     color: var(--gris);
 }
 #footerNav ul{
@@ -88,7 +115,6 @@ footer{
     width: auto;
     max-height: 150vh;
 }
-
 .bdx{
     color: var(--bordeaux);
 }
