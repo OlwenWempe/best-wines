@@ -1,5 +1,5 @@
 <section class="my-5 container">
-    <h1>Conditions d'utilisation :</h1>
+    <h2>Conditions d'utilisation :</h2>
     <p>
         Ce site (www.bestwines.fr) est proposé en différents langages web (HTML, HTML5, Javascript, CSS, etc…) pour un
         meilleur confort d'utilisation et un graphisme plus agréable.
@@ -14,7 +14,7 @@
         découler.
     </p>
     <p>
-    <h1>Cookies :</h1>
+    <h2>Cookies :</h2>
     Le site www.bestwines.fr peut-être amené à vous demander l'acceptation des cookies pour des besoins de statistiques
     et d'affichage. Un cookie est une information déposée sur votre disque dur par le serveur du site que vous
     visitez.
@@ -39,7 +39,7 @@
     mise en place d'un hyperlien.
     </p>
     <p>
-    <h1>CLimitation contractuelles sur les données :</h1>
+    <h2>CLimitation contractuelles sur les données :</h2>
     Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à différentes
     périodes de l'année, mais peut toutefois contenir des inexactitudes ou des omissions.
     Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le signaler
@@ -56,7 +56,7 @@
     sur le réseau Internet ne sauraient engager la responsabilité de Best Wines.
     </p>
     <p>
-    <h1>Propriété intellectuelle :</h1>
+    <h2>Propriété intellectuelle :</h2>
     Tout le contenu du présent site www.anthedesign.fr, incluant, de façon non limitative, les graphismes, images,
     textes, vidéos, animations, sons, logos, gifs et icônes ainsi que leur mise en forme sont la propriété exclusive de
     la société à
