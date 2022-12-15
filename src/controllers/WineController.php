@@ -14,7 +14,7 @@ use Core\Controller;
 class WineController extends Controller
 {
     /**
-     * afficher la liste des tâches
+     * afficher la liste des vins
      * @return void
      */
     public function index(): void

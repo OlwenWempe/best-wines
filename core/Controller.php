@@ -47,4 +47,13 @@ abstract class Controller
     {
         require_once "src/views/404.php";
     }
+
+    public static function renderArticleView(array $params = []): void
+    {
+        extract($params);
+        ob_start();
+        require_once "src/views/admin/addArticle.php";
+        $content = ob_get_clean();
+        require_once "src/views/articleLayout.php";
+    }
 }

@@ -9,6 +9,7 @@ use App\Models\Wine;
 use App\Models\Coffret;
 use App\Models\Supplier;
 use App\Models\Pays;
+use App\Models\Article;
 use Core\Controller;
 use App\Models\Session;
 
@@ -239,5 +240,42 @@ class AdminController extends Controller
             }
         }
         $this->renderAdminView('admin/addSupplier', compact('title', 'payss'));
+    }
+
+
+    public function addArticle()
+    {
+        $this->checkLogged();
+        if (isset($_POST['submit'])) {
+            $article = new Article();
+            $article->setContent($_POST['content']);
+            $article->setIdAdmin($_SESSION['admin']['id']);
+            $result = $article->insert();
+            dump($result);
+            if ($result) {
+                $success = "insertion bien effectuée";
+                $this->renderArticleView(compact('success'));
+            } else {
+                $error = "échec";
+                $this->renderArticleView(compact('error'));
+            }
+        }
+        $this->renderArticleView();
+    }
+
+
+    /**
+     * afficher la liste des vins
+     * @return void
+     */
+    public function index(): void
+    {
+        $title = "Blog";
+        $article = new Article();
+
+        $articles = $article->findAll();
+
+
+        $this->renderView('blog/blog', compact('articles', 'title'));
     }
 }

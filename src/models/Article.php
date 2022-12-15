@@ -7,11 +7,9 @@ use Core\Model;
 class Article  extends Model
 {
     private int $id;
-    private string $title;
     private string $content;
-    private string $picture_link;
     private string $created_at;
-    private int $id_employee;
+    private int $id_admin;
     protected string $table_name = "article";
 
     // accesseurs (getters & setters)
@@ -21,26 +19,9 @@ class Article  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     * @return void
-     */
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
     }
 
     /**
@@ -63,23 +44,6 @@ class Article  extends Model
     /**
      * @return string
      */
-    public function getPictureLink(): string
-    {
-        return $this->picture_link;
-    }
-
-    /**
-     * @param string $picture_link
-     * @return void
-     */
-    public function setPictureLink(string $picture_link): void
-    {
-        $this->picture_link = $picture_link;
-    }
-
-    /**
-     * @return string
-     */
     public function getCreatedAt(): string
     {
         return $this->created_at;
@@ -88,30 +52,28 @@ class Article  extends Model
     /**
      * @return int
      */
-    public function getIdEmployee(): int
+    public function getIdAdmin(): int
     {
-        return $this->id_employee;
+        return $this->id_admin;
     }
 
     /**
-     * @param int $id_employee
+     * @param int $id_admin
      * @return void
      */
-    public function setIdEmployee(int $id_employee): void
+    public function setIdAdmin(int $id_admin): void
     {
-        $this->id_employee = $id_employee;
+        $this->id_admin = $id_admin;
     }
-    // public function insert() : int|false
-    // {
-    //     $stmt = $this->pdo->prepare("INSERT INTO task (name, to_do_at, is_done,id_user) VALUES (:name, :to_do_at, :is_done, :id_user)");
+    public function insert(): int|false
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO article (`content`, `id_admin`) VALUES (:content, :id_admin)");
 
-    //     $stmt->execute([
-    //         'name' => $this->name,
-    //         'to_do_at' => $this->to_do_at,
-    //         'is_done' => $this->is_done,
-    //         'id_user' => $this->id_user,
-    //     ]);
+        $stmt->execute([
+            'content' => $this->content,
+            'id_admin' => $this->id_admin
+        ]);
 
-    //     return $this->pdo->lastInsertId();
-    // }
+        return $this->pdo->lastInsertId();
+    }
 }
