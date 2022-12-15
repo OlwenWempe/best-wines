@@ -13,10 +13,10 @@ main{
     min-height: 70vh;
 }
 .navbar{
-    background-color: var(--gris);
+    background-color: var(--bordeaux);
 }
 .nav-link{
-    color: var(--bordeaux);
+    color: var(--gris);
 }
 .card-header{
     background-color: var(--bordeaux) !important;
