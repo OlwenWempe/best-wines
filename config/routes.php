@@ -64,9 +64,9 @@ Router::register('/nos-champagnes/', 'WineController::show');
 Router::register('/nos-champagnes/all', 'WineController::indexColor');
 
 //Blog
+
 Router::register('/blog/all', 'HelpController::showBlog');
 Router::register('/blog/', 'HelpController::showarticle');
-
 
 // rubrique aide
 
