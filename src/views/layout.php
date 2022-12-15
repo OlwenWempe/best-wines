@@ -26,7 +26,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="register">inscription</a>
                 </li>
-                <?php if (isset($_SESSION) && $_SESSION['admin']['auth']) : ?>
+                <?php if (isset($_SESSION['admin']['auth']) && $_SESSION['admin']['auth']) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASE_DIR ?>/admin/">Vue administrateur</a>
                 </li>
@@ -125,7 +125,7 @@
                         </li> -->
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?= BASE_DIR ?>/nos-coffrets/all">
                             <h3>Nos coffrets</h3>
                         </a>
                     </li>
@@ -134,31 +134,31 @@
                                 alt="brand logo" width="150" height="150"></a>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">
+                        <div class="gray nav-link">
                             <h3>Aide</h3>
-                        </a>
+                        </div>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- FAQ</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/faq">- FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Mentions légales</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/mentions-legales">- Mentions légales</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Contact</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/contact">- Contact</a>
                         </li>
                     </div>
                     <div class="nav-item">
-                        <a class="nav-link" href="#">
-                            <h3 style="color:var(--bordeaux)">placeholder</h3>
-                        </a>
+                        <div class="bdx nav-link">
+                            <h3 class="bdx">placeholder</h3>
+                        </div>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Presse</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/presse">- Presse</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Qui sommes nous ?</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/qui-sommes-nous">- Qui sommes nous ?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">- Blog</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/blog/all">- Blog</a>
                         </li>
                     </div>
                 </ul>
@@ -174,4 +174,5 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 </body>
+
 </html>
