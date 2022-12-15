@@ -45,6 +45,7 @@
                 <?php endif ?>
                 <h2 class="ms-2 showSubtitle">Provenance :</h2>
                 <p><?= $wine['region_name'] ?></p>
+                <p><?= $pays['nom_fr_fr'] ?></p>
                 <h2 class="ms-2 showSubtitle">Variant :</h2>
                 <p><?= $wine['type_name'] ?></p>
                 <h2 class="ms-2 showSubtitle">Saveurs :</h2>
