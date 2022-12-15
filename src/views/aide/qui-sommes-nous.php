@@ -15,7 +15,7 @@
 						<h2>Salle de fitness Colombes</h2>
 						<p>Les Olympiques de Condorcet</p>
                         <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/wwine23.png"
+                <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/wine23.png"
                         alt="brand logo"></a>
 					</div>
 					</div>
