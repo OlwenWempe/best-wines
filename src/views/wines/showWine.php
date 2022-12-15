@@ -48,9 +48,13 @@
                 <h2 class="ms-2 showSubtitle">Variant :</h2>
                 <p><?= $wine['type_name'] ?></p>
                 <h2 class="ms-2 showSubtitle">Saveurs :</h2>
-                <p></p>
+                <?php foreach ($taste_tags as $taste_tag) : ?>
+                <p class="rounded bg-danger my-2 px-2 d-inline-flex"><?= $taste_tag['taste_name'] ?></p>
+                <?php endforeach ?>
                 <h2 class="ms-2 showSubtitle">S'accorde avec :</h2>
-                <p></p>
+                <?php foreach ($accord_tags as $accord_tag) : ?>
+                <p class="rounded bg-warning my-2 px-2 d-inline-flex"><?= $accord_tag['accord_name'] ?></p>
+                <?php endforeach ?>
 
             </div>
         </div>

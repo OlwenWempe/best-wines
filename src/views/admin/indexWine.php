@@ -42,7 +42,7 @@
                                 vin</a>
                         </td>
                         <td><?= $wine['wine_id'] ?></td>
-                        <td><img src=" <?= BASE_DIR . "/" . $wine['link_picture_mini'] ?>"
+                        <td><img src=" <?= BASE_DIR . "/uploadsMini/" . $wine['link_picture_max'] ?>"
                                 alt="<?= $wine['wine_name'] ?>">
                         </td>
                         <td><?= $wine['wine_name'] ?></td>

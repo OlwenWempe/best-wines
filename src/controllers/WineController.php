@@ -72,14 +72,19 @@ class WineController extends Controller
             $id = $_GET['id'];
             try {
                 $wine = new Wine();
+                $taste_tag = new TasteTag();
+                $accord_tag = new AccordTag();
 
                 $wine = $wine->findWine($id, $is_array = true);
+                $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+                $taste_tags = $taste_tag->findAccord($id, $is_array = true);
+
                 if ($_SESSION['admin']['auth']) {
                     $pays = new Pays();
                     $payss = $pays->findAll();
-                    $this->renderAdminView('wines/showWine', compact('wine', 'payss', 'title'));
+                    $this->renderAdminView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'payss', 'title'));
                 } else {
-                    $this->renderView('wines/showWine', compact('wine', 'title'));
+                    $this->renderView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'title'));
                 }
             } catch (\Exception $th) {
                 $error = "Désolé nous ne connaissons pas ce produit.";
@@ -139,7 +144,7 @@ class WineController extends Controller
                     $destination2 = $folderMini . $nameFile;
                     $destination3 = $folderIcon . $nameFile;
                     move_uploaded_file($_FILES['link_picture_max']['tmp_name'], $destination);
-                    $_POST['link_picture_max'] = $destination;
+                    $_POST['link_picture_max'] = $nameFile;
 
                     //resize function
 
@@ -148,8 +153,6 @@ class WineController extends Controller
                     $img_mini->save($destination2);
                     $img_mini->crop(80, 80);
                     $img_mini->save($destination3);
-
-                    $_POST['link_picture_mini'] = $destination2;
                 }
             }
 
