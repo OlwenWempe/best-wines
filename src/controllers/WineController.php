@@ -58,9 +58,13 @@ class WineController extends Controller
         }
 
         $title = "Nos-" . $name;
-        $wine = new Wine();
-
-        $wines = $wine->findAllBy(['id_type_wine' => $id], $is_array = true);
+        try {
+            $wine = new Wine();
+            $wines = $wine->findAllBy(['id_type_wine' => $id], $is_array = true);
+        } catch (\Exception $th) {
+            $error = "Désolé nous n'avons pas ce type de produit.";
+            $this->renderView('wines/showWine', compact('title', 'error'));
+        }
         $this->renderView('wines/index', compact('wines', 'title'));
     }
 
