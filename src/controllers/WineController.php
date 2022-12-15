@@ -72,23 +72,31 @@ class WineController extends Controller
             $id = $_GET['id'];
             try {
                 $wine = new Wine();
-                $taste_tag = new TasteTag();
-                $accord_tag = new AccordTag();
+
 
                 $wine = $wine->findWine($id, $is_array = true);
-                $accord_tags = $accord_tag->findAccord($id, $is_array = true);
-                $taste_tags = $taste_tag->findAccord($id, $is_array = true);
-
-                if ($_SESSION['admin']['auth']) {
-                    $pays = new Pays();
-                    $payss = $pays->findAll();
-                    $this->renderAdminView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'payss', 'title'));
-                } else {
-                    $this->renderView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'title'));
-                }
             } catch (\Exception $th) {
                 $error = "Désolé nous ne connaissons pas ce produit.";
                 $this->renderView('wines/showWine', compact('title', 'error'));
+            }
+            //récupération des tags liés au vin selectionné
+            $taste_tag = new TasteTag();
+            $accord_tag = new AccordTag();
+            $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+            $taste_tags = $taste_tag->findAccord($id, $is_array = true);
+            //recupération du pays lié au vin
+            $idregion = $wine['id_region'];
+            $region = new Region();
+            $region = $region->findAllBy(['region_id' => $idregion], $is_array = true);
+            $idpays = $region[0]['id_pays'];
+            $pays = new Pays();
+            $pays = $pays->find($idpays, $is_array = true);
+
+            if ($_SESSION['admin']['auth']) {
+
+                $this->renderAdminView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'pays', 'title'));
+            } else {
+                $this->renderView('wines/showWine', compact('wine', 'taste_tags', 'accord_tags', 'pays', 'title'));
             }
         }
     }
@@ -163,7 +171,6 @@ class WineController extends Controller
             $wine->setDescription(strip_tags($_POST['description']));
             $wine->setGrapeVariety(strip_tags($_POST['grape_variety']));
             $wine->setLinkPictureMax($_POST['link_picture_max']);
-            $wine->setLinkPictureMini($_POST['link_picture_mini']);
             $wine->setPrixDAchat(strip_tags($_POST['prix_d_achat']));
             $wine->setPrixDeVente(strip_tags($_POST['prix_de_vente']));
             $wine->setStock(strip_tags($_POST['stock']));
