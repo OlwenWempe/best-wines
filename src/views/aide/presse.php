@@ -1,7 +1,7 @@
 <section class="my-5 row">
 <aside class="col-3 ms-2 border-end">
 				<h1>Presse</h1>
-				<img src="<?= BASE_DIR ?>/assets/img/wine116.png" alt="brand logo" class="asideimg">
+				<img src="<?= BASE_DIR ?>/assets/img/wine129.png" alt="brand logo" class="asideimg">
 </aside>
 <div class="col-8 container text-center">
 	<div class="row row-cols-1 row-cols-lg-4 g-2 g-lg-3 justify-content-around">
