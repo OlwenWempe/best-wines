@@ -64,7 +64,7 @@
     </div>
 
     <div>
-        <h2 class="bdx">CLimitation contractuelles sur les données :</h2>
+        <h2 class="bdx">Limitation contractuelles sur les données :</h2>
         <p>
             Les informations contenues sur ce site sont aussi précises que possible et le site remis à jour à
             différentes
