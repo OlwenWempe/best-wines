@@ -34,8 +34,7 @@ class WineController extends Controller
             $wines[] = $wine;
         }
 
-
-        $this->renderView('wines/index', compact('wines', 'accord_tags', 'title'));
+        $this->renderView('wines/index', compact('wines', 'title'));
     }
 
     public function indexColor(): void
@@ -60,10 +59,20 @@ class WineController extends Controller
         $title = "Nos-" . $name;
         try {
             $wine = new Wine();
-            $wines = $wine->findAllBy(['id_type_wine' => $id], $is_array = true);
+            $winess = $wine->findAllBy(['id_type_wine' => $id], $is_array = true);
         } catch (\Exception $th) {
             $error = "Désolé nous n'avons pas ce type de produit.";
             $this->renderView('wines/showWine', compact('title', 'error'));
+        }
+        $taste_tag = new TasteTag();
+        $accord_tag = new AccordTag();
+        foreach ($winess as $wine) {
+            $id = $wine['wine_id'];
+            $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+            $taste_tags = $taste_tag->findAccord($id, $is_array = true);
+            $wine['accord_tags'] = $accord_tags;
+            $wine['taste_tags'] = $taste_tags;
+            $wines[] = $wine;
         }
         $this->renderView('wines/index', compact('wines', 'title'));
     }

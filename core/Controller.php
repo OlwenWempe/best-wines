@@ -48,7 +48,7 @@ abstract class Controller
         require_once "src/views/404.php";
     }
 
-    public static function renderArticleView(array $params = []): void
+    public function renderArticleView(array $params = []): void
     {
         extract($params);
         ob_start();
