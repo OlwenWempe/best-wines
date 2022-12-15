@@ -17,10 +17,10 @@ class HelpController extends Controller
     {
 
         $title = "Mentions legales";
-        $this->renderView('aide/mentions-legales', compact('title'));   
+        $this->renderView('aide/mentions-legales', compact('title'));
     }
     public function showFaq()
-    
+
     {
 
         $title = "FAQ";
@@ -40,11 +40,11 @@ class HelpController extends Controller
         $title = "Presse";
         $this->renderView('aide/presse', compact('title'));
     }
-    
+
     public function showBlog()
     {
 
-        $title = "Presse";
-        $this->renderView('aide/presse', compact('title'));
+        $title = "Blog";
+        $this->renderView('blog/blog', compact('title'));
     }
 }
