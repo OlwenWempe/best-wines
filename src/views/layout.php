@@ -35,7 +35,7 @@
         </nav>
         <nav id="mainNav" class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img class="navImg" src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
+                <a class="navbar-brand" href="<?= BASE_DIR ?>"><img class="navImg" src="<?= BASE_DIR ?>/assets/img/nav-logo.png"
                         alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -66,16 +66,16 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nos coffrets</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-coffrets/all">Nos coffrets</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Nos fournisseurs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Qui sommes nous ?</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/aide/qui-sommes-nous">Qui sommes nous ?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/blog/all">Blog</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">

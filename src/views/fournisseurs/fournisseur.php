@@ -1,5 +1,5 @@
 <section class="my-5">
-<h1>Nos fornisseurs</h1>
+<h1>Nos fournisseurs</h1>
 			<div>
 					<div class="qui">
 						<h2>Terre, mer, air</h2>
