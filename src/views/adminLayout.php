@@ -100,6 +100,14 @@
                             <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/admin/addsupplier">Ajouter</a>
                         </div>
                     </div>
+                    <div class="container">
+                        <h2>Ajouter un article de blog</h2>
+                        <hr class="ps-2">
+                        <div class="d-flex justify-content-center">
+                            <a class="my-2 btn btn-primary" href="<?= BASE_DIR ?>/blog/creation-article">Ajouter un
+                                article</a>
+                        </div>
+                    </div>
             </aside>
             <div class="col-9">
 
