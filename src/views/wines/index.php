@@ -21,7 +21,7 @@
         <div class="row row-cols-1 row-cols-lg-4 g-2 g-lg-3 justify-content-around">
             <?php foreach ($wines as $wine) : ?>
             <div class="card mx-2">
-                <img class="card-img-top" src="<?= BASE_DIR . "/" . $wine['link_picture_max'] ?>"
+                <img class="card-img-top" src="<?= BASE_DIR . "/uploadsMini/" . $wine['link_picture_max'] ?>"
                     alt="<?= $wine['wine_name'] ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $wine['wine_name'] ?></h5>
