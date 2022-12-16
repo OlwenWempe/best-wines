@@ -12,6 +12,8 @@ use App\Models\Pays;
 use App\Models\Article;
 use Core\Controller;
 use App\Models\Session;
+use App\Models\TasteTag;
+use App\Models\AccordTag;
 
 
 session::startSession();
@@ -111,20 +113,31 @@ class AdminController extends Controller
         // $this->renderAdminView('user/login', compact('title'));
     }
 
-    //permets d'afficher la liste des vins ou box.
+     /**
+     * afficher la liste des vins
+     * @return void
+     */
     public function indexWine(): void
     {
-        $pays = new Pays();
-        $payss = $pays->findAll();
         $title = "Nos-vins";
         $wine = new Wine();
 
-        $wines = $wine->findAll();
+        $winess = $wine->findAll();
+        $taste_tag = new TasteTag();
+        $accord_tag = new AccordTag();
+        foreach ($winess as $wine) {
+            $id = $wine['wine_id'];
+            $accord_tags = $accord_tag->findAccord($id, $is_array = true);
+            $taste_tags = $taste_tag->findAccord($id, $is_array = true);
+            $wine['accord_tags'] = $accord_tags;
+            $wine['taste_tags'] = $taste_tags;
+            $wines[] = $wine;
+        }
         if (!$wines) {
             $message = "Désolé, nous n'avons pas pu récupérer les données.";
-            $this->renderAdminView('admin/indexWine', compact('wines', 'message', 'title', 'payss'));
+            $this->renderAdminView('admin/indexWine', compact('wines', 'message', 'title'));
         } else {
-            $this->renderAdminView('admin/indexWine', compact('wines', 'title', 'payss'));
+            $this->renderAdminView('admin/indexWine', compact('wines', 'title'));
         }
     }
 

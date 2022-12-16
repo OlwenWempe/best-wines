@@ -53,8 +53,29 @@
                         <td><?= $wine['stock'] ?></td>
                         <td><?= $wine['id_region'] ?></td>
                         <td><?= $wine['id_type_wine'] ?></td>
-                        <td><?= $wine['id_taste_tag'] ?></td>
-                        <td><?= $wine['id_accord_tag'] ?></td>
+                        <td>
+                           
+                        <?php if (count($wine['taste_tags']) > 0) : ?>
+                        <?php $count = count($wine['taste_tags']);
+                        for ($i = 0; $i < $count; $i++) : ?>
+
+                            <span class="my-2 px-2 d-inline-flex">
+                                <?= $wine['taste_tags'][$i]['taste_name'] ?>
+                            </span>
+                            <?php endfor ?>
+                            <?php endif ?>
+                        </td>
+                        <td>
+                        <?php if (count($wine['accord_tags']) > 0) : ?>
+                        <?php $count = count($wine['accord_tags']);
+                        for ($i = 0; $i < $count; $i++) : ?>
+
+                            <span class="my-2 px-2 d-inline-flex">
+                                <?= $wine['accord_tags'][$i]['accord_name'] ?>
+                            </span>
+                            <?php endfor ?>
+                            <?php endif ?>
+                        </td>
                         <td><?= $wine['id_supplier'] ?></td>
                     </tr>
                     <?php endforeach; ?>
