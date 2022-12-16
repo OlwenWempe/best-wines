@@ -28,7 +28,6 @@
                 <p class="card-text"><?= substr($wine['description'], 0, 100) ?></p>
                 <a href="<?= BASE_DIR ?>/nos-vins/?id=<?= $wine['wine_id'] ?>" class="btn btn-primary">Voir le vin</a>
                 <small>Réf : <?= $wine['wine_id'] ?></small>
-
             </div>
         </div>
         <?php endforeach; ?>
