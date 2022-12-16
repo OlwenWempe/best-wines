@@ -13,7 +13,7 @@
         <div class="row">
             <h1 class="text-center my-5"><?= $wine['wine_name'] ?></h1>
             <div class="col-5">
-                <img class="w-100" src="<?= BASE_DIR . "/" . $wine['link_picture_max'] ?>"
+                <img class="w-100" src="<?= BASE_DIR . "/uploads/" . $wine['link_picture_max'] ?>"
                     alt="<?= $wine['wine_name'] ?>">
                 <div class="mt-5 d-flex justify-content-around">
                     <div>
