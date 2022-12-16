@@ -12,6 +12,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= BASE_DIR ?>/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= BASE_DIR ?>/favicon-16x16.png">
     <link rel="manifest" href="<?= BASE_DIR ?>/site.webmanifest">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="<?= BASE_DIR ?>/assets/css/style.css">
     <title><?= $params['title'] ?></title>
 </head>
@@ -111,6 +114,7 @@
 
     </footer>
     <script src="<?= BASE_DIR ?>/assets/js/index.js"></script>
+    <script src="<?= BASE_DIR ?>/assets/js/script.js"></script>
     <script src="<?= BASE_DIR ?>/dist/index.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

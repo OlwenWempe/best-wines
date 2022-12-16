@@ -85,8 +85,6 @@ class WineController extends Controller
             $id = $_GET['id'];
             try {
                 $wine = new Wine();
-
-
                 $wine = $wine->findWine($id, $is_array = true);
             } catch (\Exception $th) {
                 $error = "Désolé nous ne connaissons pas ce produit.";
