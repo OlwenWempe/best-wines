@@ -19,7 +19,7 @@
             </div>
             <div>
 					<div class="contact">
-						<h2>NUMÉRO DE TÉLÉPHONE</h2>
+						<h2>Numéro de téléphon</h2>
 						<p>(123) 456 7890</p>
 					</div>
             </div>

@@ -21,7 +21,7 @@
         <h2 class="my-4 bdx container ">Les nouveautés</h2>
         <?php foreach ($wines as $wine) : ?>
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?= BASE_DIR."/".$wine['link_picture_max'] ?>"
+            <img class="card-img-top" src="<?= BASE_DIR . "/" . $wine['link_picture_max'] ?>"
                 alt="<?= $wine['wine_name'] ?>">
             <div class="card-body">
                 <h5 class="card-title"><?= $wine['wine_name'] ?></h5>
