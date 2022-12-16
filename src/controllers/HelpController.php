@@ -47,4 +47,11 @@ class HelpController extends Controller
         $title = "Blog";
         $this->renderView('blog/blog', compact('title'));
     }
+
+    public function showFournisseur()
+    {
+
+        $title = "Fournisseurs";
+        $this->renderView('fournisseurs/fournisseur', compact('title'));
+    }
 }

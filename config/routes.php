@@ -77,6 +77,9 @@ Router::register('/aide/faq', 'HelpController::showFaq');
 Router::register('/aide/contact', 'HelpController::showContact');
 Router::register('/aide/presse', 'HelpController::showPresse');
 
+// rubrique fournisseur
+
+Router::register('/fournisseurs/fournisseur', 'HelpController::showFournisseur');
 
 
 //exemple
