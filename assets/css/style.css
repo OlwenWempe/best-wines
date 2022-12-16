@@ -125,3 +125,8 @@ footer{
 #bodyfaq{
     background-position: right;
 }
+
+.navbar-brand
+{
+    background-size: cover;
+}
