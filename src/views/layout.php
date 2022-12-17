@@ -71,7 +71,7 @@
                             <a class="nav-link" href="<?= BASE_DIR ?>/nos-coffrets/all">Nos coffrets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= BASE_DIR ?>/fournisseurs/fournisseur">Nos fournisseurs</a>
+                            <a class="nav-link" href="<?= BASE_DIR ?>/nos-fournisseurs/index">Nos fournisseurs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASE_DIR ?>/aide/qui-sommes-nous">Qui sommes nous ?</a>
