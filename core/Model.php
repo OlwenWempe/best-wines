@@ -168,4 +168,19 @@ abstract class Model
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    /**
+     * Verifier si une valeur exist dans un tableau de la BDD
+     * @$value  
+     */
+    public function already_exists(string $to_check, string $value): array|false
+    {
+        $stmt = $this->pdo->prepare(
+            "SELECT {$to_check} FROM {$this->table_name} WHERE {$to_check} = '{$value}'"
+        );
+        dump($stmt);
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
