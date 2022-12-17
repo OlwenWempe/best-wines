@@ -9,6 +9,7 @@ class AccordTag  extends Model
     private int $id;
     private string $name;
     protected string $table_name = "accord_tag";
+    protected string $id_name = "accord_id";
 
     // accesseurs (getters & setters)
 

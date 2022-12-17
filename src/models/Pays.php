@@ -12,6 +12,8 @@ class Pays  extends Model
     private string $nom_fr_fr;
     private int $id_currencies;
     protected string $table_name = "pays";
+    protected string $id_name = "id";
+
 
     // accesseurs (getters & setters)
 

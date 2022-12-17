@@ -13,6 +13,7 @@ class PromotionalCode  extends Model
     private int $percentage;
     private int $id_employee;
     protected string $table_name = "promotional_code";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -21,7 +22,7 @@ class PromotionalCode  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }

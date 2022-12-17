@@ -17,6 +17,7 @@ class Coffret  extends Model
     private int $id_discount;
     private int $id_coffret_detail;
     protected string $table_name = "coffret";
+    protected string $id_name = "box_id";
 
 
 

@@ -24,6 +24,7 @@ class Wine  extends Model
     private int $id_discount;
     private int $id_supplier;
     protected string $table_name = "wine";
+    protected string $id_name = "wine_id";
 
 
 

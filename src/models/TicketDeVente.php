@@ -10,6 +10,7 @@ class TicketDeVente  extends Model
     private string $created_at;
     private int $id_ligne_de_vente;
     protected string $table_name = "ticket_de_vente";
+    protected string $id_name = "vente_id";
 
     // accesseurs (getters & setters)
 
@@ -18,7 +19,7 @@ class TicketDeVente  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -56,5 +57,4 @@ class TicketDeVente  extends Model
     {
         $this->id_ligne_de_vente = $id_ligne_de_vente;
     }
-
 }

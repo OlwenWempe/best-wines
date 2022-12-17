@@ -12,6 +12,7 @@ class Comment  extends Model
     private string $content;
     private int $id_product;
     protected string $table_name = "comment";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -20,7 +21,7 @@ class Comment  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -83,5 +84,4 @@ class Comment  extends Model
     {
         $this->id_product = $id_product;
     }
-
 }

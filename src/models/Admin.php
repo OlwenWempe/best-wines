@@ -13,6 +13,7 @@ class Admin  extends Model
     private string $password;
     private string $phone_number;
     protected string $table_name = "admin";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 

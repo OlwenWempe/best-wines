@@ -12,6 +12,7 @@ class Currencies  extends Model
     private string $code;
     private int $minor_unit;
     protected string $table_name = "currencies";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -20,7 +21,7 @@ class Currencies  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }

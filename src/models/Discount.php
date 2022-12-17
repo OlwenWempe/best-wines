@@ -13,6 +13,7 @@ class Discount  extends Model
     private int $id_employee;
     private int $id_wine;
     protected string $table_name = "discount";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -21,7 +22,7 @@ class Discount  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -110,5 +111,4 @@ class Discount  extends Model
     {
         $this->id_wine = $id_wine;
     }
-
 }

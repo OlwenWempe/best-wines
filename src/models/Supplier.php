@@ -20,6 +20,7 @@ class Supplier extends Model
     private string $password;
     private string $siren;
     protected string $table_name = "supplier";
+    protected string $id_name = "supplier_id";
 
     // accesseurs (getters & setters)
 

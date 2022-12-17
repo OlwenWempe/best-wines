@@ -15,6 +15,7 @@ class PurchaseOrder  extends Model
     private string $currency_code;
     private int $send;
     protected string $table_name = "purchase_order";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -23,7 +24,7 @@ class PurchaseOrder  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -146,5 +147,4 @@ class PurchaseOrder  extends Model
     {
         $this->send = $send;
     }
-
 }

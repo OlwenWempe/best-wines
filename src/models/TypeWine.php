@@ -9,6 +9,7 @@ class TypeWine  extends Model
     private int $id;
     private string $name;
     protected string $table_name = "type_wine";
+    protected string $id_name = "type_id";
 
     // accesseurs (getters & setters)
 

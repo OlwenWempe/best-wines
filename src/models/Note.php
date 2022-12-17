@@ -12,6 +12,7 @@ class Note  extends Model
     private int $id_client;
     private int $id_wine;
     protected string $table_name = "note";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
@@ -20,7 +21,7 @@ class Note  extends Model
      *
      * @return int
      */
-    public function getId() : int
+    public function getId(): int
     {
         return $this->id;
     }

@@ -18,6 +18,7 @@ class Client  extends Model
     private string $joined_at;
     private int $id_ticket_de_vente;
     protected string $table_name = "client";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 

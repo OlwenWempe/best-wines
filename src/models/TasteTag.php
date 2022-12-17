@@ -9,6 +9,7 @@ class TasteTag  extends Model
     private int $id;
     private string $name;
     protected string $table_name = "taste_tag";
+    protected string $id_name = "taste_id";
 
     // accesseurs (getters & setters)
 

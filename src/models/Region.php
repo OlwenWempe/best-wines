@@ -10,6 +10,7 @@ class Region  extends Model
     private string $name;
     private int $id_pays;
     protected string $table_name = "region";
+    protected string $id_name = "region_id";
 
     // accesseurs (getters & setters)
 

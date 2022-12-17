@@ -11,6 +11,7 @@ class Article  extends Model
     private string $created_at;
     private int $id_admin;
     protected string $table_name = "article";
+    protected string $id_name = "id";
 
     // accesseurs (getters & setters)
 
