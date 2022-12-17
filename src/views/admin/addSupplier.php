@@ -83,9 +83,9 @@
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <label for="opt-pic">Image optionnelle :</label>
-                    <input required value="<?php if (isset($_POST['opt-pic'])) echo $_POST['opt-pic'] ?>" type="file"
-                        class="form-control mt-3" id="opt-pic" name="opt-pic">
+                    <label for="opt_pic">Image optionnelle :</label>
+                    <input required value="<?php if (isset($_POST['opt_pic'])) echo $_POST['opt_pic'] ?>" type="file"
+                        class="form-control mt-3" id="opt_pic" name="opt_pic">
                 </div>
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>

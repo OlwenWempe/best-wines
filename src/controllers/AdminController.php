@@ -113,7 +113,7 @@ class AdminController extends Controller
         // $this->renderAdminView('user/login', compact('title'));
     }
 
-     /**
+    /**
      * afficher la liste des vins
      * @return void
      */
@@ -228,12 +228,87 @@ class AdminController extends Controller
         $title = "Ajout d'un fournisseur";
         $this->checkLogged();
 
-        $pays = new Pays();
-        $payss = $pays->findAll($is_array = true);
+        $pays = new Pays;
+        $payss = $pays->findAll();
 
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $supplier = new Supplier();
-            $supplier->setLogo(strip_tags($_POST['logo']));
+            $supplier = $supplier->already_exists('siren', $_POST['siren']);
+            if ($supplier) {
+                $error = "Ce numéro de SIREN est déjà existant dans la base de données";
+                $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
+            }
+            $supplier = new Supplier();
+            $supplier = $supplier->already_exists('supplier_name', $_POST['name']);
+            if ($supplier) {
+                $error = "Ce Raison Sociale est déjà existant dans la base de données";
+                $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
+            }
+
+            //Traitement et enregistrement des images
+            if (count($_FILES) <= 2) {
+                $allowed[] = "image/jpeg";
+                $allowed[] = "image/png";
+
+                //traitement de l'image logo
+                if ($_FILES['logo']['error'] == 0 && in_array($_FILES['logo']['type'], $allowed)) {
+
+                    $folder = "logos/";
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777, true);
+                    }
+
+                    //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
+                    if (!isset($_POST['logo'])) {
+
+                        if ($_FILES['logo']['type'] == "image/jpeg") {
+                            $nameFile = uniqid() . ".jpeg";
+                        } else {
+                            $nameFile = uniqid() . ".png";
+                        }
+
+                        $destination = $folder . $nameFile;
+
+                        //resize function
+
+                        $logo = new \Gumlet\ImageResize($_FILES['logo']['tmp_name']);
+                        $logo->crop(500, 500);
+                        $logo->save($destination);
+                        $_POST['logo'] = $destination;
+                    }
+                }
+                if ($_FILES['opt_pic']['error'] == 0 && in_array($_FILES['opt_pic']['type'], $allowed)) {
+
+                    $folder = "opt_pic/";
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777, true);
+                    }
+
+                    //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
+                    if (!isset($_POST['opt_pic'])) {
+
+                        if ($_FILES['opt_pic']['type'] == "image/jpeg") {
+                            $nameFile = uniqid() . ".jpeg";
+                        } else {
+                            $nameFile = uniqid() . ".png";
+                        }
+
+                        $destination2 = $folder . $nameFile;
+
+                        //resize function
+
+                        $opt_pic = new \Gumlet\ImageResize($_FILES['opt_pic']['tmp_name']);
+                        $opt_pic->crop(500, 500);
+                        $opt_pic->save($destination2);
+                        $_POST['opt_pic'] = $destination2;
+                    }
+                }
+            }
+
+
+
+            $supplier = new Supplier();
             $supplier->setName(strip_tags($_POST['name']));
             $supplier->setAdress(strip_tags($_POST['adress']));
             $supplier->setZipcode(strip_tags($_POST['zipcode']));
@@ -243,6 +318,8 @@ class AdminController extends Controller
             $supplier->setEmail(strip_tags($_POST['email']));
             $supplier->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
             $supplier->setSiren(strip_tags($_POST['siren']));
+            $supplier->setLogo($_POST['logo']);
+            $supplier->setOptPic($_POST['opt_pic']);
             $result = $supplier->insert();
             if ($result) {
                 $success = "insertion bien effectuée";

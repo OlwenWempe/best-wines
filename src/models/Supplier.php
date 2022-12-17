@@ -235,12 +235,13 @@ class Supplier extends Model
     public function insert(): int|false
     {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO supplier (`logo`,`supplier_name`, `adress`, `zipcode`, `city` , `id_pays`, `phone_number`, `email`, `password`, `siren`) 
-            VALUES (:logo, :name, :adress, :zipcode, :city, :id_pays, :phone_number, :email, :password, :siren)"
+            "INSERT INTO supplier (`logo`, `photo_optionnelle`, `supplier_name`, `adress`, `zipcode`, `city` , `id_pays`, `phone_number`, `email`, `password`, `siren`) 
+            VALUES (:logo, :opt_pic, :name, :adress, :zipcode, :city, :id_pays, :phone_number, :email, :password, :siren)"
         );
 
         $stmt->execute([
             'logo' => $this->logo,
+            'opt_pic' => $this->opt_pic,
             'name' => $this->name,
             'adress' => $this->adress,
             'zipcode' => $this->zipcode,

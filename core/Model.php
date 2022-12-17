@@ -178,7 +178,6 @@ abstract class Model
         $stmt = $this->pdo->prepare(
             "SELECT {$to_check} FROM {$this->table_name} WHERE {$to_check} = '{$value}'"
         );
-        dump($stmt);
         $stmt->setFetchMode(\PDO::FETCH_ASSOC);
         $stmt->execute();
         return $stmt->fetch();
