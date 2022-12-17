@@ -1,25 +1,20 @@
 <section class="mt-5">
     <?php if (isset($success)) : ?>
-    <div>
-        <span class="text-success text-center"><?= $success ?></span>
+    <div class="alert alert-success" role="alert">
+        <p class="text-center"><?= $success ?></p>
     </div>
     <?php endif; ?>
     <?php if (isset($error)) : ?>
-    <div>
-        <span class="text-danger text-center"><?= $error ?></span>
+    <div class="alert alert-danger" role="alert">
+        <p class="text-center"><?= $error ?></p>
     </div>
     <?php endif; ?>
     <div class="card mx-auto" style="width: 25vw;">
-        <form action="<?= BASE_DIR ?>/admin/addsupplier" method="POST" class="card-body">
+        <form action="<?= BASE_DIR ?>/admin/addsupplier" method="POST" class="card-body" enctype="multipart/form-data">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Ajouter un fournisseur</h5>
             </div>
-            <div class="mb-3 row">
-                <div class="">
-                    <input required value="<?php if (isset($_POST['logo'])) echo $_POST['logo'] ?>" type="text"
-                        class="form-control mt-3" id="logo" placeholder="logo" name="logo">
-                </div>
-            </div>
+
             <div class="mb-3 row">
                 <div class="">
                     <input required value="<?php if (isset($_POST['name'])) echo $_POST['name'] ?>" type="text"
@@ -77,6 +72,20 @@
                 <div class="">
                     <input value="<?php if (isset($_POST['siren'])) echo $_POST['siren'] ?>" required type="text"
                         class="form-control mt-3" id="siren" placeholder="Numéro de SIREN" name="siren">
+                </div>
+            </div>
+            <div class="my-3 row">
+                <div class="">
+                    <label for="logo">Logo :</label>
+                    <input required value="<?php if (isset($_POST['logo'])) echo $_POST['logo'] ?>" type="file"
+                        class="form-control mt-3" id="logo" name="logo">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="">
+                    <label for="opt-pic">Image optionnelle :</label>
+                    <input required value="<?php if (isset($_POST['opt-pic'])) echo $_POST['opt-pic'] ?>" type="file"
+                        class="form-control mt-3" id="opt-pic" name="opt-pic">
                 </div>
             </div>
             <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>
