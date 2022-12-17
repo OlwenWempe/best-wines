@@ -8,7 +8,7 @@ class Supplier extends Model
 {
     private int $id;
     private string $logo;
-    private string $photo_optionnelle;
+    private string $opt_pic;
     private string $name;
     private string $created_at;
     private string $adress;
@@ -53,18 +53,18 @@ class Supplier extends Model
     /**
      * @return string
      */
-    public function getPhotoOptionnelle(): string
+    public function getOptPic(): string
     {
-        return $this->photo_optionnelle;
+        return $this->opt_pic;
     }
 
     /**
-     * @param string $photo_optionnelle
+     * @param string $opt_pic
      * @return void
      */
-    public function setPhotoOptionnelle(string $photo_optionnelle): void
+    public function setOptPic(string $opt_pic): void
     {
-        $this->photo_optionnelle = $photo_optionnelle;
+        $this->opt_pic = $opt_pic;
     }
 
     /**
