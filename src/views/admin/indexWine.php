@@ -38,8 +38,7 @@
                     <tr class=" table-danger">
                         <td>
                             <a href="<?= BASE_DIR ?>/nos-vins/?id=<?= $wine['wine_id'] ?>" class="btn btn-primary">Voir
-                                le
-                                vin</a>
+                                le vin</a>
                         </td>
                         <td><?= $wine['wine_id'] ?></td>
                         <td><img src=" <?= BASE_DIR . "/uploadsIcon/" . $wine['link_picture_max'] ?>"
