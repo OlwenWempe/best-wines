@@ -166,6 +166,7 @@
 
         </nav>
     </footer>
+    <script src="https://kit.fontawesome.com/64c10894b6.js" crossorigin="anonymous"></script>
 
     <script src="<?= BASE_DIR ?>/assets/js/index.js"></script>
     <script src="<?= BASE_DIR ?>/assets/js/script.js"></script>

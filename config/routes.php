@@ -43,6 +43,7 @@ Router::register('/supplier/logout', 'SupplierController::logout');
 Router::register('/supplier/register', 'SupplierController::register');
 Router::register('/nos-fournisseurs/index', 'SupplierController::index');
 Router::register('/nos-fournisseurs/', 'SupplierController::show');
+Router::register('/nos-fournisseurs/profile', 'SupplierController::edit');
 
 //coffrets
 

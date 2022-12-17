@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Supplier;
 use Core\Controller;
 use App\Models\Session;
+use App\Models\Pays;
 
 class SupplierController extends Controller
 {
@@ -42,5 +43,34 @@ class SupplierController extends Controller
             $this->renderView('supplier/index', compact('title', 'error'));
         }
         $this->renderView('supplier/index', compact('title', 'suppliers'));
+    }
+
+    public function show(): void
+    {
+        $title = "Notre-fournisseur";
+        if (isset($_GET['id']) && $_GET['id'] != '' && is_numeric($_GET['id'])) {
+            $id = $_GET['id'];
+            try {
+                $supplier = new Supplier();
+                $supplier = $supplier->find($id, $is_array = true);
+            } catch (\Exception $th) {
+                $error = "Désolé nous ne connaissons pas ce fournisseur.";
+                $this->renderView('supplier/show', compact('title', 'error'));
+            }
+            //récupération des tags liés au vin selectionné
+
+            //recupération du pays lié au vin
+
+            $idpays = $supplier['id_pays'];
+            $pays = new Pays();
+            $pays = $pays->find($idpays, $is_array = true);
+
+            if ($_SESSION['admin']['auth']) {
+
+                $this->renderAdminView('supplier/show', compact('supplier', 'pays', 'title'));
+            } else {
+                $this->renderView('supplier/show', compact('supplier', 'pays', 'title'));
+            }
+        }
     }
 }

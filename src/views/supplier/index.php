@@ -14,14 +14,18 @@
     <div class="row row-cols-1 row-cols-lg-4 g-2 g-lg-3 justify-content-around">
         <?php foreach ($suppliers as $supplier) : ?>
         <div class="card mx-2">
-            <img class="card-img-top" src="<?= BASE_DIR . "/uploadsMini/" . $supplier['logo'] ?>"
+            <img class="card-img-top" src="<?= BASE_DIR . '/' . $supplier['logo'] ?>"
                 alt="<?= $supplier['supplier_name'] ?>">
             <div class="card-body">
                 <h5 class="card-title"><?= $supplier['supplier_name'] ?></h5>
                 <a href="<?= BASE_DIR ?>/nos-fournisseurs/?id=<?= $supplier['supplier_id'] ?>"
                     class="btn btn-primary">Voir ce
                     fournisseur</a>
-
+                <div class="mt-4 d-flex justify-content-around">
+                    <a class="nav-link bdx d-inline-block" href="https://forticas.fr">Site web</a>
+                    <i class="bdx fa-brands fa-facebook"></i>
+                    <i class="bdx fa-brands fa-square-instagram"></i>
+                </div>
             </div>
         </div>
 

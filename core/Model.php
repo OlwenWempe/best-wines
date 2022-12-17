@@ -20,7 +20,7 @@ abstract class Model
      */
     public function find(int $id, bool $is_array = false): array|object|false
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table_name} WHERE id = :id ");
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table_name} WHERE {$this->id_name} = :id ");
         $stmt->bindParam(':id', $id);
         if ($is_array)
             $stmt->setFetchMode(\PDO::FETCH_ASSOC);
