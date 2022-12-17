@@ -41,6 +41,8 @@ Router::register('/admin/deleteaccord', 'WineController::deleteaccord');
 Router::register('/supplier/login', 'SupplierController::login');
 Router::register('/supplier/logout', 'SupplierController::logout');
 Router::register('/supplier/register', 'SupplierController::register');
+Router::register('/nos-fournisseurs/index', 'SupplierController::index');
+Router::register('/nos-fournisseurs/', 'SupplierController::show');
 
 //coffrets
 
@@ -79,9 +81,10 @@ Router::register('/aide/presse', 'HelpController::showPresse');
 
 // rubrique fournisseur
 
-Router::register('/fournisseurs/fournisseur', 'HelpController::showFournisseur');
-
-
+// Router::register('/fournisseurs/fournisseur', 'HelpController::showFournisseur');
+/*
+désactivé car pointait vers une page statique.
+*/
 //exemple
 
 Router::register('/products/all', 'ProductController::index');
