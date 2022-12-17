@@ -299,7 +299,7 @@ class AdminController extends Controller
                         //resize function
 
                         $opt_pic = new \Gumlet\ImageResize($_FILES['opt_pic']['tmp_name']);
-                        $opt_pic->crop(500, 500);
+                        $opt_pic->resizeToWidth(800);
                         $opt_pic->save($destination2);
                         $_POST['opt_pic'] = $destination2;
                     }
