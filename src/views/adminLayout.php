@@ -20,22 +20,25 @@
 </head>
 
 <body id="admin-body">
-    <header>
-        <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="#"><img src="<?= BASE_DIR ?>/assets/img/nav-logo.png" alt="brand logo"></a>
-            <div class="container-fluid">
-                <ul class="navbar-nav justify-content-end">
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand-md d-flex justify-content-between">
+            <div>
+                <a class="navbar-brand" href="<?= BASE_DIR ?>/""><img src=" <?= BASE_DIR ?>/assets/img/nav-logo.png"
+                    alt="brand logo"></a>
+            </div>
+            <div class="w-25 ">
+                <ul class="navbar-nav me-5 justify-content-around">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_DIR ?>/">retour vers le site</a>
+                        <a class="bdx nav-link" href="<?= BASE_DIR ?>/">retour vers le site</a>
                     </li>
                     <?php if (!isset($_SESSION['admin']['auth']) || !$_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_DIR ?>/admin/login">connexion</a>
+                        <a class="bdx nav-link" href="<?= BASE_DIR ?>/admin/login">connexion</a>
                     </li>
                     <?php endif; ?>
                     <?php if (isset($_SESSION['admin']['auth']) && $_SESSION['admin']['auth']) : ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
+                        <a class="bdx nav-link" href="<?= BASE_DIR ?>/logout">déconnexion</a>
                     </li>
                     <?php endif; ?>
 
