@@ -4,10 +4,13 @@ namespace App\Controllers;
 
 use Core\Controller;
 use App\Models\Session;
+use App\Models\Client;
 
 
 class UserController extends Controller
 {
+
+
 
     public function login()
     {
@@ -22,8 +25,47 @@ class UserController extends Controller
 
     public function register()
     {
-        echo "ceci est la méthode register";
+
+        $title = "Inscription";
+
+        if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $client = new Client();
+            $client = $client->already_exists('email', $_POST['email']);
+            if ($client) {
+                $error = "Cette adresse mail est déjà existante dans la base de données";
+                $this->renderView('user/register', compact('error', 'title'));
+                die;
+            }
+        
+
+        
+            
+            $client = new Client();
+            $client->setFirstName(strip_tags($_POST['first_name']));
+            $client->setLastName(strip_tags($_POST['last_name']));
+            $client->setEmail(strip_tags($_POST['email']));
+            $client->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
+            $client->setAdress(strip_tags($_POST['adress']));
+            $client->setZipcode(strip_tags($_POST['zipcode']));
+            $client->setCity(strip_tags($_POST['city']));
+            $client->setPhone(strip_tags($_POST['phone']));
+
+
+            $result = $client->register();
+
+            if ($result) {
+                $success =  "inscription bien effectuée";
+                $this->renderView('user/register', compact('success', 'title'));
+            } else {
+                $error = "échec";
+                $this->renderView('user/register', compact('error', 'title'));
+            }
+        
+        }
+        $this->renderView('user/register', compact('title'));
     }
+
 
 
     public function logout()

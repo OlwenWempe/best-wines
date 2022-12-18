@@ -192,4 +192,29 @@ class Client  extends Model
     {
         $this->id_ticket_de_vente = $id_ticket_de_vente;
     }
+
+    /**
+     * Insérer un client dans la BDD
+     * @return int|false l'id du dernier élément inséré ou false dans le cas d'échec
+     */
+    public function register(): int|false
+    {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO client (`first_name`, `last_name`, `email`, `password`, `adress`, `zipcode` , `city`, `phone`) 
+            VALUES (:first_name, :last_name, :email, :password, :adress, :zipcode, :city, :phone)"
+        );
+
+        $stmt->execute([
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'adress' => $this->adress,
+            'zipcode' => $this->zipcode,
+            'city' => $this->city,
+            'phone' => $this->phone,
+        ]);
+
+        return $this->pdo->lastInsertId();
+    }
 }
