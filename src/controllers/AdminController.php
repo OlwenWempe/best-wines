@@ -246,6 +246,7 @@ class AdminController extends Controller
                 $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
             }
 
+            if (!isset($error)){
             //Traitement et enregistrement des images
             if (count($_FILES) <= 2) {
                 $allowed[] = "image/jpeg";
@@ -328,6 +329,7 @@ class AdminController extends Controller
                 $error = "échec";
                 $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
             }
+        }
         }
         $this->renderAdminView('admin/addSupplier', compact('title', 'payss'));
     }

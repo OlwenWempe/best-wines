@@ -230,7 +230,7 @@ class Supplier extends Model
     }
 
     /**
-     * Insérer une tache dans la BDD
+     * Insérer un supplier dans la bdd
      * @return int|false l'id du dernier élément inséré ou false dans le cas d'échec
      */
     public function insert(): int|false
