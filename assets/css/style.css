@@ -133,3 +133,12 @@ footer{
 #supplierShow p{
     line-height: 0.75rem;
 }
+#wine_icon{
+    
+       width: 40px;
+}
+#wine_icon img{
+    max-width: 100%;
+    background-color: var(--bordeaux);
+
+}

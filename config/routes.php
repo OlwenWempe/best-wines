@@ -80,16 +80,16 @@ Router::register('/aide/faq', 'HelpController::showFaq');
 Router::register('/aide/contact', 'HelpController::showContact');
 Router::register('/aide/presse', 'HelpController::showPresse');
 
-// rubrique fournisseur
+// rubrique panier
+
+Router::register('/votre-panier/all', 'CartController::index');
+Router::register('/votre-panier/', 'CartController::show');
+Router::register('/votre-panier/remove', 'CartController::removeProduct');
+Router::register('/votre-panier/addwine', 'CartController::addProduct');
+Router::register('/votre-panier/addbox', 'CartController::addProduct');
+Router::register('/votre-panier/empty', 'CartController::emptyCart');
 
 // Router::register('/fournisseurs/fournisseur', 'HelpController::showFournisseur');
 /*
 désactivé car pointait vers une page statique.
 */
-//exemple
-
-Router::register('/products/all', 'ProductController::index');
-Router::register('/product/delete', 'ProductController::delete');
-Router::register('/product/', 'ProductController::show');
-Router::register('/product/add', 'ProductController::insert');
-Router::register('/product/edit', 'ProductController::edit');
