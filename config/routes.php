@@ -6,6 +6,7 @@ require_once 'core/Router.php';
 use Core\Router;
 
 Router::register('/', 'PageController::homepage');
+
 //client
 
 Router::register('/login', 'UserController::login');
@@ -83,11 +84,14 @@ Router::register('/aide/presse', 'HelpController::showPresse');
 // rubrique panier
 
 Router::register('/votre-panier/all', 'CartController::index');
-Router::register('/votre-panier/', 'CartController::show');
 Router::register('/votre-panier/remove', 'CartController::removeProduct');
 Router::register('/votre-panier/addwine', 'CartController::addProduct');
 Router::register('/votre-panier/addbox', 'CartController::addProduct');
 Router::register('/votre-panier/empty', 'CartController::emptyCart');
+
+// rubrique paiement
+
+Router::register('/commander', 'PaymentController::index');
 
 // Router::register('/fournisseurs/fournisseur', 'HelpController::showFournisseur');
 /*
