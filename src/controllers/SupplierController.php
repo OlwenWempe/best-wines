@@ -65,7 +65,7 @@ class SupplierController extends Controller
             $pays = new Pays();
             $pays = $pays->find($idpays, $is_array = true);
 
-            if ($_SESSION['admin']['auth']) {
+            if (isset($_SESSION['admin']['auth']) && ($_SESSION['admin']['auth'])) {
 
                 $this->renderAdminView('supplier/show', compact('supplier', 'pays', 'title'));
             } else {
