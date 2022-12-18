@@ -5,7 +5,7 @@ namespace App\Controllers;
 use Core\Controller;
 use App\Models\Session;
 use App\Models\Client;
-
+use App\Models\Supplier;
 
 class UserController extends Controller
 {
@@ -21,6 +21,89 @@ class UserController extends Controller
         //sinon verification dans la BDD supplier
         // sinon verification dans la bdd client
         // echo "ceci est la méthode login";
+        if (!isset($_SESSION['referer'])) {
+            $_SESSION['referer'] = $_SERVER['HTTP_REFERER'];
+        }
+        if (isset($_POST['submit'])) {
+            // vérifier si les champs sont remplis
+            if (empty($_POST['email'])) {
+                $message = 'Veuillez rentrer votre adresse mail.';
+                $this->renderView('user/login', compact('title', 'message'));
+                exit;
+            }
+            if (empty($_POST['password'])) {
+                $passerror = 'Veuillez rentrer votre mot de passe.';
+                $this->renderView('user/login', compact('title', 'passerror'));
+                exit;
+            } else {
+                // Récupérer les données du formulaire
+
+                $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+
+
+                if (!$email) {
+                    $message = "Veuillez rentrer un mail valide.";
+                    $this->renderView('user/login', compact('title', 'message'));
+                } else {
+                    $email = strip_tags($email);
+                    $user = new Supplier;
+                    $user = $user->findOneBy(['email' => $email]);
+                    if ($user) {
+                        if (password_verify(htmlspecialchars($_POST['password']), $user["password"])) {
+
+                            $_SESSION['supplier']['auth'] = TRUE;
+                            $_SESSION['supplier']['id'] = $user['supplier_id'];
+                            $_SESSION['supplier']['first_name'] = $user['supplier_name'];
+                            $_SESSION['supplier']['email'] = $user['email'];
+                            $_SESSION['supplier']['phone'] = $user['phone_number'];
+                            $title = "Homepage";
+                            // $path = explode('best-wines/', $_SESSION['referer'])[1];
+                            // unset($_SESSION['referer']);
+                            if (isset($_SESSION["cart_item"])) {
+                                $title = "Votre panier";
+                                $this->renderView('cart/index', compact('title'));
+                                die;
+                            } else {
+                                $this->renderView('/', compact('title'));
+                            }
+                        } else {
+                            $passerror = "Ce n'est pas le bon mot de passe.";
+                            $this->renderView('user/login', compact('title', 'passerror'));
+                        }
+                    } else {
+                        $user = new Client;
+                        $user = $user->findOneBy(['email' => $email]);
+
+                        if ($user) {
+                            if (password_verify(htmlspecialchars($_POST['password']), $user["password"])) {
+
+                                $_SESSION['client']['auth'] = TRUE;
+                                $_SESSION['client']['id'] = $user['id'];
+                                $_SESSION['client']['first_name'] = $user['first_name'];
+                                $_SESSION['client']['last_name'] = $user['last_name'];
+                                $_SESSION['client']['email'] = $user['email'];
+                                $_SESSION['client']['phone'] = $user['phone'];
+                                $title = "Homepage";
+
+                                if (isset($_SESSION["cart_item"])) {
+                                    $title = "Votre panier";
+                                    $this->renderView('cart/index', compact('title'));
+                                    die;
+                                } else {
+                                    $this->renderView('/', compact('title'));
+                                }
+                            } else {
+                                $passerror = "Ce n'est pas le bon mot de passe.";
+                                $this->renderView('user/login', compact('title', 'passerror'));
+                            }
+                        } else {
+                            $message = 'Navré, vous nous êtes inconnu(e).';
+                            $this->renderView('user/login', compact('title', 'message'));
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function register()
@@ -37,10 +120,10 @@ class UserController extends Controller
                 $this->renderView('user/register', compact('error', 'title'));
                 die;
             }
-        
 
-        
-            
+
+
+
             $client = new Client();
             $client->setFirstName(strip_tags($_POST['first_name']));
             $client->setLastName(strip_tags($_POST['last_name']));
@@ -61,7 +144,6 @@ class UserController extends Controller
                 $error = "échec";
                 $this->renderView('user/register', compact('error', 'title'));
             }
-        
         }
         $this->renderView('user/register', compact('title'));
     }

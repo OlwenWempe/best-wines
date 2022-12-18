@@ -34,56 +34,54 @@ class AdminController extends Controller
 
     public function login()
     {
-        $pays = new Pays();
-        $payss = $pays->findAll($is_array = true);
+        // $pays = new Pays();
+        // $payss = $pays->findAll($is_array = true);
 
         $title = "Connexion";
 
+
+        /*********Vérification*********** */
+
         if (isset($_POST['submit'])) {
 
-            /*********Vérification*********** */
+            // vérifier si les champs sont remplis
+            if (empty($_POST['email'])) {
+                $message = 'Veuillez rentrer votre adresse mail.';
+                $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+            }
+            if (empty($_POST['password'])) {
+                $message = 'Veuillez rentrer votre mot de passe.';
+                $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+            } else {
+                // Récupérer les données du formulaire
 
-            if (isset($_POST['submit'])) {
+                $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
 
-                // vérifier si les champs sont remplis
-                if (empty($_POST['email'])) {
-                    $message = 'Veuillez rentrer votre adresse mail.';
-                    $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
-                }
-                if (empty($_POST['password'])) {
-                    $message = 'Veuillez rentrer votre mot de passe.';
+
+                if (!$email) {
+                    $message = "Veuillez rentrer un mail valide.";
                     $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
                 } else {
-                    // Récupérer les données du formulaire
+                    $email = strip_tags($email);
+                    $admin = new Admin;
+                    $admins = $admin->findOneBy(['email' => $email]);
 
-                    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-
-
-                    if (!$email) {
-                        $message = "Veuillez rentrer un mail valide.";
-                        $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+                    if (!$admin) {
+                        $message = "Oups, nous ne vous connaissons pas.";
                     } else {
-                        $email = strip_tags($email);
-                        $admin = new Admin;
-                        $admins = $admin->findOneBy(['email' => $email]);
+                        if (password_verify(htmlspecialchars($_POST['password']), $admins["password"])) {
 
-                        if (!$admin) {
-                            $message = "Oups, nous ne vous connaissons pas.";
+                            $_SESSION['admin']['auth'] = TRUE;
+                            $_SESSION['admin']['id'] = $admins['id'];
+                            $_SESSION['admin']['first_name'] = $admins['first_name'];
+                            $_SESSION['admin']['last_name'] = $admins['last_name'];
+                            $_SESSION['admin']['email'] = $admins['email'];
+                            $_SESSION['admin']['phone'] = $admins['phone_number'];
+                            $title = "Homepage";
+                            $this->renderAdminView('admin/index', compact('title', 'payss'));
                         } else {
-                            if (password_verify(htmlspecialchars($_POST['password']), $admins["password"])) {
-
-                                $_SESSION['admin']['auth'] = TRUE;
-                                $_SESSION['admin']['id'] = $admins['id'];
-                                $_SESSION['admin']['first_name'] = $admins['first_name'];
-                                $_SESSION['admin']['last_name'] = $admins['last_name'];
-                                $_SESSION['admin']['email'] = $admins['email'];
-                                $_SESSION['admin']['phone'] = $admins['phone_number'];
-                                $title = "Homepage";
-                                $this->renderAdminView('admin/index', compact('title', 'payss'));
-                            } else {
-                                $passerror = "Ce n'est pas le bon mot de passe.";
-                                $this->renderAdminView('user/login', compact('title', 'passerror', 'payss'));
-                            }
+                            $passerror = "Ce n'est pas le bon mot de passe.";
+                            $this->renderAdminView('user/login', compact('title', 'passerror', 'payss'));
                         }
                     }
                 }
@@ -246,90 +244,90 @@ class AdminController extends Controller
                 $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
             }
 
-            if (!isset($error)){
-            //Traitement et enregistrement des images
-            if (count($_FILES) <= 2) {
-                $allowed[] = "image/jpeg";
-                $allowed[] = "image/png";
+            if (!isset($error)) {
+                //Traitement et enregistrement des images
+                if (count($_FILES) <= 2) {
+                    $allowed[] = "image/jpeg";
+                    $allowed[] = "image/png";
 
-                //traitement de l'image logo
-                if ($_FILES['logo']['error'] == 0 && in_array($_FILES['logo']['type'], $allowed)) {
+                    //traitement de l'image logo
+                    if ($_FILES['logo']['error'] == 0 && in_array($_FILES['logo']['type'], $allowed)) {
 
-                    $folder = "logos/";
-                    if (!file_exists($folder)) {
-                        mkdir($folder, 0777, true);
-                    }
-
-                    //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
-                    if (!isset($_POST['logo'])) {
-
-                        if ($_FILES['logo']['type'] == "image/jpeg") {
-                            $nameFile = uniqid() . ".jpeg";
-                        } else {
-                            $nameFile = uniqid() . ".png";
+                        $folder = "logos/";
+                        if (!file_exists($folder)) {
+                            mkdir($folder, 0777, true);
                         }
 
-                        $destination = $folder . $nameFile;
+                        //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
+                        if (!isset($_POST['logo'])) {
 
-                        //resize function
+                            if ($_FILES['logo']['type'] == "image/jpeg") {
+                                $nameFile = uniqid() . ".jpeg";
+                            } else {
+                                $nameFile = uniqid() . ".png";
+                            }
 
-                        $logo = new \Gumlet\ImageResize($_FILES['logo']['tmp_name']);
-                        $logo->crop(500, 500);
-                        $logo->save($destination);
-                        $_POST['logo'] = $destination;
+                            $destination = $folder . $nameFile;
+
+                            //resize function
+
+                            $logo = new \Gumlet\ImageResize($_FILES['logo']['tmp_name']);
+                            $logo->crop(500, 500);
+                            $logo->save($destination);
+                            $_POST['logo'] = $destination;
+                        }
                     }
-                }
-                if ($_FILES['opt_pic']['error'] == 0 && in_array($_FILES['opt_pic']['type'], $allowed)) {
+                    if ($_FILES['opt_pic']['error'] == 0 && in_array($_FILES['opt_pic']['type'], $allowed)) {
 
-                    $folder = "opt_pic/";
-                    if (!file_exists($folder)) {
-                        mkdir($folder, 0777, true);
-                    }
-
-                    //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
-                    if (!isset($_POST['opt_pic'])) {
-
-                        if ($_FILES['opt_pic']['type'] == "image/jpeg") {
-                            $nameFile = uniqid() . ".jpeg";
-                        } else {
-                            $nameFile = uniqid() . ".png";
+                        $folder = "opt_pic/";
+                        if (!file_exists($folder)) {
+                            mkdir($folder, 0777, true);
                         }
 
-                        $destination2 = $folder . $nameFile;
+                        //verification si le photo a déjà été upload ( en cas d'erreur dans l'insertion notamment)
+                        if (!isset($_POST['opt_pic'])) {
 
-                        //resize function
+                            if ($_FILES['opt_pic']['type'] == "image/jpeg") {
+                                $nameFile = uniqid() . ".jpeg";
+                            } else {
+                                $nameFile = uniqid() . ".png";
+                            }
 
-                        $opt_pic = new \Gumlet\ImageResize($_FILES['opt_pic']['tmp_name']);
-                        $opt_pic->resizeToWidth(800);
-                        $opt_pic->save($destination2);
-                        $_POST['opt_pic'] = $destination2;
+                            $destination2 = $folder . $nameFile;
+
+                            //resize function
+
+                            $opt_pic = new \Gumlet\ImageResize($_FILES['opt_pic']['tmp_name']);
+                            $opt_pic->resizeToWidth(800);
+                            $opt_pic->save($destination2);
+                            $_POST['opt_pic'] = $destination2;
+                        }
                     }
                 }
+
+
+
+                $supplier = new Supplier();
+                $supplier->setName(strip_tags($_POST['name']));
+                $supplier->setAdress(strip_tags($_POST['adress']));
+                $supplier->setZipcode(strip_tags($_POST['zipcode']));
+                $supplier->setCity(strip_tags($_POST['city']));
+                $supplier->setIdPays(strip_tags($_POST['id_pays']));
+                $supplier->setPhoneNumber(strip_tags($_POST['phone_number']));
+                $supplier->setEmail(strip_tags($_POST['email']));
+                $supplier->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
+                $supplier->setSiren(strip_tags($_POST['siren']));
+                $supplier->setLogo($_POST['logo']);
+                $supplier->setOptPic($_POST['opt_pic']);
+                $result = $supplier->insert();
+                if ($result) {
+                    $success = "insertion bien effectuée";
+                    $this->renderAdminView('admin/addSupplier', compact('success', 'title', 'payss'));
+                } else {
+                    $error = "échec";
+                    $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
+                }
             }
-
-
-
-            $supplier = new Supplier();
-            $supplier->setName(strip_tags($_POST['name']));
-            $supplier->setAdress(strip_tags($_POST['adress']));
-            $supplier->setZipcode(strip_tags($_POST['zipcode']));
-            $supplier->setCity(strip_tags($_POST['city']));
-            $supplier->setIdPays(strip_tags($_POST['id_pays']));
-            $supplier->setPhoneNumber(strip_tags($_POST['phone_number']));
-            $supplier->setEmail(strip_tags($_POST['email']));
-            $supplier->setPassword(password_hash($_POST['password'], PASSWORD_ARGON2I));
-            $supplier->setSiren(strip_tags($_POST['siren']));
-            $supplier->setLogo($_POST['logo']);
-            $supplier->setOptPic($_POST['opt_pic']);
-            $result = $supplier->insert();
-            if ($result) {
-                $success = "insertion bien effectuée";
-                $this->renderAdminView('admin/addSupplier', compact('success', 'title', 'payss'));
-            } else {
-                $error = "échec";
-                $this->renderAdminView('admin/addSupplier', compact('error', 'title', 'payss'));
-            }
-        }
         }
         $this->renderAdminView('admin/addSupplier', compact('title', 'payss'));
     }

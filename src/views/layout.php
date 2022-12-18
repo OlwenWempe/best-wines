@@ -23,10 +23,10 @@
         <nav id="conNav" class="navbar navbar-expand-lg justify-content-end">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="login">connexion</a>
+                    <a class="nav-link" href="<?= BASE_DIR ?>/login">connexion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register">inscription</a>
+                    <a class="nav-link" href="<?= BASE_DIR ?>/register">inscription</a>
                 </li>
                 <?php if (isset($_SESSION['admin']['auth']) && $_SESSION['admin']['auth']) : ?>
                 <li class="nav-item">
@@ -36,7 +36,7 @@
             </ul>
         </nav>
         <nav id="mainNav" class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+            <div class="container-fluid justify-content-between">
                 <a class="navbar-brand" href="<?= BASE_DIR ?>"><img class="navImg"
                         src="<?= BASE_DIR ?>/assets/img/nav-logo.png" alt="brand logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -45,7 +45,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav justify-content-around mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -78,6 +78,10 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASE_DIR ?>/blog/all">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= BASE_DIR ?>/votre-panier/all">Panier <i
+                                    class="ps-2 fa-solid fa-cart-arrow-down"></i></a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
