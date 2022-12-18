@@ -28,7 +28,7 @@
                     <p><?= $supplier['phone_number'] ?></p>
                     <h2 class="my-3 showSubtitle">SIREN :</h2>
                     <p><?= $supplier['siren'] ?></p>
-                    <?php if ($_SESSION['admin']['auth']) : ?>
+                    <?php if (isset($_SESSION['admin']['auth'])) : ?>
                     <form class="mt-3" action="supplier" method="get">
                         <input class="btn btn-primary" type="submit" name="submit" value="modifier">
                     </form>
