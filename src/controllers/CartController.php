@@ -11,8 +11,8 @@ class CartController extends Controller
     //affichage du shopping cart
     public function index()
     {
-
-        $this->renderView('cart/index');
+        $title = "Votre panier";
+        $this->renderView('cart/index', compact('title'));
     }
 
     //Ajout d'un produit
@@ -20,11 +20,21 @@ class CartController extends Controller
     {
         $title = "Votre panier";
 
+        if (isset($_POST["qty"]) && !empty($_POST["qty"])) {
+            if ($_POST['qty'] < 0) {
+                $qty = 1;
+            } else {
+                $qty = $_POST["qty"];
+            }
+
+            $name = $_POST['name'];
+            $_SESSION["cart_item"][$name]["quantity"] = $qty;
+            $this->renderView('cart/index', compact('title'));
+            die;
+        }
+
         $qty = 1;
         $id = $_GET['id'];
-        if (isset($_POST["qty"]) && !empty($_POST["qty"])) {
-            $qty = $_POST["qty"];
-        }
 
         if ($_SERVER['REDIRECT_URL'] == '/best-wines/votre-panier/addwine') {
             $product = new Wine;

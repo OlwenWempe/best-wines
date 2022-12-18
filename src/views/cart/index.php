@@ -22,12 +22,17 @@
                     $item_price = $item["quantity"] * $item["price"];
                 ?>
             <tr>
-                <td><img src="/best-wines/uploads/vins/<?= $item["image"]; ?>"
-                        class="cart-item-image" /><?= $item["name"]; ?></td>
-                <td><?= $item["id"]; ?></td>
-                <td style="text-align:right;"><?= $item["quantity"]; ?></td>
-                <td style="text-align:right;"><?= $item["price"] . " €"; ?></td>
-                <td style="text-align:right;"><?= number_format($item_price, 2) . " €"; ?></td>
+                <td><img src="<?= $item["image"]; ?>" class="cart-item-image" /><?= $item["name"] ?></td>
+                <td><?= $item["id"] ?></td>
+                <td style="text-align:right;">
+                    <form action="<?= BASE_DIR ?>/votre-panier/addwine?id=<?= $item["id"] ?>" method="POST"><input
+                            type="number" min="1" value="<?= $item["quantity"]; ?>" name="qty" id="qty"><input
+                            type="hidden" name="name" value="<?= $item["name"]; ?>"><input type="submit"
+                            value="Mettre à jour">
+                    </form>
+                </td>
+                <td style="text-align:right;"><?= $item["price"] . " €" ?></td>
+                <td style="text-align:right;"><?= number_format($item_price, 2) . " €" ?></td>
                 <td style="text-align:center;"><a href="<?= BASE_DIR ?>/votre-panier/remove?id=<?= $item["id"]; ?>"
                         class="btnRemoveAction"><i class="bdx fa-solid fa-trash-can"></i></a></td>
             </tr>
