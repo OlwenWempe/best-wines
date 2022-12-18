@@ -263,8 +263,9 @@ class WineController extends Controller
     //permets d'ajouter une region dans le menu select
     public function addRegion()
     {
+        AdminController::checkLogged();
         $title = "Ajout d'une région";
-
+        
         $pays = new Pays();
         $payss = $pays->findAll($is_array = true);
 
@@ -292,6 +293,7 @@ class WineController extends Controller
     //permets d'ajouter le type de vin dans le menu select
     public function addType()
     {
+        AdminController::checkLogged();
         $title = "Ajout d'un type";
 
         $pays = new Pays();
@@ -318,6 +320,7 @@ class WineController extends Controller
     //permets d'ajouter les goûts des vins dans le menu select.
     public function addTaste()
     {
+        AdminController::checkLogged();
         $title = "Ajout d'un goût";
 
         $pays = new Pays();
@@ -344,6 +347,7 @@ class WineController extends Controller
     //permets d'ajouter avec quoi accorder les vins dans le menu select.
     public function addAccord()
     {
+        AdminController::checkLogged();
         $title = "Ajout d'un accord";
 
         $pays = new Pays();

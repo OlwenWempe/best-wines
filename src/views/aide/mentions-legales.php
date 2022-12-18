@@ -71,7 +71,7 @@
             périodes de l'année, mais peut toutefois contenir des inexactitudes ou des omissions.
             Si vous constatez une lacune, erreur ou ce qui parait être un dysfonctionnement, merci de bien vouloir le
             signaler
-            par courriel, à l'adresse contact@anthedesign.fr, en décrivant le problème de la manière la plus précise
+            par courriel, à l'adresse contact@bestwines.fr, en décrivant le problème de la manière la plus précise
             possible
             (page
             posant problème, type d'ordinateur et de navigateur utilisé, …).

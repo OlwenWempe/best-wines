@@ -122,10 +122,6 @@ footer{
     height: 70vh;
 }
 
-#bodyfaq{
-    background-position: right;
-}
-
 .navbar-brand
 {
     background-size: cover;
@@ -139,5 +135,4 @@ footer{
 #wine_icon img{
     width: 40px;
     background-color: var(--bordeaux);
-
 }
