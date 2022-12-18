@@ -1,6 +1,6 @@
 <section class="mt-5">
     <div class="card mx-auto" style="width: 25vw;">
-        <form action="/best-wines/login" method="POST" class="card-body">
+        <form action="" method="POST" class="card-body">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">Se connecter</h5>
             </div>

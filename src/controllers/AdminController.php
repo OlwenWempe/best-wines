@@ -47,11 +47,11 @@ class AdminController extends Controller
             // vérifier si les champs sont remplis
             if (empty($_POST['email'])) {
                 $message = 'Veuillez rentrer votre adresse mail.';
-                $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+                $this->renderAdminView('user/login', compact('title', 'message'));
             }
             if (empty($_POST['password'])) {
                 $message = 'Veuillez rentrer votre mot de passe.';
-                $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+                $this->renderAdminView('user/login', compact('title', 'message'));
             } else {
                 // Récupérer les données du formulaire
 
@@ -60,7 +60,7 @@ class AdminController extends Controller
 
                 if (!$email) {
                     $message = "Veuillez rentrer un mail valide.";
-                    $this->renderAdminView('user/login', compact('title', 'message', 'payss'));
+                    $this->renderAdminView('user/login', compact('title', 'message'));
                 } else {
                     $email = strip_tags($email);
                     $admin = new Admin;
@@ -78,17 +78,17 @@ class AdminController extends Controller
                             $_SESSION['admin']['email'] = $admins['email'];
                             $_SESSION['admin']['phone'] = $admins['phone_number'];
                             $title = "Homepage";
-                            $this->renderAdminView('admin/index', compact('title', 'payss'));
+                            $this->renderAdminView('admin/index', compact('title'));
                         } else {
                             $passerror = "Ce n'est pas le bon mot de passe.";
-                            $this->renderAdminView('user/login', compact('title', 'passerror', 'payss'));
+                            $this->renderAdminView('user/login', compact('title', 'passerror'));
                         }
                     }
                 }
             }
         }
 
-        $this->renderAdminView('user/login', compact('title', 'payss'));
+        $this->renderAdminView('user/login', compact('title'));
 
         //verifier si dans la bdd admin
         // header("Location admin/login.php");
@@ -173,7 +173,7 @@ class AdminController extends Controller
     {
         session::startSession();
         if (!isset($_SESSION['admin']['auth']) || !$_SESSION['admin']['auth']) {
-            header('Location: admin/login');
+            header('Location: login');
             exit;
         }
     }
@@ -341,7 +341,6 @@ class AdminController extends Controller
             $article->setContent($_POST['content']);
             $article->setIdAdmin($_SESSION['admin']['id']);
             $result = $article->insert();
-            dump($result);
             if ($result) {
                 $success = "insertion bien effectuée";
                 $this->renderArticleView(compact('success'));
@@ -355,7 +354,7 @@ class AdminController extends Controller
 
 
     /**
-     * afficher la liste des vins
+     * afficher la liste des articles
      * @return void
      */
     public function index(): void
