@@ -10,55 +10,55 @@
     </div>
     <?php endif; ?>
     <div class="card mx-auto" style="width: 25vw;">
-        <form action="<?= BASE_DIR ?>/user/register" method="POST" class="card-body">
+        <form action="<?= BASE_DIR ?>/register" method="POST" class="card-body">
             <div id="connection-card" class="card-header">
                 <h5 class="card-title text-center">S'inscrire</h5>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="text" class="form-control mt-3" id="first_name" placeholder="Le prénom"
+                    <input required value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name'] ?>" type="text" class="form-control mt-3" id="first_name" placeholder="Prénom"
                         name="first_name">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="text" class="form-control mt-3" id="last_name" placeholder="Le nom" name="last_name">
+                    <input required value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name'] ?>" type="text" class="form-control mt-3" id="last_name" placeholder="Nom" name="last_name">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="email" class="form-control mt-3" id="userEmail" placeholder="Email" name="email">
+                    <input required value="<?php if (isset($_POST['email'])) echo $_POST['email'] ?>" type="email" class="form-control mt-3" id="userEmail" placeholder="Email" name="email">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <div class="">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Le mot de passe"
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe"
                         name="password">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="text" class="form-control mt-3" id="adress" placeholder="Adresse" name="adress">
+                    <input required value="<?php if (isset($_POST['adress'])) echo $_POST['adress'] ?>" type="text" class="form-control mt-3" id="adress" placeholder="Adresse" name="adress">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="text" class="form-control mt-3" id="zipcode" placeholder="Code postal" name="zipcode">
+                    <input required value="<?php if (isset($_POST['zipcode'])) echo $_POST['zipcode'] ?>" type="text" class="form-control mt-3" id="zipcode" placeholder="Code postal" name="zipcode">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="text" class="form-control mt-3" id="city" placeholder="Ville" name="city">
+                    <input required value="<?php if (isset($_POST['city'])) echo $_POST['city'] ?>" type="text" class="form-control mt-3" id="city" placeholder="Ville" name="city">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="">
-                    <input type="tel" class="form-control mt-3" id="phone_number" placeholder="Son numero de téléphone"
-                        name="phone_number">
+                    <input required value="<?php if (isset($_POST['phone'])) echo $_POST['phone'] ?>" type="tel" class="form-control mt-3" id="phone" placeholder="Numero de téléphone"
+                        name="phone">
                 </div>
             </div>
-            <input type="submit" name="submit" class="btn btn-primary" value="Envoyer"></input>
+            <input type="submit" name="submit" class="btn btn-primary" value="S'inscrire"></input>
         </form>
     </div>
 </section>
