@@ -1,7 +1,9 @@
 <section id="shopping-cart" class="my-5 container">
     <div>
         <h1 class="text-center bdx mb-4">Votre panier</h1>
+        <?php if (isset($_SESSION["cart_item"])) : ?>
         <a id="btnEmpty" class="btn btn-primary" href="votre-panier/empty">Vider Panier</a>
+        <?php endif ?>
         <?php
         if (isset($_SESSION["cart_item"])) {
 
@@ -58,7 +60,7 @@
         } else {
         ?>
         <div class="alert alert-success" role="alert">
-            <p class=" text-center"><?= $success ?></p>
+            <p class=" text-center">Votre panier est vide.</p>
         </div>
         <?php
         }
