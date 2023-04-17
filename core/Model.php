@@ -31,23 +31,6 @@ abstract class Model
         return $stmt->fetch();
     }
 
-    public function findWine(int $id, bool $is_array = false): array|object|false
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM wine INNER JOIN region on wine.id_region = region.region_id INNER JOIN type_wine on wine.id_type_wine = type_wine.type_id INNER JOIN supplier on wine.id_supplier = supplier.supplier_id WHERE wine.wine_id = :id ");
-        $stmt->bindParam(':id', $id);
-
-
-        if ($is_array)
-            $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-
-
-        else
-            $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
-
-        $stmt->execute();
-        return $stmt->fetch();
-    }
-
 
     /**
      * get all elements
@@ -147,28 +130,7 @@ abstract class Model
         return $stmt->fetch();
     }
 
-    public function findAllWine(): array|false
-    {
-        $stmt = $this->pdo->prepare(
-            // "SELECT * FROM {$this->table_name} JOIN {$this->region} JOIN {$this->accord_tag} JOIN {$this->type_wine} JOIN {$this->taste_tag} JOIN {$this->supplier}"
-            "SELECT * FROM wine INNER JOIN region on wine.id_region = region.region_id INNER JOIN accord_tag on wine.id_accord_tag = accord_tag.id INNER JOIN type_wine on wine.id_type_wine = type_wine.id INNER JOIN taste_tag on wine.id_taste_tag = taste_tag.id INNER JOIN supplier on wine.id_supplier = supplier.id"
-        );
-        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
 
-
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-
-    public function findNewest(): array|false
-    {
-        $stmt = $this->pdo->prepare(
-            "SELECT * FROM {$this->table_name} ORDER BY {$this->table_name}_id DESC LIMIT 5"
-        );
-        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
 
     /**
      * Verifier si une valeur exist dans un tableau de la BDD
@@ -182,5 +144,16 @@ abstract class Model
         $stmt->setFetchMode(\PDO::FETCH_ASSOC);
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    public function findNewest(int $limit): array|false
+    {
+        $stmt = $this->pdo->prepare("
+            SELECT * FROM {$this->table_name} 
+            ORDER BY {$this->table_name}_id DESC LIMIT {$limit}
+            ");
+        $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }
