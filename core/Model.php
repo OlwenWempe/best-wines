@@ -7,6 +7,7 @@ abstract class Model
     protected \PDO $pdo;
 
     protected string $table_name;
+    protected string $id_name;
 
     public function __construct()
     {
