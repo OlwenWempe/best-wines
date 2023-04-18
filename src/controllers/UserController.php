@@ -120,7 +120,16 @@ class UserController extends Controller
                 $this->renderView('user/register', compact('error', 'title'));
                 die;
             }
-
+            $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+            if (!$email) {
+                $message = "Veuillez rentrer un mail valide.";
+                $this->renderView('user/login', compact('title', 'message'));
+            }
+            if (!preg_match('[a-z]{14,17})|((?=.*[a-z])(?=.*[A-Z])([a-zA-Z]{12,14}))|((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{11,13}))|((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(.{11,12}', $_POST['password'])) {
+                $error = "Le mot de passe doit contenir Un miniscule, un majuscule, un chiffre et un caractère special.";
+                $this->renderView('user/register', compact('error', 'title'));
+                die;
+            }
 
 
 

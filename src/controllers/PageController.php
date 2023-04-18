@@ -14,7 +14,7 @@ class PageController extends Controller
     {
         $title = "Accueil";
         $wine = new Wine();
-        $wines = $wine->findNewest();
+        $wines = $wine->findNewest(5);
         $this->renderView('homepage', compact('title', 'wines'));
     }
 }
